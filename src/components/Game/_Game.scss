@@ -1,0 +1,36 @@
+.game-page {
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+}
+.game-container{
+    background-color: gray;
+    position: relative;
+    margin: auto;
+}
+
+.player {
+    background-color: #04044F;
+    height: 50px;
+    width: 50px;
+    z-index: 2;
+    position: absolute;
+}
+
+.bird {
+    background-color: black;
+    
+}
+
+.cloud {
+    background-color: white;
+    border: 1px solid black;
+}
+
+.plane {
+    background-color: orange;
+}
+
+.parachute{
+    background-color: brown;
+}
