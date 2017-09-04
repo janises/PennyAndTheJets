@@ -1,0 +1,34 @@
+.instructions-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1 {
+        margin: 20px auto;
+    }
+
+
+    button {
+        display: inline-block;
+        padding: 15px 25px;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #C02921;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 8px #999;
+        margin-top: 20px;
+      }
+      
+      button:hover {background-color: #B62828}
+      
+      button:active {
+        background-color: #8D2525;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+      }
+
+}

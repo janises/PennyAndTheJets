@@ -1,36 +1,95 @@
 .game-page {
     display: flex;
     flex-direction: column;
-    padding-top: 100px;
+    padding-top: 50px;
 }
 .game-container{
-    background-color: gray;
+    background-image: url('./../img/seamless-tiling-clouds-789451_640.jpg');
+    background-repeat: repeat-y;
+    background-size: cover;
     position: relative;
     margin: auto;
+    width: 600px;
+    height: 400px;
+    animation: 5s scroll-y infinite linear;
+}
+
+@keyframes scroll-y {
+    100% {
+        background-position: 0 -600px;
+    }
 }
 
 .player {
-    background-color: #04044F;
-    height: 50px;
-    width: 50px;
+    background: url('./../img/penguin.png') no-repeat;
+    height: 40px;
+    width: 41px;
     z-index: 2;
     position: absolute;
+    animation: fall .9s steps(7) infinite;
+}
+
+@keyframes fall {
+    from {
+        background-position-x: -1px;
+        background-position-y: -1px;
+    }
+    to {
+        background-position-x: -288px;
+        background-position-y: -2px;
+    }
 }
 
 .bird {
-    background-color: black;
+    background: url('./../img/PC Computer - Koumajou Densetsu Scarlet Symphony - Bird Black.png') no-repeat;
+	width: 50px;
+    height: 40px;
+    animation: play .8s steps(3) infinite;
+}
+
+// .bird {
+//     background: url('./../img/robins.png') no-repeat -32px -450px;
+//     background-size: 250%;
+//     width: 184px;
+//     height: 80px;
+//     // animation: fly .8s infinite;
+// }
+
+// @keyframes fly {
+//     0% {
+//         background-position-x: -32px;
+//         background-position-y: -450px;
+//     }
+// }
+
+@keyframes play {
+    0% {
+        background-position-x: -23px;
+        background-position-y: -25px;
+    }
+    100% {
+        background-position-x: -207px;
+        background-position-y: -37px;
+        }
     
 }
 
+
+
 .cloud {
-    background-color: white;
-    border: 1px solid black;
+    background: url('./../img/cloud.png') no-repeat -2px -1px;
+    background-size: 325%;
+    width: 301px;
+    height: 214px;
 }
 
 .plane {
-    background-color: orange;
+    background: url('./../img/Biplane.png') no-repeat -1px -1px;
+    background-size: 95%;
+    width: 541px;
+    height: 261px;
 }
 
 .parachute{
-    background-color: brown;
+    background: url('./../img/parachute.png') no-repeat -3px 9px;
 }
