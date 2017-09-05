@@ -7,11 +7,20 @@ import Login from './Login/Login';
 import Instructions from './Instructions/Instructions';
 import Scores from './Scores/Scores';
 import PageNotFound from './PageNotFound/PageNotFound';
+import UserPage from './UserPage/UserPage';
 
 
 class App extends Component {
+
+  componentDidMount(){
+
+  }
+
   render() {
+
     return (
+      
+
       <div className="App">
         <Header/>
         <Switch>
@@ -19,7 +28,8 @@ class App extends Component {
           <Route component={Login} exact path="/"/>
           <Route component={Game} path='/game'/>
           <Route component={Instructions} path='/instructions'/>
-          <Route component={Scores} path='/scores'/>
+          <Route component={Scores} path='/highscores'/>
+          <Route component={UserPage} path='/user/:id'/>
           <Route component={PageNotFound} path='/pagenotfound'/>
         </Switch>
 
@@ -27,5 +37,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;

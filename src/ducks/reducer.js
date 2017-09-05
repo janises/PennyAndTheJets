@@ -13,7 +13,14 @@ const initialState = {
     obstacles: [{type: 'cloud', key: 0, top: 400, left: Math.floor(Math.random() * 400), remove: false, style:{height: 50, width: 70, position: 'absolute'}}],
     obstacleSpeed: 3,
     obstacleIndex: 1,
-    highScores: []
+    highScores: [],
+    isModalOpen: false,
+    username: '',
+    userId: '',
+    newUsername: '',
+    userScores: [],
+    editing: false,
+    isGameOver: false
 }
 
 const MOVE_PLAYER = 'MOVE_PLAYER',
@@ -22,7 +29,98 @@ const MOVE_PLAYER = 'MOVE_PLAYER',
       SAVE_SCORE = 'SAVE_SCORE',
       INCREMENT_SCORE = 'INCREMENT_SCORE',
       RESET_GAME = 'RESET_GAME',
-      GET_HIGH_SCORES = 'GET_HIGH_SCORES';
+      GET_HIGH_SCORES = 'GET_HIGH_SCORES',
+      GET_USER_SCORES = 'GET_USER_SCORES',
+      CLOSE_MODAL = 'CLOSE_MODAL',
+      OPEN_MODAL = 'OPEN_MODAL',
+      DELETE_USER = 'DELETE_USER',
+      UPDATE_USERNAME = 'UPDATE_USERNAME',
+      UPDATE_EMAIL = 'UPDATE_EMAIL',
+      HANDLE_INPUT = 'HANDLE_INPUT',
+      GET_USERNAME = 'GET_USERNAME',
+      EDIT_USERNAME = 'EDIT_USERNAME',
+      LOGOUT = 'LOGOUT';
+
+export function logout(){
+    return{
+        type: LOGOUT,
+        payload: axios.get('/auth/logout')
+    }
+}
+
+export function handleInput(e){
+    return{
+        type: HANDLE_INPUT,
+        payload: e
+    }
+}
+
+export function editUsername(){
+    return {
+        type: EDIT_USERNAME,
+        payload: true
+    }
+}
+
+export function getUsernameAndId(){
+    return {
+        type: GET_USERNAME,
+        payload: axios.get('/username')
+        .then(response => {
+            return response
+        })
+    }
+}
+
+export function updateEmail(email){
+    return {
+        type: UPDATE_EMAIL,
+        payload: email
+    }
+}      
+
+export function updateUsername(username) {
+    return {
+        type: UPDATE_USERNAME,
+        payload: axios.put('/updateusername', {username})
+        .then(response=> {
+            return response
+        })
+    }
+}      
+
+export function deleteUser(id){
+    return {
+        type: DELETE_USER,
+        payload: axios.delete('/deleteuser/' + id)
+        .then(response=> {
+            return response
+        })
+    }
+}
+
+export function openModal(){
+    return {
+        type: OPEN_MODAL,
+        payload: true
+    }
+}
+
+export function closeModal(){
+    return {
+        type: CLOSE_MODAL,
+        payload: false
+    }
+}
+
+export function getUserScores(){
+    return {
+        type: GET_USER_SCORES,
+        payload: axios.get('/userscores').then(response => {
+            return response
+        })
+    }
+}
 
 export function getHighScores(){
     return {
@@ -50,7 +148,9 @@ export function incrementScore(amount){
 export function saveScore(score){ //save to db
     return {
         type: SAVE_SCORE,
-        // payload: axios.post('/savescore').then(response=> {}
+        payload: axios.post('/addscore', {score}).then(response=> {
+            return response
+        })
 
     }
 }
@@ -107,6 +207,7 @@ function reducer(state = initialState, action) {
             }
             console.log(newObstacle)
             return Object.assign({}, state, {obstacleIndex: obstacleIndex + 1, obstacles: obstacles.concat([newObstacle])});
+            break;
         case MOVE_OBSTACLES:
         let {obstacleSpeed} = state;
             let movedObstacles = obstacles.filter(obstacle => !obstacle.remove).map(obstacle => {
@@ -122,16 +223,75 @@ function reducer(state = initialState, action) {
                 }
                 return obstacle;
             })
-            return Object.assign({},state, {obstacles: movedObstacles} )    
-        // case SAVE_SCORE:
-        //         console.log(action.payload)
-        //         return Object.assign({}, state, {score: action.payload})
+            if(movedObstacles.length < 1) {
+                return Object.assign({}, state, {obstacles: movedObstacles, isModalOpen: true})
+            } else {
+                return Object.assign({},state, {obstacles: movedObstacles} )  
+            }
+            break;
+        case SAVE_SCORE + '_FULFILLED':
+                console.log(action.payload)
+                return Object.assign({}, state, {highScores:action.payload, editing: false})
+                break;
+        case SAVE_SCORE + '_REJECTED':
+            console.log('error saving score')
+            break;
         case INCREMENT_SCORE:
-            return Object.assign({}, state, {score: score + action.payload})    
+        if(score < 0) {
+            return Object.assign({}, state, {score: 0})
+        } else {
+            return Object.assign({}, state, {score: score + action.payload})
+        }
+            break;  
         // case RESET_GAME:
         //     return Object.assign({}, action.payload)  
-        // case GET_HIGH_SCORES:
-        //     return Object.assign({}, state, {highScores: action.payload})
+        case UPDATE_USERNAME + "_FULFILLED":
+            console.log('233 reducer', action.payload.data)
+            return Object.assign({}, state, {editing: false, username: action.payload.data})
+            break;
+        case UPDATE_USERNAME + "_REJECTED":
+            console.log('error updating username')
+            break;
+        case EDIT_USERNAME:
+            return Object.assign({}, state, {editing: action.payload})
+            break;
+        case GET_USERNAME + "_FULFILLED":
+        console.log('reducer username 222', action.payload.data)
+            return Object.assign({}, state, {username: action.payload.data.username, userId: action.payload.data.id})
+            break;
+        case GET_USERNAME + "_REJECTED":
+            console.log('error getting username')
+            break;
+        case DELETE_USER + "_FULFILLED":
+            return Object.assign({}, state, {username:'', userScores: []})
+        case DELETE_USER + "_REJECTED":
+            console.log('error deleting user')
+        case GET_USER_SCORES + "_FULFILLED":
+        console.log('reducer scores 227', action.payload)
+            return Object.assign({}, state,{userScores: action.payload.data})
+            break;
+        case GET_USER_SCORES + "_REJECTED":
+            console.log('error getting user scores')
+            break;
+        case GET_HIGH_SCORES + "_FULFILLED":
+        console.log('scores', action.payload)
+            return Object.assign({}, state, {highScores: action.payload.data})
+            break;
+        case GET_HIGH_SCORES + "_REJECTED":
+            console.log("error getting high scores")
+            break;
+        case CLOSE_MODAL:
+            return Object.assign({}, state, {isModalOpen: action.payload})
+            break;
+        case OPEN_MODAL:
+            return Object.assign({}, state, {isModalOpen: action.payload})
+            break;
+        case HANDLE_INPUT:
+            return Object.assign({}, state, {editing: true, newUsername: action.payload})
+            break;
+        case LOGOUT + "_FULFILLED":
+            return Object.assign({}, state, {username: '', userId: '', userScores: []})
+
         default:
             break;
     }

@@ -1,11 +1,37 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {getHighScores} from './../../ducks/reducer';
 
-export default class Scores extends Component {
+class Scores extends Component {
+    componentDidMount(){
+        this.props.getHighScores();
+    }
     render(){
         return(
             <div className="scores-container">
-                <div>Scores: </div>
+                {this.props.highScores.length > 0 ? 
+                    (<div>Scores: {this.props.highScores.map((scores)=> {
+                    return <li> Player: {scores.player} --- Score : {scores.score}</li>
+                    })} 
+
+                </div>) : 
+                null
+                }
+                
             </div>
         )
     }
 }
+
+function mapStateToProps(state) {
+    let {highScores} = state;
+    return {
+        highScores
+    }
+}
+
+let outputActions = {
+    getHighScores
+}
+
+export default connect(mapStateToProps, outputActions)(Scores);

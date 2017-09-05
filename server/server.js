@@ -45,6 +45,7 @@ passport.use(new Auth0Strategy({
         db.find_user([profile.identities[0].user_id])
         .then( user => {
             if(user[0]) {
+                // console.log('user found',user)
                 return done(null, {id: user[0].id})
             } else {
                 db.create_user([profile.name.givenName, profile.emails[0].value, profile.picture, profile.identities[0].user_id])
@@ -53,8 +54,6 @@ passport.use(new Auth0Strategy({
                 })
             }
         })
-
-    done(null, profile);
     }
 ));
 
@@ -67,59 +66,110 @@ app.get('/auth', passport.authenticate('auth0'));
 // redirect user to homepage
 app.get('/auth/callback', passport.authenticate('auth0', {
     successRedirect: 'http://localhost:3000/#/instructions',
-    failureRedirect: 'http://localhost:3000/pagenotfound' //make a pagenotfound route
+    failureRedirect: 'http://localhost:3000/pagenotfound' 
 }));
 
 passport.serializeUser((user, done)=> {
+    // console.log('serialize', user)
     done(null, user)
 });
 
 passport.deserializeUser((obj, done)=> {
-    app.get('db').find_session_user([obj.identities.user_id])
+    // console.log('line 80', obj.id)
+    app.get('db').find_session_user([obj.id])
     .then( user=> {
-        return done(null, obj);
+    // console.log('deserialize', user)
+       done(null, user[0]);
     })
     
 });
 
 //FOR TESTING THE LOGIN ===========================================REMOVE AFTER COMPLETING PROJECT//
 app.get('/auth/me', (req, res, next) => {
+    let response, status=200
     if (!req.user) {
-      return res.status(404).send('User not found');
+    //    res.status(404).send('User not found');
+    status=404
+    response='User not found'
     } else {
-      return res.status(200).send(req.user);
+
+    //    res.status(200).send(req.user);
+    response=req.user
     }
+    res.status(status).send(response)
   })
   
 
 //log out
 app.get('/auth/logout', (req, res)=> {
     req.logOut();
-    return res.redirect(302, 'http://localhost:3000/#/')
+    res.redirect(302, 'http://localhost:3000/#/')
 });
 
-//get top ten user scores
-// app.get('/highscores', (req, res)=> {
-//     app.get('db').getHighScores()
-//     .then( scores => {
-//         return res.status(200).send(scores);
-//     })
-// })
-
-//get top ten scores from all users
-
-//post score
-// app.post('/addscore', (req, res)=> {
-//     app.get('db').add_score([/*USERID*/, req.body.score])
-//     .then( scores=> {
-//         return res.status(200).send(scores);
-//     })
-// })
-
-//delete scores
-//delete user
+// get overall top ten user scores
+app.get('/highscores', (req, res)=> {
+    app.get('db').getHighScores()
+    .then( scores => {
+        res.status(200).send(scores);
+    })
+})
 
 
+// post score
+app.post('/addscore', (req, res)=> {
+    // console.log('line121 add score', req.body.score)
+    // console.log('line122 user', req.user.id)
+    if(req.user.id) {
+        app.get('db').add_score([req.user.id, req.body.score])
+        .then( scores=> {
+             res.status(200).send(scores);
+        })
+    } else {
+        res.status(200).redirect('http://localhost:3000/#/highscores/')
+    }
+    
+})
+
+//get user scores
+app.get('/userscores', (req, res)=> {
+    app.get('db').get_user_scores([req.user.id])
+    .then(scores => {
+        
+        let userScores = scores.map(score => {
+            // console.log('scores line 132', score.score)
+            return score.score
+        })
+        // console.log(userScores)
+        res.status(200).send(userScores);
+    })
+})
+
+//get username
+app.get('/username', (req, res)=> {
+    app.get('db').get_username([req.user.id])
+    .then(username => {
+        // console.log('username, line 141', username[0].username)
+        res.status(200).send(username[0])
+    })
+})
+
+//update username
+app.put('/updateusername', (req, res)=> {
+    // console.log('153 username', req.body.username)
+    app.get('db').update_username([req.body.username, req.user.id])
+    .then(username => {
+        // console.log('line155 app.put', username[0].username)
+        res.status(200).send(username[0].username);
+    })
+})
+
+delete user
+app.delete('/deleteuser/:id', (req, res)=> {
+    app.get('db').delete_user([req.params.id])
+        .then(users => {
+            res.status(200).redirect('http://localhost:3000/#/')
+        })
+})
 
 
 app.listen(port, ()=> console.log(`Listening on port ${port}`));

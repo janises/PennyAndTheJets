@@ -3,15 +3,15 @@
 CREATE TABLE users
 (
     id SERIAL PRIMARY KEY,
-    username VARCHAR(20),
-    email VARCHAR(40),
+    username VARCHAR(20) NOT NULL,
+    email VARCHAR(40) NOT NULL,
     image TEXT,
     auth_id TEXT
 );
 
-INSERT INTO users (username, email, password) VALUES ('buffy', 'bsummers@scoobygang.com', 'angel<3');
-INSERT INTO users (username, email, password) VALUES ('willow', 'wrosenberg@scoobygang.com', 'tara<3');
-INSERT INTO users (username, email, password) VALUES ('xander', 'scoobyguy@scoobygang.com', 'burgersandfries');
+INSERT INTO users (username, email, password) VALUES ('buffy', 'bsummers@scoobygang.com');
+INSERT INTO users (username, email, password) VALUES ('willow', 'wrosenberg@scoobygang.com');
+INSERT INTO users (username, email, password) VALUES ('xander', 'scoobyguy@scoobygang.com');
 
 --Table for scores
 
