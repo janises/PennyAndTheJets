@@ -44,7 +44,7 @@ const MOVE_PLAYER = 'MOVE_PLAYER',
 export function logout(){
     return{
         type: LOGOUT,
-        payload: axios.get('/auth/logout')
+        payload: axios.get('/auth/logout').then(response => response)
     }
 }
 
@@ -223,11 +223,9 @@ function reducer(state = initialState, action) {
                 }
                 return obstacle;
             })
-            if(movedObstacles.length < 1) {
-                return Object.assign({}, state, {obstacles: movedObstacles, isModalOpen: true})
-            } else {
-                return Object.assign({},state, {obstacles: movedObstacles} )  
-            }
+         
+            return Object.assign({},state, {obstacles: movedObstacles} )  
+
             break;
         case SAVE_SCORE + '_FULFILLED':
                 console.log(action.payload)
@@ -291,7 +289,8 @@ function reducer(state = initialState, action) {
             break;
         case LOGOUT + "_FULFILLED":
             return Object.assign({}, state, {username: '', userId: '', userScores: []})
-
+        case LOGOUT + "_REJECTED":
+            console.log('error logging out')
         default:
             break;
     }

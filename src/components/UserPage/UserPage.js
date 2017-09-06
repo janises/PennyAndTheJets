@@ -10,7 +10,7 @@ class UserPage extends Component {
         
     }
 
-    componentDidMount(){
+    componentWillMount(){
         this.props.getUsernameAndId();
         this.props.getUserScores();
     }
@@ -18,11 +18,12 @@ class UserPage extends Component {
     render(){
         let {userScores} = this.props;
         let scores;
-        if(userScores.length > 0) {
-            scores = userScores.map((score, key)=> {
+        userScores.length > 0 ? (
+           scores = userScores.map((score, key)=> {
                 return <li key={key}> { score }</li>
-            })
-        }
+            })):
+            scores = <li>No Scores Yet!</li>;
+        
         
         return(
             <div className='user-page-container'>

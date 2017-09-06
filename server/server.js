@@ -163,7 +163,7 @@ app.put('/updateusername', (req, res)=> {
     })
 })
 
-delete user
+// delete user
 app.delete('/deleteuser/:id', (req, res)=> {
     app.get('db').delete_user([req.params.id])
         .then(users => {

@@ -5,13 +5,13 @@ import {Link} from 'react-router-dom';
  
 class GameOver extends Component {
     render(){
-        // if(this.props.isOpen === false) return null;
+
         return(
             <div className="game-over-container">
                 <div className="game-over-modal">
                     <h1>GAME OVER</h1>
                     {/* <button onClick={()=> this.props.close()}>Play Again</button> */}
-                    <Link to ='/highscores'> <button onClick={()=> this.props.close()}>High Scores</button></Link>
+                    <Link to ='/highscores'> <button>High Scores</button></Link>
                 </div>
             </div>
         )

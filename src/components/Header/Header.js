@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {getUsernameAndId, logout} from './../../ducks/reducer';
 
 class Header extends Component {
-    componentDidMount() {
+    componentWillMount() {
         this.props.getUsernameAndId();
         
     }
@@ -23,17 +23,20 @@ class Header extends Component {
                     <Link to="/highscores">
                         <li>High Scores</li>
                     </Link>
-                    {this.props.userId? (
+                    {this.props.userId && this.props.username? (
                         <Link to={`/user/${this.props.userId}`}>
                         <li>{this.props.username}</li>
                     </Link>
-                    ): (
-                        <Link to='/user/0'>
-                            <li>User</li>
-                        </Link>
-                    )}
+                    ): null}
                     
+                    {this.props.userId && this.props.username? 
                     <li><a href = 'http://localhost:8000/auth/logout'>Logout</a></li>
+                    : 
+                    
+                    <li><a href='http://localhost:8000/auth'>Login</a></li>}
+                    
+
+                    {/* <button onClick={()=> this.props.logout()}>Logout</button> */}
                 </ul>
             </div>
         )

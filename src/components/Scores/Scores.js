@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {getHighScores} from './../../ducks/reducer';
 
 class Scores extends Component {
-    componentDidMount(){
+    componentWillMount(){
         this.props.getHighScores();
     }
     render(){
