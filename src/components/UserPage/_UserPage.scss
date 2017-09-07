@@ -1,0 +1,35 @@
+.user-page-container {
+    @include flex;
+    @include fixed-header;
+   
+}
+
+.user-page {
+    @include flex;
+    height: 50%;
+    width: 50%;
+    .score {
+        text-align: center;
+        margin: 5px auto;
+        list-style: none;
+    }
+   
+    .edit-username {
+        margin-top: 50px;
+    }
+
+    .display-username {
+        margin-top: 50px;
+    }
+    
+}
+
+.user-picture {
+    border-radius: 50%;
+    height: 100px;
+}
+
+.not-logged-in-user-page {
+    @include flex;
+    @include fixed-header;
+}

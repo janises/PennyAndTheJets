@@ -10,12 +10,15 @@ class Scores extends Component {
         return(
             <div className="scores-container">
                 {this.props.highScores.length > 0 ? 
-                    (<div>Scores: {this.props.highScores.map((scores)=> {
-                    return <li> Player: {scores.player} --- Score : {scores.score}</li>
+                    (<div>
+                        <h1>HIGH SCORES</h1>
+                        
+                    {this.props.highScores.map((scores, index)=> {
+                        return <li key={index}> Player: {scores.player} --- Score : {scores.score}</li>
                     })} 
 
                 </div>) : 
-                null
+                null //FETCHING HIGH SCORES OR LOADING
                 }
                 
             </div>

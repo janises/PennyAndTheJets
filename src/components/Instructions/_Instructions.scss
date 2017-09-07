@@ -1,7 +1,6 @@
 .instructions-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+   @include flex;
+   @include fixed-header;
     h1 {
         margin: 20px auto;
     }

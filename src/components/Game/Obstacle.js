@@ -10,7 +10,7 @@ class Obstacle extends Component {
         let newStyle = Object.assign({}, obstacleStyle, {top, left})
 
         return(
-            <div className={this.props.type} style={newStyle}> </div>
+            <div className={type} style={newStyle}> </div>
         )
     }
 }

@@ -1,0 +1,8 @@
+.scores-container {
+    @include fixed-header;
+    @include flex;
+    padding-top: 100px;
+    h1 {
+        text-align: center;
+    }
+}

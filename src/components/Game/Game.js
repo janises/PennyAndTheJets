@@ -8,10 +8,10 @@ class Game extends Component {
     constructor() {
         super();
         this.state={
-            playerSize: {
-                height: 40,
-                width: 40
-            },
+            // playerSize: {
+            //     height: 40,
+            //     width: 40
+            // },
             birds: '',
             clouds: '',
             planes: '',
@@ -27,6 +27,13 @@ class Game extends Component {
         requestAnimationFrame(()=> this.updateObstaclePositions()); //start game loop
     }
 
+    componentWillUnmount(){
+        this.props.resetGame();
+        clearInterval(this.state.birds)
+        clearInterval(this.state.clouds)
+        clearInterval(this.state.planes)
+        clearInterval(this.state.parachutes)
+    }
 
    
 
@@ -49,7 +56,7 @@ class Game extends Component {
                         this.openModalAndClearInterval()
                         obstacle.remove = true;
                     } else if(obstacle.type === 'plane') {
-                        this.props.openModal()
+                        this.openModalAndClearInterval()
                         obstacle.remove = true;
                     } else if(obstacle.type === 'parachute'){
                         this.props.incrementScore(1000)
@@ -64,12 +71,13 @@ class Game extends Component {
         requestAnimationFrame(()=> this.updateObstaclePositions()); //game loop
     }
     
+    
     startObstacles(){
-        let {obstacles, makeNewObstacle, obstacleIndex, isModalOpen} = this.props;    
+        let {makeNewObstacle} = this.props;    
        
             var createBirds = setInterval(()=> {
                 makeNewObstacle('bird')
-            }, 1000)
+            }, 1100)
 
             var createClouds = setInterval(()=> {
                 makeNewObstacle('cloud')
@@ -77,11 +85,11 @@ class Game extends Component {
 
             var createPlanes = setInterval(()=> {
                 makeNewObstacle('plane')
-            }, 3000)
+            }, 3200)
 
             var createParachutes = setInterval(()=> {
                 makeNewObstacle('parachute')
-            }, 5000)
+            }, 5450)
 
             this.setState({
                 birds: createBirds,
@@ -105,12 +113,12 @@ class Game extends Component {
 
 
     render(){
-        let {player, obstacles, movePlayer} = this.props;
-        let {playerSize, obstacleStyle, gameOver} = this.state;
+        let {player, obstacles, movePlayer, playerSize} = this.props;
+    
         
         return(
             <div className='game-page'>
-                <div>Score: {this.props.score}</div>
+                <h1>Score: {this.props.score}</h1>
                 <div className="game-container" style={this.props.container}>
                     <div className='player' ref='player' tabIndex='0' onKeyDown={(e)=> movePlayer(e)} style={player}></div>
                     { !this.props.isModalOpen ? (
@@ -122,6 +130,8 @@ class Game extends Component {
                                 return <Obstacle left={obstacle.left} top={obstacle.top} type={obstacle.type} obstacleStyle={obstacle.style}/>
                             }
 
+                            
+                           
                            
                     })) : null
                     }
@@ -136,14 +146,15 @@ class Game extends Component {
 }
 
 function mapStateToProps(state) {
-    let {player, score, container, obstacles, obstacleIndex, isModalOpen} = state
+    let {player, score, container, obstacles, obstacleIndex, isModalOpen, playerSize} = state
     return {
         player,
         score,
         container,
         obstacles,
         obstacleIndex,
-        isModalOpen
+        isModalOpen,
+        playerSize
     }
 }
 

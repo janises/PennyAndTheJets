@@ -1,7 +1,10 @@
 .game-page {
-    display: flex;
-    flex-direction: column;
+    @include flex;
+    @include fixed-header;
     padding-top: 50px;
+    h1 {
+        margin-bottom: 10px;
+    }
 }
 .game-container{
     background-image: url('./../img/seamless-tiling-clouds-789451_640.jpg');

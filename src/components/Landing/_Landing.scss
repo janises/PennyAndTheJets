@@ -1,0 +1,53 @@
+.landing-container {
+    @include fixed-header;
+}
+
+.login-container {
+    @include flex;
+}
+
+
+// .game-preview{
+//     background-image: url('./../img/seamless-tiling-clouds-789451_640.jpg');
+//     background-repeat: repeat-y;
+//     background-size: cover;
+//     margin: 40px auto;
+//     width: 90vw;
+//     height: 400px;
+//     animation: 5s scroll infinite linear;
+// }
+
+
+.btn {
+    // background: #034077;
+    background-color: $darker-blue;
+    border-radius: 5px;
+    width: 500px;
+    height: 50px;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 0.2em;
+}
+
+.btn:hover {
+    background: $faded-blue;
+}
+
+// .continue {
+//     background-color: #034077;
+// }
+
+// .continue:hover {
+//     background-color: #3574AB;
+// }
+
+@keyframes scroll {
+    100% {
+        background-position: 0 -400px;
+    }
+}
+
+// @media only screen and(min-width: 320px) {
+//change keyframes position
+// }

@@ -1,8 +1,17 @@
 .nav {
-    display: flex;
+    @include flex($justify: space-around, $direction: row);
+    background: $darker-blue;
+    position: fixed;
+    width: 100%;
+
+    height: 80px;
     li {
         padding: 5px 10px;
         list-style: none;
         font-family: sans-serif;
+        color: $almost-white-purple;
+        a {
+            color: $almost-white-purple;
+        }
     }
 }

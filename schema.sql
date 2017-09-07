@@ -6,7 +6,7 @@ CREATE TABLE users
     username VARCHAR(20) NOT NULL,
     email VARCHAR(40) NOT NULL,
     image TEXT,
-    auth_id TEXT
+    auth_id TEXT NOT NULL
 );
 
 INSERT INTO users (username, email, password) VALUES ('buffy', 'bsummers@scoobygang.com');

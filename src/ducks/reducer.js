@@ -9,8 +9,30 @@ const initialState = {
         top: 10,
         left: 200
     },
+    playerSize: {
+        height: 40,
+        width: 40
+        
+    },
+    bird: {
+        height: 50,
+        width: 40
+    },
+    cloud: {
+        height: 50,
+        width: 70
+    },
+    plane: {
+        height: 50,
+        width: 80
+    },
+    parachute: {
+        height: 50,
+        width: 50
+    },
     score: 0,
-    obstacles: [{type: 'cloud', key: 0, top: 400, left: Math.floor(Math.random() * 400), remove: false, style:{height: 50, width: 70, position: 'absolute'}}],
+    dx: 5,
+    obstacles: [],
     obstacleSpeed: 3,
     obstacleIndex: 1,
     highScores: [],
@@ -133,8 +155,7 @@ export function getHighScores(){
 
 export function resetGame(){
     return{
-        type: RESET_GAME,
-        payload: initialState
+        type: RESET_GAME
     }
 }      
 
@@ -179,16 +200,16 @@ export function movePlayer(e) {
 
 
 function reducer(state = initialState, action) {
-    let {player, container, score, obstacles, obstacleIndex} = state;
+    let {player, container, score, obstacles, obstacleIndex, bird, plane, parachute, cloud, playerSize, dx} = state;
     switch(action.type) {
         case MOVE_PLAYER:
             if(action.payload === 39) {
-                if(player.left <= container.width-60) {
-                    return Object.assign({}, state, {player:{top: 10, left: player.left += 5}})
+                if(player.left <= container.width - (playerSize.width + dx*2)) {
+                    return Object.assign({}, state, {player:{top: 10, left: player.left += dx}})
                 }   
             } else if(action.payload === 37) {
-                if(player.left >= 10) {
-                    return Object.assign({}, state, {player: {top: 10, left: player.left -= 5}})
+                if(player.left >= dx) {
+                    return Object.assign({}, state, {player: {top: 10, left: player.left -= dx}})
                 } 
 
             }
@@ -197,15 +218,15 @@ function reducer(state = initialState, action) {
         case MAKE_NEW_OBSTACLE:
             let newObstacle;
             if(action.payload === 'cloud') {
-                newObstacle = {type: action.payload, key: obstacleIndex, remove: false, top: container.height-50, left: Math.floor(Math.random()* container.width - 30), style:{height: 50, width: 70, position:'absolute'}};
+                newObstacle = {type: action.payload, key: obstacleIndex, remove: false, top: container.height-cloud.height, left: Math.floor(Math.random()* (container.width - cloud.width*2 + 1)+ cloud.width), style:{height: cloud.height, width: cloud.width, position:'absolute'}};
             } else if (action.payload === 'plane') {
-                newObstacle = {type: action.payload, key: obstacleIndex, remove: false, top: container.height-50, left: Math.floor(Math.random()* container.width - 30), style:{height: 50, width: 80, position:'absolute'}};
+                newObstacle = {type: action.payload, key: obstacleIndex, remove: false, top: container.height-plane.height, left: Math.floor(Math.random()* (container.width - plane.width*2 + 1)+ plane.width), style:{height: plane.height, width: plane.width, position:'absolute'}};
             } else if (action.payload === 'bird') {
-                newObstacle = {type: action.payload, key: obstacleIndex, remove: false, top: container.height-50, left: Math.floor(Math.random()* container.width - 30), style:{height: 50, width: 40, position:'absolute'}};
+                newObstacle = {type: action.payload, key: obstacleIndex, remove: false, top: container.height-bird.height, left: Math.floor(Math.random()* (container.width - bird.width*2 + 1)+ bird.width), style:{height: bird.height, width: bird.width, position:'absolute'}};
             } else if(action.payload === 'parachute') {
-                newObstacle = {type: action.payload, key: obstacleIndex, remove: false, top: container.height-50, left: Math.floor(Math.random()* container.width - 30), style:{height: 50, width: 50, position:'absolute'}};
+                newObstacle = {type: action.payload, key: obstacleIndex, remove: false, top: container.height-parachute.height, left: Math.floor(Math.random()* (container.width - parachute.width*2 + 1)+ parachute.width), style:{height: parachute.height, width: parachute.width, position:'absolute'}};
             }
-            console.log(newObstacle)
+            // console.log(newObstacle)
             return Object.assign({}, state, {obstacleIndex: obstacleIndex + 1, obstacles: obstacles.concat([newObstacle])});
             break;
         case MOVE_OBSTACLES:
@@ -214,7 +235,7 @@ function reducer(state = initialState, action) {
                 if(obstacle.key === +action.payload.key) {
                     if(obstacle.top >= obstacleSpeed) {
                         obstacle.top -= obstacleSpeed;
-                    } else if (obstacle.top < obstacleSpeed || (obstacle.top === 50 && obstacle.left < player.left + 50 && obstacle.left > player.left) ) {
+                    } else if (obstacle.top < obstacleSpeed || (obstacle.top === (playerSize.height + player.top) && obstacle.left < player.left + playerSize.width && obstacle.left > player.left) ) {
                         obstacle.remove = true
                     }
                     if(obstacle.remove) {
@@ -235,14 +256,10 @@ function reducer(state = initialState, action) {
             console.log('error saving score')
             break;
         case INCREMENT_SCORE:
-        if(score < 0) {
-            return Object.assign({}, state, {score: 0})
-        } else {
             return Object.assign({}, state, {score: score + action.payload})
-        }
             break;  
-        // case RESET_GAME:
-        //     return Object.assign({}, action.payload)  
+        case RESET_GAME:
+            return Object.assign({}, state, {score: 0, isModalOpen: false, obstacleIndex: 1, obstacles: []})  
         case UPDATE_USERNAME + "_FULFILLED":
             console.log('233 reducer', action.payload.data)
             return Object.assign({}, state, {editing: false, username: action.payload.data})

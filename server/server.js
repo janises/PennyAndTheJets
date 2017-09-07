@@ -80,6 +80,7 @@ passport.deserializeUser((obj, done)=> {
     .then( user=> {
     // console.log('deserialize', user)
        done(null, user[0]);
+    // done(null, obj)
     })
     
 });
@@ -146,11 +147,16 @@ app.get('/userscores', (req, res)=> {
 
 //get username
 app.get('/username', (req, res)=> {
-    app.get('db').get_username([req.user.id])
-    .then(username => {
-        // console.log('username, line 141', username[0].username)
-        res.status(200).send(username[0])
-    })
+    if(req.user) {
+        app.get('db').get_username([req.user.id])
+        .then(username => {
+            console.log('username, line 141', req.user)
+            res.status(200).send(username[0])
+        })
+    } else {
+        console.log('server 157, no req.user.id')
+    }
+  
 })
 
 //update username

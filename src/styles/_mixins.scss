@@ -4,3 +4,10 @@
     align-items: $align;   
     flex-direction: $direction;
 }
+
+@mixin fixed-header($header-height: 80px) {
+    height: calc(100% - $header-height);
+    width: 100%;
+    position: absolute;
+    top: $header-height;
+}
