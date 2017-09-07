@@ -40,6 +40,7 @@ const initialState = {
     username: '',
     userId: '',
     newUsername: '',
+    userPicture: '',
     userScores: [],
     editing: false,
     isGameOver: false
@@ -272,7 +273,7 @@ function reducer(state = initialState, action) {
             break;
         case GET_USERNAME + "_FULFILLED":
         console.log('reducer username 222', action.payload.data)
-            return Object.assign({}, state, {username: action.payload.data.username, userId: action.payload.data.id})
+            return Object.assign({}, state, {username: action.payload.data.username, userId: action.payload.data.id, userPicture: action.payload.data.image})
             break;
         case GET_USERNAME + "_REJECTED":
             console.log('error getting username')
