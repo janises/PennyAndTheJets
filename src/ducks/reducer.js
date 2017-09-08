@@ -256,8 +256,8 @@ function reducer(state = initialState, action) {
 
             break;
         case SAVE_SCORE + '_FULFILLED':
-                console.log(action.payload)
-                return Object.assign({}, state, {highScores:action.payload, editing: false})
+                console.log('save score 259', action.payload)
+                return Object.assign({}, state, {highScores:action.payload})
                 break;
         case SAVE_SCORE + '_REJECTED':
             console.log('error saving score')
@@ -296,7 +296,7 @@ function reducer(state = initialState, action) {
             console.log('error getting user scores')
             break;
         case GET_HIGH_SCORES + "_FULFILLED":
-        console.log('scores', action.payload)
+        console.log('reducerscores', action.payload)
             return Object.assign({}, state, {highScores: action.payload.data})
             break;
         case GET_HIGH_SCORES + "_REJECTED":

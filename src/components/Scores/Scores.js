@@ -3,26 +3,52 @@ import {connect} from 'react-redux';
 import {getHighScores} from './../../ducks/reducer';
 
 class Scores extends Component {
+  
     componentWillMount(){
         this.props.getHighScores();
     }
     render(){
+        let displayPlayers = [],
+            displayScores = [];
+            // console.log(this.props.highScores)
+        this.props.highScores ? (
+            displayPlayers = this.props.highScores.map((scores, index)=> {
+                return <li key={index}> {scores.player}</li>       
+            }),
+    
+            displayScores = this.props.highScores.map((scores, index)=> {
+                return <li key={index}>{scores.score}</li>
+            })
+        ) : null;
+      
+        // console.log(displayPlayers, displayScores)
         return(
             <div className="scores-container">
-                {/* <div className="scores-bg"></div> */}
+            
                 <div className="parachute-penguin"></div>
+
                 {this.props.highScores.length > 0 ? 
                     (<div className='high-scores'>
-                        <h1>HIGH SCORES</h1>
-                        
-                    {this.props.highScores.map((scores, index)=> {
-                        return <li key={index}> Player: {scores.player} --- Score : {scores.score}</li>
-                    })} 
+                        <h1 className="high-scores">HIGH SCORES</h1>
+                        <div className='players-and-scores'>   
+                            <div className="players">
+                                <ul>
+                                    {displayPlayers}
+                                </ul>
+                            </div>
 
-                </div>) : 
-                (<div> <h1>RETRIEVING HIGH SCORES</h1></div> )
+                            <div className="scores">
+                                <ul>
+                                    {displayScores}
+                                </ul>
+                            </div>
+                        </div>
+                      
+    
+                    </div>) : 
+                (<div> <h1 className="retrieve-scores">RETRIEVING HIGH SCORES...</h1></div> )
                 }
-                
+               
             </div> //end of .scores-container
         )
     }

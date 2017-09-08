@@ -119,7 +119,7 @@ app.get('/highscores', (req, res)=> {
 // post score
 app.post('/addscore', (req, res)=> {
     // console.log('line121 add score', req.body.score)
-    // console.log('line122 user', req.user.id)
+    console.log('server line122 user', req.user.id)
     if(req.user.id) {
         app.get('db').add_score([req.user.id, req.body.score])
         .then( scores=> {
@@ -154,7 +154,7 @@ app.get('/username', (req, res)=> {
             res.status(200).send(username[0])
         })
     } else {
-        console.log('server 157, no req.user.id')
+        // console.log('server 157, no req.user.id')
     }
   
 })

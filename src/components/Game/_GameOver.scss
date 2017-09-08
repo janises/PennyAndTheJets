@@ -12,7 +12,7 @@
     height: 50%;
     border-radius: 5px;
     @include flex;
-    h1 {
+    .game-over {
         padding-bottom: 20px;
         color: white;
     }

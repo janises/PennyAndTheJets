@@ -1,28 +1,38 @@
 .scores-container {
     @include fixed-header;
     @include flex;
-    background: url('./../img/hazy-cloud-bg.png') fixed no-repeat center cover;
+    background: url('./../img/hazy-cloud-bg.png') no-repeat center;
   
-    h1 {
+    .high-scores {
         text-align: center;
+    }
+    .player-scores {
+        margin-bottom: 100px;
+    }
+
+    .retrieve-scores {
+        margin-bottom: 100px;
     }
 }
 
-// .scores-bg {
-//     // @include fixed-header;
-//     background: url('./../img/hazy-cloud-bg.png') no-repeat center;
-//     width: 100%;
-//     height: 100vh;
-//     position: absolute;
-//     z-index: -1;
-// }
+.players-and-scores {
+    @include flex($direction:row);
+    .players {
+        text-align: right;
+        margin-right: 20px;
+    }
+    .scores {
+        text-align: left;
+    }
+
+}
 
 .parachute-penguin {
     background: url('./../img/penguin_parachute.png') no-repeat -6px 0px;
     height: 70px;
     width: 42px;
     position: absolute;
-    animation: parachuting .8s steps(3) infinite, skydiving 10s linear forwards;
+    animation: parachuting .8s steps(3) infinite, skydiving 20s linear forwards;
 }
 
 @keyframes parachuting {

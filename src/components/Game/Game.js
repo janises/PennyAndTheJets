@@ -115,7 +115,7 @@ class Game extends Component {
         
         return(
             <div className='game-page'>
-                <h1>Score: {this.props.score}</h1>
+                <h1 className="score">Score: {this.props.score}</h1>
                 <div className="game-container" style={this.props.container}>
                     <div className='player' ref='player' tabIndex='0' onKeyDown={(e)=> movePlayer(e)} style={player}></div>
                     { !this.props.isModalOpen ? (
