@@ -1,5 +1,37 @@
 .landing-container {
     @include fixed-header;
+    height: 200vh;
+    background: $almost-white-lightblue;
+    overflow-x: hidden;
+    .haze {
+        position: fixed;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+    .cloud1 {
+        position: absolute;
+        top: 200px;
+        left: 600px;
+        z-index: 2;
+        height: 300px;
+    }
+    
+    .cloud2 {
+        position: absolute;
+        top: 300px;
+        left: 400px;
+        width: 400px;
+        z-index: 2;
+    }
+    .cloud3 {
+        position: absolute;
+        top: 600px;
+        left: 600px;
+        z-index: 2;
+    }
+    
 }
 
 .login-container {
@@ -34,13 +66,7 @@
     background: $faded-blue;
 }
 
-// .continue {
-//     background-color: #034077;
-// }
 
-// .continue:hover {
-//     background-color: #3574AB;
-// }
 
 @keyframes scroll {
     100% {
