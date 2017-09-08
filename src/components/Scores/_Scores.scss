@@ -12,7 +12,7 @@
     height: 70px;
     width: 42px;
     position: absolute;
-    animation: parachuting .8s steps(3) infinite, skydiving 10s linear;
+    animation: parachuting .8s steps(3) infinite, skydiving 10s linear forwards;
 }
 
 @keyframes parachuting {
@@ -28,7 +28,7 @@
     }
 
     100% {
-        top: 500px;
+        top: 400px;
         left: 100px;
     }
 }

@@ -54,3 +54,30 @@
 
 
 
+.landing-bird1 {
+    background: url('./../img/robins3.png') no-repeat 0px 0px;
+    // background-size: 150%;
+    position: absolute;
+    width: 55px;
+    height: 75px;
+    animation: fly 1s steps(19) infinite, flyforward 10s linear;
+}
+
+
+@keyframes fly {
+    100% {
+        background-position-x: -1075px;
+        background-position-y: 0px;
+    }
+}
+
+@keyframes flyfoward {
+    0% {
+        top: 200px;
+        left: 600px;
+    }
+    100% {
+        top: 200px;
+        left: 50px;
+    }
+}

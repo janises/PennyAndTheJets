@@ -28,6 +28,7 @@
     height: 40px;
     width: 41px;
     z-index: 2;
+    border-radius: 3px;
     position: absolute;
     animation: fall .9s steps(7) infinite;
 }
@@ -51,17 +52,18 @@
 // }
 
 .bird {
-    background: url('./../img/robins2.png') no-repeat 0 -105px;
-    background-size: 90%;
-    width: 192px;
-    height: 150px;
-    // animation: fly .8s infinite;
+    background: url('./../img/robins2.png') no-repeat 0px 0px;
+    // background-size: 150%;
+    width: 52px;
+    height: 70px;
+    animation: fly .8s steps(19) infinite;
 }
 
+
 @keyframes fly {
-    0% {
-        background-position-x: -32px;
-        background-position-y: -450px;
+    100% {
+        background-position-x: -1081px;
+        background-position-y: 0px;
     }
 }
 

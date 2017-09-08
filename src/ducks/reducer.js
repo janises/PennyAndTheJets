@@ -15,8 +15,8 @@ const initialState = {
         
     },
     bird: {
-        height: 50,
-        width: 40
+        height: 60,
+        width: 50
     },
     cloud: {
         height: 50,

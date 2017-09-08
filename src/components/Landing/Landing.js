@@ -12,7 +12,7 @@ export default class Landing extends Component {
                         <button className='continue btn'>CONTINUE WITHOUT LOGGING IN</button>
                     </Link>
 
-                
+                    <div className='landing-bird1'></div>
                 </div>
             </div>
             
