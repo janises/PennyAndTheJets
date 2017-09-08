@@ -11,6 +11,8 @@ export default class Landing extends Component {
                     <Link to='/instructions'> 
                         <button className='continue btn'>CONTINUE WITHOUT LOGGING IN</button>
                     </Link>
+
+                
                 </div>
             </div>
             

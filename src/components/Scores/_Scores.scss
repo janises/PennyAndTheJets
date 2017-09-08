@@ -6,3 +6,29 @@
         text-align: center;
     }
 }
+
+.parachute-penguin {
+    background: url('./../img/penguin_parachute.png') no-repeat -6px 0px;
+    height: 70px;
+    width: 42px;
+    position: absolute;
+    animation: parachuting .8s steps(3) infinite, skydiving 10s linear;
+}
+
+@keyframes parachuting {
+    100% {
+        background-position: -129px 0px;
+    }
+}
+
+@keyframes skydiving {
+    0% {
+        top: 100px;
+        left: 100px;
+    }
+
+    100% {
+        top: 500px;
+        left: 100px;
+    }
+}

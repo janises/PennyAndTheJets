@@ -20,7 +20,7 @@ class Scores extends Component {
                 </div>) : 
                 null //FETCHING HIGH SCORES OR LOADING
                 }
-                
+                <div className="parachute-penguin"></div>
             </div>
         )
     }

@@ -43,27 +43,27 @@
     }
 }
 
+// .bird {
+//     background: url('./../img/PC Computer - Koumajou Densetsu Scarlet Symphony - Bird Black.png') no-repeat;
+// 	width: 50px;
+//     height: 40px;
+//     animation: play .8s steps(3) infinite;
+// }
+
 .bird {
-    background: url('./../img/PC Computer - Koumajou Densetsu Scarlet Symphony - Bird Black.png') no-repeat;
-	width: 50px;
-    height: 40px;
-    animation: play .8s steps(3) infinite;
+    background: url('./../img/robins2.png') no-repeat 0 -105px;
+    background-size: 90%;
+    width: 192px;
+    height: 150px;
+    // animation: fly .8s infinite;
 }
 
-// .bird {
-//     background: url('./../img/robins.png') no-repeat -32px -450px;
-//     background-size: 250%;
-//     width: 184px;
-//     height: 80px;
-//     // animation: fly .8s infinite;
-// }
-
-// @keyframes fly {
-//     0% {
-//         background-position-x: -32px;
-//         background-position-y: -450px;
-//     }
-// }
+@keyframes fly {
+    0% {
+        background-position-x: -32px;
+        background-position-y: -450px;
+    }
+}
 
 @keyframes play {
     0% {
