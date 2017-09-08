@@ -15,7 +15,7 @@ const initialState = {
         
     },
     bird: {
-        height: 60,
+        height: 65,
         width: 50
     },
     cloud: {
@@ -235,7 +235,13 @@ function reducer(state = initialState, action) {
             let movedObstacles = obstacles.filter(obstacle => !obstacle.remove).map(obstacle => {
                 if(obstacle.key === +action.payload.key) {
                     if(obstacle.top >= obstacleSpeed) {
+                        if(obstacle.type === 'bird') {
+                            obstacle.left -= 1;
+                        } else if(obstacle.type === 'plane') {
+                            obstacle.left += 1;
+                        }
                         obstacle.top -= obstacleSpeed;
+
                     } else if (obstacle.top < obstacleSpeed || (obstacle.top === (playerSize.height + player.top) && obstacle.left < player.left + playerSize.width && obstacle.left > player.left) ) {
                         obstacle.remove = true
                     }

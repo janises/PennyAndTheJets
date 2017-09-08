@@ -6,8 +6,9 @@
 }
 
 @mixin fixed-header($header-height: 80px) {
-    height: calc(100% - $header-height);
+    height: calc(100vh - $header-height);
     width: 100%;
-    position: absolute;
+    position: fixed;
     top: $header-height;
+    z-index: -1;
 }

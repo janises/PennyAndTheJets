@@ -9,8 +9,10 @@ class Scores extends Component {
     render(){
         return(
             <div className="scores-container">
+                {/* <div className="scores-bg"></div> */}
+                <div className="parachute-penguin"></div>
                 {this.props.highScores.length > 0 ? 
-                    (<div>
+                    (<div className='high-scores'>
                         <h1>HIGH SCORES</h1>
                         
                     {this.props.highScores.map((scores, index)=> {
@@ -18,10 +20,10 @@ class Scores extends Component {
                     })} 
 
                 </div>) : 
-                null //FETCHING HIGH SCORES OR LOADING
+                (<div> <h1>RETRIEVING HIGH SCORES</h1></div> )
                 }
-                <div className="parachute-penguin"></div>
-            </div>
+                
+            </div> //end of .scores-container
         )
     }
 }

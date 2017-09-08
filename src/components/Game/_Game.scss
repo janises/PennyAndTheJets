@@ -7,19 +7,19 @@
     }
 }
 .game-container{
-    background-image: url('./../img/seamless-tiling-clouds-789451_640.jpg');
+    background-image: url('./../img/hazy-cloud-bg.png');
     background-repeat: repeat-y;
     background-size: cover;
     position: relative;
     margin: auto;
     width: 600px;
     height: 400px;
-    animation: 5s scroll-y infinite linear;
+    animation: 4s scroll-y infinite linear;
 }
 
 @keyframes scroll-y {
     100% {
-        background-position: 0 -600px;
+        background-position-y: -450px;
     }
 }
 
@@ -52,7 +52,7 @@
 // }
 
 .bird {
-    background: url('./../img/robins2.png') no-repeat 0px 0px;
+    background: url('./../img/robins3.png') no-repeat 0px -2px;
     // background-size: 150%;
     width: 52px;
     height: 70px;
@@ -62,8 +62,8 @@
 
 @keyframes fly {
     100% {
-        background-position-x: -1081px;
-        background-position-y: 0px;
+        background-position-x: -1082px;
+        background-position-y: -4px;
     }
 }
 

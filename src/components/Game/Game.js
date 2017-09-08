@@ -8,16 +8,13 @@ class Game extends Component {
     constructor() {
         super();
         this.state={
-            // playerSize: {
-            //     height: 40,
-            //     width: 40
-            // },
             birds: '',
             clouds: '',
             planes: '',
             parachutes: ''
           
         }
+        this.startObstacles = this.startObstacles.bind(this);
     }
 
     componentDidMount() {
@@ -137,7 +134,7 @@ class Game extends Component {
                     }
 
                     {
-                        this.props.isModalOpen ?  <GameOver/> : null
+                        this.props.isModalOpen ?  <GameOver playAgain={this.startObstacles}/> : null
                     }
                 </div>
             </div>
