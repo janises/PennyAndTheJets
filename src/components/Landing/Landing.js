@@ -4,7 +4,7 @@ import $ from 'jquery';
 import cloud1 from './../../img/cloud1.png';
 import cloud2 from './../../img/cloud2.png';
 import cloud3 from './../../img/cloud3.png';
-import haze from './../../img/haze.png';
+import haze from './../../img/haze2.png';
 
 
 export default class Landing extends Component {
@@ -31,11 +31,16 @@ export default class Landing extends Component {
     }
 
     render(){
+
         return (
             <div className="landing-container">
+                <div className="bird" style={{"height":"65px", "width":"50px"}}></div>
+                <div className="cloud" style={{"height":"30px", "width":"65px"}}></div>
+                <div className="plane" style={{"height":"35px", "width":"70px"}}></div>
+                <div className="parachute" style={{"height":"35px", "width":"28px"}}></div>
                 <img className="haze" ref='haze' src={haze} alt=""/>
-                <img className="cloud1" ref="cloud1" src={cloud1} alt=''/>
-                <img className="cloud2" ref="cloud2" src={cloud2} alt=''/>
+                {/* <img className="cloud1" ref="cloud1" src={cloud1} alt=''/> */}
+                {/* <img className="cloud2" ref="cloud2" src={cloud2} alt=''/> */}
                 <img className="cloud3" ref="cloud3" src={cloud3} alt=''/>
                 <div className='login-container'>
                     {/* <div className="game-preview"></div> */}

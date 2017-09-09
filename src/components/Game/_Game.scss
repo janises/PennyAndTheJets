@@ -14,7 +14,7 @@
     background-size: cover;
     position: relative;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 25px;
     width: 600px;
     height: 400px;
     animation: 4s scroll-y infinite linear;
@@ -47,16 +47,9 @@
     }
 }
 
-// .bird {
-//     background: url('./../img/PC Computer - Koumajou Densetsu Scarlet Symphony - Bird Black.png') no-repeat;
-// 	width: 50px;
-//     height: 40px;
-//     animation: play .8s steps(3) infinite;
-// }
 
 .bird {
     background: url('./../img/robins3.png') no-repeat 0px -2px;
-    // background-size: 150%;
     width: 52px;
     height: 70px;
     animation: fly .8s steps(19) infinite;
@@ -85,19 +78,19 @@
 
 
 .cloud {
-    background: url('./../img/cloud.png') no-repeat -2px -1px;
-    background-size: 325%;
-    width: 301px;
-    height: 214px;
+    background: url('./../img/gamecloud.png') no-repeat 0px 2px;
+    background-size: 100%;
+    width: 80px;
+    height: 40px;
 }
 
 .plane {
-    background: url('./../img/Biplane.png') no-repeat -1px -1px;
-    background-size: 95%;
+    background: url('./../img/Biplane.png') no-repeat 0px -4px;
+    background-size: 105%;
     width: 541px;
-    height: 261px;
+    height: 250px;
 }
 
 .parachute{
-    background: url('./../img/parachute.png') no-repeat -3px 9px;
+    background: url('./../img/parachute.png') no-repeat -2px 2px;
 }
