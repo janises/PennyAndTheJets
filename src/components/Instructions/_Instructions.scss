@@ -1,6 +1,9 @@
 .instructions-container {
    @include flex;
    @include fixed-header;
+   background: $sky-blue;
+   height: 100vh;
+   overflow: hidden;
     h1 {
         margin: 20px auto;
     }
