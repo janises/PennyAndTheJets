@@ -14,7 +14,7 @@ export default class Landing extends Component {
             const cloudScroll = $(this).scrollTop();
             
                     $('.cloud1').css({
-                        'transform': 'translate(' + cloudScroll/5 + '%, 0px'
+                        'transform': `translate(${cloudScroll/5}%, 0px` 
                     });
                     $('.cloud2').css({
                         'transform': `translate(-${cloudScroll/5}%, 0px` 
@@ -23,8 +23,9 @@ export default class Landing extends Component {
                         'transform': `translate(-${cloudScroll/10}%, 0px`
                     });
                     $('.haze').css({
-                        'transform': `translate(0px, -${cloudScroll/20}%`
-                    })
+                        'transform': `translate(0px, -${cloudScroll/50}%`
+                    });
+                  
         })
       
 
@@ -34,16 +35,19 @@ export default class Landing extends Component {
 
         return (
             <div className="landing-container">
-                <div className="bird" style={{"height":"65px", "width":"50px"}}></div>
-                <div className="cloud" style={{"height":"30px", "width":"65px"}}></div>
-                <div className="plane" style={{"height":"35px", "width":"70px"}}></div>
-                <div className="parachute" style={{"height":"35px", "width":"28px"}}></div>
+                {/* <div className="player" style={{"height": "40px", "width":"40px"}}></div> */}
+                {/* <div className="bird" style={{"height":"65px", "width":"50px"}}></div>
+                <div className="cloud" style={{"height":"55px", "width":"65px"}}></div>
+                <div className="plane" style={{"height":"55px", "width":"70px"}}></div>
+                <div className="parachute" style={{"height":"55px", "width":"55px"}}></div> */}
                 <img className="haze" ref='haze' src={haze} alt=""/>
-                {/* <img className="cloud1" ref="cloud1" src={cloud1} alt=''/> */}
-                {/* <img className="cloud2" ref="cloud2" src={cloud2} alt=''/> */}
+                <img className="cloud1" ref="cloud1" src={cloud1} alt=''/>
+                <img className="cloud2" ref="cloud2" src={cloud2} alt=''/>
                 <img className="cloud3" ref="cloud3" src={cloud3} alt=''/>
+                <div className="landing-page-peng"></div>
+
                 <div className='login-container'>
-                    {/* <div className="game-preview"></div> */}
+                 
                    
                     <a className='login' href = 'http://localhost:8000/auth'><button className='login-button btn'>LOGIN</button></a>
                     <Link to='/instructions'> 

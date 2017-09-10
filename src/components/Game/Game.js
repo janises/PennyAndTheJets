@@ -120,16 +120,13 @@ class Game extends Component {
                     <div className='player' ref='player' tabIndex='0' onKeyDown={(e)=> movePlayer(e)} style={player}></div>
                     { !this.props.isModalOpen ? (
                         obstacles.map((obstacle) =>{
-                            if(obstacle.top <= playerSize.height && (obstacle.left+ obstacle.style.width > player.left && obstacle.left < player.left + playerSize.width)) {
+                            if(obstacle.top + 25 <= playerSize.height && (obstacle.left+ obstacle.style.width + 12 > player.left && obstacle.left + 17 < player.left + playerSize.width)) {
+                                {/* console.log(obstacle) */}
                                 obstacle.score = true;
                                
                             } else {
                                 return <Obstacle left={obstacle.left} top={obstacle.top} type={obstacle.type} obstacleStyle={obstacle.style}/>
                             }
-
-                            
-                           
-                           
                     })) : null
                     }
 

@@ -50,6 +50,7 @@
 
 .bird {
     background: url('./../img/robins3.png') no-repeat 0px -2px;
+    // background-size: 100%;
     width: 52px;
     height: 70px;
     animation: fly .8s steps(19) infinite;
@@ -78,19 +79,19 @@
 
 
 .cloud {
-    background: url('./../img/gamecloud.png') no-repeat 0px 2px;
-    background-size: 100%;
+    background: url('./../img/gamecloud.png') no-repeat 2px 25px;
+    background-size: 92%;
     width: 80px;
     height: 40px;
 }
 
 .plane {
-    background: url('./../img/Biplane.png') no-repeat 0px -4px;
+    background: url('./../img/Biplane.png') no-repeat 0px 12px;
     background-size: 105%;
     width: 541px;
     height: 250px;
 }
 
 .parachute{
-    background: url('./../img/parachute.png') no-repeat -2px 2px;
+    background: url('./../img/parachute.png') no-repeat 12px 17px;
 }

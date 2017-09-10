@@ -19,16 +19,16 @@ const initialState = {
         width: 50
     },
     cloud: {
-        height: 30,
+        height: 55,
         width: 65
     },
     plane: {
-        height: 35,
+        height: 55,
         width: 70
     },
     parachute: {
-        height: 35,
-        width: 28
+        height: 55,
+        width: 55
     },
     score: 0,
     dx: 5,
@@ -241,15 +241,12 @@ function reducer(state = initialState, action) {
                             obstacle.left += 1;
                         }
                         obstacle.top -= obstacleSpeed;
+                        
 
-                    }
-                    
-                    else if (obstacle.top < obstacleSpeed || (obstacle.top === (playerSize.height + player.top) && obstacle.left < player.left + playerSize.width && obstacle.left > player.left) ) {
+                    } else if (obstacle.top < obstacleSpeed || (obstacle.top === (playerSize.height + player.top) && obstacle.left < player.left + playerSize.width && obstacle.left > player.left) ) {
                         obstacle.remove = true
                     }
-                    if(obstacle.remove) {
-                        obstacle.remove = true;
-                    }
+                    
                 }
                 return obstacle;
             })
