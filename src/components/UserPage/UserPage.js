@@ -7,14 +7,14 @@ import {updateUsername, deleteUser, saveScore, getUserScores, getUsernameAndId, 
 class UserPage extends Component {
     constructor(props){
         super(props);
-        
     }
 
-    componentWillMount(){
+    componentWillMount(){   
         this.props.getUsernameAndId();
         this.props.getUserScores();
     }
 
+    
     validateUsername(){
         if(this.props.newUsername.length > 0 && this.props.newUsername.length <= 20) {
             this.props.updateUsername(this.props.newUsername)
@@ -38,7 +38,12 @@ class UserPage extends Component {
         
         return(
             <div className='user-page-container'>
-
+                <div className='sky'></div>
+                <div className="userpage-clouds"></div>
+                <div className="trees"></div>
+                <div className="userpage-penguin"></div>
+                <div clasName="grass"></div>
+                <div className="ground"></div>
                 { this.props.userId ? (
                     <div className='user-page'>
                         <div className="user-scores">
@@ -58,7 +63,7 @@ class UserPage extends Component {
                                 <input className="username-edit-input" placeholder={this.props.username} onChange={(e)=> this.props.handleInput(e.target.value)}/> 
                                 <input type='submit' value='Save'/>
                             </form>
-                            {/* <button onClick={(e)=>this.props.updateUsername(this.props.newUsername)}>Save</button> */}
+                    
                         </div> /*end of .edit-username */
                         
                     ) : (
@@ -75,8 +80,8 @@ class UserPage extends Component {
                     
                 ) : ( //if there is no user logged in
                     <div className="not-logged-in-user-page">
-                        <h1>You must be logged in to see your user page</h1>
-                        <a className='login' href = 'http://localhost:8000/auth'><button className='login-button btn'>LOGIN</button></a>
+                        <h1 className="userpage-login-h1">You must be logged in to see your user page</h1>
+                        <a className='login' href = 'http://localhost:8000/auth'><button id="login-button2" className='btn'>LOGIN</button></a>
                     </div> /* end of .not-logged-in-user-page*/
                     )
                 }

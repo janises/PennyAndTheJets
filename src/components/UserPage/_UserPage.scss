@@ -1,7 +1,11 @@
 .user-page-container {
     @include flex;
     @include fixed-header;
-   
+    background: $sky-blue;
+}
+
+.sky {
+
 }
 
 .user-page {
@@ -26,10 +30,88 @@
 
 .user-picture {
     border-radius: 50%;
-    height: 100px;
+    height: 75px;
 }
+
+
+.userpage-penguin {
+    background: url("./../img/penguin-one-line.png") no-repeat -812px 0px;
+    height: 150px;
+    width: 42px;
+    position: absolute;
+    bottom: 0;
+    animation: walk .8s steps(3) infinite;
+}
+
+@keyframes walk {
+    100% {
+      background-position-x: -936px;
+    }
+  }
+
+.userpage-clouds {
+    background: url("./../img/half-sky-clouds.png")   center ;
+    background-size: 85%;
+    width: 100%;
+    height: 90%;
+    position: absolute;
+    z-index: -1;
+    animation: move-x 600s infinite linear;
+}
+
+@keyframes move-x {
+    100% {
+        background-position-x: -100vw; 
+    }
+}
+
+.trees {
+    background: url('./../img/trees.png') repeat-x center;
+    background-size: 100vw;
+    // background-position: bottom;
+    width: 100%;
+    height: 90%;
+    position: absolute;
+    bottom: 0;
+    animation: move-x 250s infinite linear;
+}
+
+.grass {
+    background: url("./../img/grass.png") repeat-x center;
+    background-size: 100vw;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 70px;
+    animation: move-x 150s infinite linear;
+}
+.ground {
+    background: url('./../img/ground.png') repeat-x center;
+    background-size: 100vw;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    animation: move-x 150s infinite linear;
+}
+
 
 .not-logged-in-user-page {
     @include flex;
-    @include fixed-header;
+    .userpage-login-h1 {
+        margin: 50px auto;
+    }
+    #login-button2 {
+        background-color: $darker-blue;
+        border-radius: 5px;
+        width: 300px;
+        height: 50px;
+        font-size: large;
+        font-weight: bold;
+        color: white;
+        letter-spacing: 0.2em;
+        position: relative;
+        margin: 10px auto;
+    }
 }
+

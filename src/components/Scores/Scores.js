@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import {getHighScores} from './../../ducks/reducer';
+import cloudsbg from './../../img/clouds-bg.png';
 
 class Scores extends Component {
   
@@ -24,7 +26,7 @@ class Scores extends Component {
         // console.log(displayPlayers, displayScores)
         return(
             <div className="scores-container">
-            
+                <img className="score-clouds" src={cloudsbg} alt=""/>
                 <div className="parachute-penguin"></div>
 
                 {this.props.highScores.length > 0 ? 
@@ -48,6 +50,8 @@ class Scores extends Component {
                     </div>) : 
                 (<div> <h1 className="retrieve-scores">RETRIEVING HIGH SCORES...</h1></div> )
                 }
+                <Link to="/game"> <h1>Play Again</h1>
+                </Link>
                
             </div> //end of .scores-container
         )

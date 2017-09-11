@@ -2,7 +2,6 @@
    @include flex;
    @include fixed-header;
    background: $sky-blue;
-   height: 100vh;
    overflow: hidden;
     h1 {
         margin: 20px auto;
@@ -34,3 +33,11 @@
       }
 
 }
+
+.instructions-peng {
+  background-size: 100%;
+  position: fixed;
+  bottom: 50px;
+}
+
+

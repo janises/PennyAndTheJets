@@ -3,7 +3,7 @@
     @include flex;
     background: url('./../img/hazy-cloud-bg.png') no-repeat center;
     overflow: hidden;
-    height: calc(100% - 80px);
+    // height: calc(100% - 80px);
   
     .high-scores {
         text-align: center;
@@ -28,6 +28,22 @@
         text-align: left;
     }
 
+}
+
+.score-clouds {
+    background:cover;
+    position: absolute;
+    animation: scroll-up 5s linear infinite;
+    z-index: -1;
+}
+
+@keyframes scroll-up {
+    // from {
+    //     background-position-y: 0px;
+    // }
+    100% {
+        background-position-y: -100px;
+    }
 }
 
 .parachute-penguin {

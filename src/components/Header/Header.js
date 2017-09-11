@@ -15,25 +15,25 @@ class Header extends Component {
             <div className='header-container'>
                 <ul className='nav'>
                     <Link to="/">
-                        <li>Home</li>
+                        <li>HOME</li>
                     </Link>
                     <Link to='/game'>
-                        <li>Game</li>
+                        <li>GAME</li>
                     </Link>
                     <Link to="/highscores">
-                        <li>High Scores</li>
+                        <li>HIGH SCORES</li>
                     </Link>
                     {this.props.userId && this.props.username? (
                         <Link to={`/user/${this.props.userId}`}>
-                        <li>{this.props.username}</li>
+                        <li>{this.props.username.toUpperCase()}</li>
                     </Link>
                     ): null}
                     
                     {this.props.userId && this.props.username? 
-                    <li><a href = 'http://localhost:8000/auth/logout'>Logout</a></li>
+                    <li><a href = 'http://localhost:8000/auth/logout'>LOGOUT</a></li>
                     : 
                     
-                    <li><a href='http://localhost:8000/auth'>Login</a></li>}
+                    <li><a href='http://localhost:8000/auth'>LOGIN</a></li>}
                     
 
                     {/* <button onClick={()=> this.props.logout()}>Logout</button> */}

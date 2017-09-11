@@ -221,9 +221,9 @@ function reducer(state = initialState, action) {
             if(action.payload === 'cloud') {
                 newObstacle = {type: action.payload, key: obstacleIndex, remove: false, top: container.height-cloud.height, left: Math.floor(Math.random()* (container.width - cloud.width*2 + 1)+ cloud.width), style:{height: cloud.height, width: cloud.width, position:'absolute'}};
             } else if (action.payload === 'plane') {
-                newObstacle = {type: action.payload, key: obstacleIndex, remove: false, top: container.height-plane.height, left: Math.floor(Math.random()* (container.width - plane.width*2 + 1)+ plane.width), style:{height: plane.height, width: plane.width, position:'absolute'}};
+                newObstacle = {type: action.payload, key: obstacleIndex, remove: false, top: container.height-plane.height, left: Math.floor(Math.random()* ((container.width-plane.width*2) - plane.width*2 + 1) + plane.width), style:{height: plane.height, width: plane.width, position:'absolute'}};
             } else if (action.payload === 'bird') {
-                newObstacle = {type: action.payload, key: obstacleIndex, remove: false, top: container.height-bird.height, left: Math.floor(Math.random()* (container.width - bird.width*2 + 1)+ bird.width), style:{height: bird.height, width: bird.width, position:'absolute'}};
+                newObstacle = {type: action.payload, key: obstacleIndex, remove: false, top: container.height-bird.height, left: Math.floor(Math.random()* ((container.width-bird.width) - bird.width*2 + 1)+ bird.width*2), style:{height: bird.height, width: bird.width, position:'absolute'}};
             } else if(action.payload === 'parachute') {
                 newObstacle = {type: action.payload, key: obstacleIndex, remove: false, top: container.height-parachute.height, left: Math.floor(Math.random()* (container.width - parachute.width*2 + 1)+ parachute.width), style:{height: parachute.height, width: parachute.width, position:'absolute'}};
             }
