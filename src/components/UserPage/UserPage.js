@@ -42,10 +42,12 @@ class UserPage extends Component {
                     <div className="userpage-clouds"></div>
                     <div className="trees"></div>
                     <div className="userpage-penguin"></div>
-                    <div clasName="grass"></div>
+                    <div className="grass"></div>
                     
                 </div>
                 <div className="ground"></div>
+
+
                 { this.props.userId ? (
                     <div className='user-page'>
                         <div className="user-scores">

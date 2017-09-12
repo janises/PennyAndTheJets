@@ -1,57 +1,64 @@
-.user-page-container {
-    @include flex;
-    // @include fixed-header;
-    height: calc(100%-100px);
-    background: $sky-blue;
-    background-repeat: no-repeat;
-    position: relative;
-    top: 80px;
-    
-}
+
 
 .parallax-container {
     @include flex;
     // height: calc(100vh - 180px);
-    height: calc(100vh - 180px);
+    // height: calc(100vh - 80px);
+    @include fixed-header;
+    height: 100%;
     width: 100%;
     position: relative;
     top: 0;
+    grid-row: 1;
 }
 
-.user-page {
+.user-page-container {
     @include flex;
-    height: 50%;
-    width: 50%;
-    .score {
-        text-align: center;
-        margin: 5px auto;
-        list-style: none;
-    }
+    @include fixed-header;
+    background: $sky-blue;
+    text-align: center;
+    width:100vw;
+    display: grid;
+    grid-template-rows: 1fr 77px;
+    grid-template-columns: 1fr;
+}
+
+// .user-page {
+//     @include flex;
+//     height: 50%;
+//     width: 50%;
+//     .score {
+//         text-align: center;
+//         margin: 5px auto;
+//         list-style: none;
+//     }
    
-    .edit-username {
-        margin-top: 50px;
-    }
+//     .edit-username {
+//         margin-top: 50px;
+//     }
 
-    .display-username {
-        margin-top: 50px;
-    }
+//     .display-username {
+//         margin-top: 50px;
+//     }
     
-}
+// }
 
-.user-picture {
-    border-radius: 50%;
-    height: 75px;
-}
+// .user-picture {
+//     border-radius: 50%;
+//     height: 75px;
+// }
 
 
 .userpage-penguin {
     background: url("./../img/penguin-one-line.png") no-repeat -812px 0px;
-    height: 50px;
+    height: 42px;
     width: 42px;
     position: absolute;
+
     bottom: 0;
-    z-index: 3;
     animation: walk .8s steps(3) infinite;
+    grid-row: 1;
+    grid-column: 1;
 }
 
 @keyframes walk {
@@ -61,16 +68,15 @@
   }
 
 .userpage-clouds {
-    background: url("./../img/half-sky-clouds.png")  repeat-x top ;
-    // background: red;
+    background: url("./../img/half-sky-clouds.png") repeat-x  top ;
     background-size: 100vw;
     width: 100%;
     height: 100%;
-    position: absolute;
-    top: 0;
+    // position: absolute;
     z-index: -1;
     animation: move-x 600s infinite linear;
 }
+
 
 @keyframes move-x {
     100% {
@@ -80,41 +86,52 @@
 
 .trees {
     background: url('./../img/trees.png') repeat-x bottom;
-    // background: green;
     background-size: 100vw;
     // background-position: bottom;
     width: 100%;
     height: 100%;
-    position: relative;
+    position: absolute;
     bottom: 0;
     animation: move-x 250s infinite linear;
+    grid-row: 1;
+    grid-column: 1;
 }
 
 .grass {
-    background: url("./../img/grass.png") repeat-x center;
+    background: url("./../img/grass.png") repeat-x bottom;
     background-size: 100vw;
     width: 100%;
     height: 100%;
-    position: relative;
-    bottom: 0px;
-    animation: move-x 150s infinite linear;
-}
-.ground {
-    background: url('./../img/ground2.png') repeat-x bottom;
-    // background: yellow;
-    background-size: 100vw;
-    width: 100%;
-    height: 100px;
-    // height: calc(100% / 11.2);
     position: absolute;
     bottom: 0;
+    z-index: 2;
+    animation: move-x 150s infinite linear;
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.ground {
+    background: url('./../img/ground2.png') repeat-x top;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    // position: absolute;
+    // bottom: 0;
+    grid-row: 2;
     animation: move-x 150s infinite linear;
 }
+
+
+
 
 
 .not-logged-in-user-page {
+    grid-row: 1;
+    grid-column: 1;
+    position: fixed;
+    width: 100%;
+
     @include flex;
-    position: absolute;
     .userpage-login-h1 {
         margin: 50px auto;
     }
@@ -131,4 +148,3 @@
         margin: 10px auto;
     }
 }
-
