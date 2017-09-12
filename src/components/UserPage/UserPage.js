@@ -38,11 +38,13 @@ class UserPage extends Component {
         
         return(
             <div className='user-page-container'>
-                <div className='sky'></div>
-                <div className="userpage-clouds"></div>
-                <div className="trees"></div>
-                <div className="userpage-penguin"></div>
-                <div clasName="grass"></div>
+                <div className='parallax-container'>
+                    <div className="userpage-clouds"></div>
+                    <div className="trees"></div>
+                    <div className="userpage-penguin"></div>
+                    <div clasName="grass"></div>
+                    
+                </div>
                 <div className="ground"></div>
                 { this.props.userId ? (
                     <div className='user-page'>

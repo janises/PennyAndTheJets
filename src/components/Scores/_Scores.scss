@@ -2,11 +2,16 @@
     @include fixed-header;
     @include flex;
     background: url('./../img/hazy-cloud-bg.png') no-repeat center;
-    overflow: hidden;
+    // overflow: hidden;
     // height: calc(100% - 80px);
   
     .high-scores {
         text-align: center;
+        margin-bottom: 20px;
+        .high-scores-h1 {
+            font-size: 2.5em;
+            padding-bottom: 20px;
+        }
     }
     .player-scores {
         margin-bottom: 100px;
@@ -20,20 +25,28 @@
 
 .players-and-scores {
     @include flex($direction:row);
+    line-height: 2em;
+
     .players {
         text-align: right;
-        margin-right: 20px;
+        margin-right: 2em;
+        font-size: 2em;
     }
     .scores {
         text-align: left;
+        font-size: 2em;
     }
 
 }
 
 .score-clouds {
-    background:cover;
+    background: url('./../img/clouds-bg.png') repeat top;
+    background-size: 100vw;
+    height: 100%;
+    width: 100%;
     position: absolute;
-    animation: scroll-up 5s linear infinite;
+    // top: 0;
+    // animation: scroll-up 5s linear infinite;
     z-index: -1;
 }
 
@@ -42,7 +55,7 @@
     //     background-position-y: 0px;
     // }
     100% {
-        background-position-y: -100px;
+        background-position-y: -100vh;
     }
 }
 
@@ -63,11 +76,11 @@
 @keyframes skydiving {
     0% {
         top: 100px;
-        left: 100px;
+        left: 20%;
     }
 
     100% {
         top: 400px;
-        left: 100px;
+        left: 20%;
     }
 }

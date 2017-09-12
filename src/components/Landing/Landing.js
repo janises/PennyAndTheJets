@@ -14,13 +14,13 @@ export default class Landing extends Component {
             const cloudScroll = $(this).scrollTop();
             
                     $('.cloud1').css({
-                        'transform': `translate(${cloudScroll/5}%, 0px` 
+                        'transform': `translate(${cloudScroll/10}%, 0px` 
                     });
                     $('.cloud2').css({
-                        'transform': `translate(-${cloudScroll/5}%, 0px` 
+                        'transform': `translate(-${cloudScroll/10}%, 0px` 
                     });
                     $('.cloud3').css({
-                        'transform': `translate(-${cloudScroll/10}%, 0px`
+                        'transform': `translate(-${cloudScroll/15}%, 0px`
                     });
                     $('.haze').css({
                         'transform': `translate(0px, -${cloudScroll/50}%`

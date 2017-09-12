@@ -1,11 +1,21 @@
 .user-page-container {
     @include flex;
-    @include fixed-header;
+    // @include fixed-header;
+    height: calc(100%-100px);
     background: $sky-blue;
+    background-repeat: no-repeat;
+    position: relative;
+    top: 80px;
+    
 }
 
-.sky {
-
+.parallax-container {
+    @include flex;
+    // height: calc(100vh - 180px);
+    height: calc(100vh - 180px);
+    width: 100%;
+    position: relative;
+    top: 0;
 }
 
 .user-page {
@@ -36,10 +46,11 @@
 
 .userpage-penguin {
     background: url("./../img/penguin-one-line.png") no-repeat -812px 0px;
-    height: 150px;
+    height: 50px;
     width: 42px;
     position: absolute;
     bottom: 0;
+    z-index: 3;
     animation: walk .8s steps(3) infinite;
 }
 
@@ -50,11 +61,13 @@
   }
 
 .userpage-clouds {
-    background: url("./../img/half-sky-clouds.png")   center ;
-    background-size: 85%;
+    background: url("./../img/half-sky-clouds.png")  repeat-x top ;
+    // background: red;
+    background-size: 100vw;
     width: 100%;
-    height: 90%;
+    height: 100%;
     position: absolute;
+    top: 0;
     z-index: -1;
     animation: move-x 600s infinite linear;
 }
@@ -66,12 +79,13 @@
 }
 
 .trees {
-    background: url('./../img/trees.png') repeat-x center;
+    background: url('./../img/trees.png') repeat-x bottom;
+    // background: green;
     background-size: 100vw;
     // background-position: bottom;
     width: 100%;
-    height: 90%;
-    position: absolute;
+    height: 100%;
+    position: relative;
     bottom: 0;
     animation: move-x 250s infinite linear;
 }
@@ -81,15 +95,17 @@
     background-size: 100vw;
     width: 100%;
     height: 100%;
-    position: absolute;
-    bottom: 70px;
+    position: relative;
+    bottom: 0px;
     animation: move-x 150s infinite linear;
 }
 .ground {
-    background: url('./../img/ground.png') repeat-x center;
+    background: url('./../img/ground2.png') repeat-x bottom;
+    // background: yellow;
     background-size: 100vw;
     width: 100%;
-    height: 100%;
+    height: 100px;
+    // height: calc(100% / 11.2);
     position: absolute;
     bottom: 0;
     animation: move-x 150s infinite linear;
@@ -98,6 +114,7 @@
 
 .not-logged-in-user-page {
     @include flex;
+    position: absolute;
     .userpage-login-h1 {
         margin: 50px auto;
     }

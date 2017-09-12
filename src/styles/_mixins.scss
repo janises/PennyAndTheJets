@@ -7,9 +7,7 @@
 
 //header height = 80px
 @mixin fixed-header($header-height: 80px) {
-    // height: calc(100vh - $header-height);
     height: calc(100vh - 80px);    
-    // height: 100vh;
     width: 100%;
     position: absolute;
     top: $header-height;

@@ -26,12 +26,13 @@ class Scores extends Component {
         // console.log(displayPlayers, displayScores)
         return(
             <div className="scores-container">
-                <img className="score-clouds" src={cloudsbg} alt=""/>
+                {/* <img className="score-clouds" src={cloudsbg} alt=""/> */}
+                <div className="score-clouds"></div>
                 <div className="parachute-penguin"></div>
 
                 {this.props.highScores.length > 0 ? 
                     (<div className='high-scores'>
-                        <h1 className="high-scores">HIGH SCORES</h1>
+                        <h1 className="high-scores-h1">HIGH SCORES</h1>
                         <div className='players-and-scores'>   
                             <div className="players">
                                 <ul>
@@ -50,7 +51,7 @@ class Scores extends Component {
                     </div>) : 
                 (<div> <h1 className="retrieve-scores">RETRIEVING HIGH SCORES...</h1></div> )
                 }
-                <Link to="/game"> <h1>Play Again</h1>
+                <Link to="/game"> <button className="scores-page-replay"><h1>Play Again</h1> </button> 
                 </Link>
                
             </div> //end of .scores-container
