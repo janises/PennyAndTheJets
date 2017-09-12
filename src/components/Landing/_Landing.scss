@@ -85,41 +85,69 @@
     background: $faded-blue;
 }
 
+.landing-plane {
+    background: url('./../img/Biplane.png') no-repeat 0px 10px;
+    background-size: 105%;
+    width: 541px;
+    height: 250px;
+    position: absolute;
+    top: 150vh;
+    // left: 0px;
+    animation: plane-fly 15s linear infinite;
+}
 
-
-// @keyframes scroll {
-//     100% {
-//         background-position: 0 -400px;
-//     }
-// }
+@keyframes plane-fly {
+    0% {
+        left: -10px;
+    }
+    30% {
+        left: 100vw;
+    }
+    100% {
+        left: 100vw;
+    }
+}
 
 // @media only screen and(min-width: 320px) {
 //change keyframes position
 // }
 
-// .landing-bird1 {
-//     background: url('./../img/robins3.png') no-repeat 0px -2px;
-//     // background-size: 150%;
-//     position: absolute;
-//     width: 62px;
-//     height: 70px;
-//     animation: fly .8s steps(19) infinite, flyforward 10s linear;
-// }
+.landing-bird {
+    background: url('./../img/robins3.png') no-repeat 0px -2px;
+    // background-size: 150%;
+    position: absolute;
+    width: 62px;
+    height: 70px;
+    
+}
 
+.bird1 {
+    top: 200vh;
+    animation: fly .9s steps(19) infinite, flyforward 13.25s infinite linear;
+}
+.bird2 {
+    top: 205vh;
+    animation: fly .8s steps(19) infinite, flyforward 13.5s infinite linear;
+}
+.bird3 {
+    top: 210vh;
+    animation: fly 1s steps(19) infinite, flyforward 13.75s infinite linear;
+}
 
-// @keyframes fly {
-//     100% {
-//         background-position-x: -1082px;
-//     }
-// }
+@keyframes fly {
+    100% {
+        background-position-x: -1082px;
+    }
+}
 
-// @keyframes flyforward {
-//     from {
-//         top: 200px;
-//         left: 800px;
-//     }
-//     to {
-//         top: 200px;
-//         left: 50px;
-//     }
-// }
+@keyframes flyforward {
+    0% {
+        left: 100vw;
+    }
+    30% {
+        left: -50px;
+    }
+    100% {
+        left: -50px;
+    }
+}
