@@ -10,7 +10,7 @@ export default class Instructions extends Component {
                 <Link to="/game">
                     <button>PLAY</button>
                 </Link>
-                <div className="instructions-peng player"></div>
+                <div className="instructions-peng"></div>
             </div>
         )
     }

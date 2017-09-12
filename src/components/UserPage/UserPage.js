@@ -51,28 +51,29 @@ class UserPage extends Component {
                 { this.props.userId ? (
                     <div className='user-page'>
                         <div className="user-scores">
-                            <h2>{`${username.toUpperCase()}'S HIGH SCORES`}</h2>
+                            <h2 className="user-scores-h1">{`${username.toUpperCase()}'S HIGH SCORES`}</h2>
                             <ul>
                                 {scores}
                             </ul>
                         </div>  {/* end of .user-scores*/}
                 
                     
-                        <img className="user-picture" src={userPicture} alt={`${username}`}/>
+                        {/* <img className="user-picture" src={userPicture} alt={`${username}`}/> */}
                     
                 {
                     this.props.editing ? (
                         <div className="edit-username">
                             <form name="edit-username-form" onSubmit={()=>this.validateUsername()}>
                                 <input className="username-edit-input" placeholder={this.props.username} onChange={(e)=> this.props.handleInput(e.target.value)}/> 
-                                <input type='submit' value='Save'/>
+                                <input className="save-username" type='submit' value='Save'/>
                             </form>
                     
                         </div> /*end of .edit-username */
                         
                     ) : (
                         <div className="display-username">
-                            <span className="username">{this.props.username}</span> <button onClick={()=> this.props.editUsername()}>Edit </button>
+                            {/* <span className="username">{this.props.username}</span> */}
+                             <button onClick={()=> this.props.editUsername()}>Edit Username</button>
                         </div> /*end of .display-username*/
                         
                     )

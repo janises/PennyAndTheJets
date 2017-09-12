@@ -1,4 +1,13 @@
-
+.user-page-container {
+    @include flex;
+    @include fixed-header;
+    background: $sky-blue;
+    text-align: center;
+    width:100vw;
+    display: grid;
+    grid-template-rows: 1fr 77px;
+    grid-template-columns: 1fr;
+}
 
 .parallax-container {
     @include flex;
@@ -12,46 +21,10 @@
     grid-row: 1;
 }
 
-.user-page-container {
-    @include flex;
-    @include fixed-header;
-    background: $sky-blue;
-    text-align: center;
-    width:100vw;
-    display: grid;
-    grid-template-rows: 1fr 77px;
-    grid-template-columns: 1fr;
-}
-
-// .user-page {
-//     @include flex;
-//     height: 50%;
-//     width: 50%;
-//     .score {
-//         text-align: center;
-//         margin: 5px auto;
-//         list-style: none;
-//     }
-   
-//     .edit-username {
-//         margin-top: 50px;
-//     }
-
-//     .display-username {
-//         margin-top: 50px;
-//     }
-    
-// }
-
-// .user-picture {
-//     border-radius: 50%;
-//     height: 75px;
-// }
-
 
 .userpage-penguin {
     background: url("./../img/penguin-one-line.png") no-repeat -812px 0px;
-    height: 42px;
+    height: 41px;
     width: 42px;
     position: absolute;
 
@@ -74,7 +47,7 @@
     height: 100%;
     // position: absolute;
     z-index: -1;
-    animation: move-x 600s infinite linear;
+    animation: move-x 300s infinite linear;
 }
 
 
@@ -92,7 +65,7 @@
     height: 100%;
     position: absolute;
     bottom: 0;
-    animation: move-x 250s infinite linear;
+    animation: move-x 150s infinite linear;
     grid-row: 1;
     grid-column: 1;
 }
@@ -105,7 +78,7 @@
     position: absolute;
     bottom: 0;
     z-index: 2;
-    animation: move-x 150s infinite linear;
+    animation: move-x 100s infinite linear;
     grid-row: 1;
     grid-column: 1;
 }
@@ -118,11 +91,64 @@
     // position: absolute;
     // bottom: 0;
     grid-row: 2;
-    animation: move-x 150s infinite linear;
+    animation: move-x 100s infinite linear;
 }
 
 
+.user-page {
+    @include flex;
+    grid-row: 1;
+    grid-column: 1;
+    position: fixed;
+    width: 100%;
+    height: 75%;
+    
+    .user-scores-h1 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
 
+    .score {
+        text-align: center;
+        margin: 5px auto;
+        list-style: none;
+        font-size: 1.5em;
+    }
+   
+    .edit-username {
+        margin-top: 40px;
+        .save-username {
+            background-color: #6F4BB5;
+            border: 1px solid #5F3E9F;
+            padding: 8px 8px;
+            border-radius: 3px;
+            color: white;
+            margin-left: 10px;
+        }
+    }
+
+    .display-username {
+        @include flex($direction: row);
+        margin-top: 40px;
+        .username {
+            font-size: 1.75em;
+            margin-right: 10px;
+        }
+        button {
+            background-color: #6F4BB5;
+            border: 1px solid #5F3E9F;
+            padding: 8px 8px;
+            border-radius: 3px;
+            color: white;
+        }
+    }
+    
+}
+
+// .user-picture {
+//     border-radius: 50%;
+//     height: 75px;
+// }
 
 
 .not-logged-in-user-page {
@@ -130,11 +156,13 @@
     grid-column: 1;
     position: fixed;
     width: 100%;
-
+    height: 75%;
     @include flex;
+    
     .userpage-login-h1 {
         margin: 50px auto;
     }
+
     #login-button2 {
         background-color: $darker-blue;
         border-radius: 5px;
@@ -147,4 +175,13 @@
         position: relative;
         margin: 10px auto;
     }
+}
+
+.delete-account {
+    background-color: #C02921;
+    border: 1px solid #8D2525;
+    color: white;
+    margin-top: 30px;
+    padding: 8px 8px;
+    border-radius: 3px;
 }

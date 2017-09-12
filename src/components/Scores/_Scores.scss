@@ -2,15 +2,14 @@
     @include fixed-header;
     @include flex;
     background: url('./../img/hazy-cloud-bg.png') no-repeat center;
-    // overflow: hidden;
-    // height: calc(100% - 80px);
+    overflow: hidden;
   
     .high-scores {
         text-align: center;
         margin-bottom: 20px;
         .high-scores-h1 {
-            font-size: 2.5em;
-            padding-bottom: 20px;
+            font-size: 2em;
+            padding-bottom: 10px;
         }
     }
     .player-scores {
@@ -39,21 +38,29 @@
 
 }
 
+.scores-page-replay {
+    background-color: #EF9822;
+    border: 1px solid #C27409;
+    color: white;
+    padding: 10px 10px;
+    border-radius: 5px;
+}
+
 .score-clouds {
     background: url('./../img/clouds-bg.png') repeat top;
-    background-size: 100vw;
+    background-size: auto 100vh;
     height: 100%;
     width: 100%;
     position: absolute;
     // top: 0;
-    // animation: scroll-up 5s linear infinite;
+    animation: scroll-up 10s linear infinite;
     z-index: -1;
 }
 
 @keyframes scroll-up {
-    // from {
-    //     background-position-y: 0px;
-    // }
+    0% {
+        background-position-y: 0px;
+    }
     100% {
         background-position-y: -100vh;
     }
