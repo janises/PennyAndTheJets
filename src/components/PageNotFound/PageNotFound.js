@@ -8,7 +8,10 @@ export default class PageNotFound extends Component {
 
                 <div className='parallax-container'>
                     <div className="userpage-clouds"></div>
+                    <div className="far-mountains"></div>
+                    <div className="mountains"></div>
                     <div className="trees"></div>
+                    <div className="bushes"></div>
                     <div className="userpage-penguin"></div>
                     <div className="grass"></div>
                     
