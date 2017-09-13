@@ -66,7 +66,7 @@ app.get('/auth', passport.authenticate('auth0'));
 // redirect user to homepage
 app.get('/auth/callback', passport.authenticate('auth0', {
     successRedirect: 'http://localhost:3000/#/instructions',
-    failureRedirect: 'http://localhost:3000/pagenotfound' 
+    failureRedirect: 'http://localhost:3000/#/pagenotfound' 
 }));
 
 passport.serializeUser((user, done)=> {

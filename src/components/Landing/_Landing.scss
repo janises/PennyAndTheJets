@@ -93,7 +93,7 @@
     position: absolute;
     top: 150vh;
     // left: 0px;
-    animation: plane-fly 15s linear infinite;
+    animation: plane-fly 10s linear infinite;
 }
 
 @keyframes plane-fly {
@@ -122,16 +122,16 @@
 }
 
 .bird1 {
-    top: 200vh;
-    animation: fly .9s steps(19) infinite, flyforward 13.25s infinite linear;
+    top: 212vh;
+    animation: fly .9s steps(19) infinite, flyforward 13.02s infinite linear;
 }
 .bird2 {
-    top: 205vh;
-    animation: fly .8s steps(19) infinite, flyforward 13.5s infinite linear;
+    top: 208vh;
+    animation: fly .8s steps(19) infinite, flyforward 13.01s infinite linear;
 }
 .bird3 {
-    top: 210vh;
-    animation: fly 1s steps(19) infinite, flyforward 13.75s infinite linear;
+    top: 215vh;
+    animation: fly 1s steps(19) infinite, flyforward 13.03s infinite linear;
 }
 
 @keyframes fly {
@@ -144,7 +144,7 @@
     0% {
         left: 100vw;
     }
-    30% {
+    40% {
         left: -50px;
     }
     100% {

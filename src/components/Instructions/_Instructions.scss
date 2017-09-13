@@ -2,42 +2,105 @@
    @include flex;
    @include fixed-header;
    background: $sky-blue;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
    overflow: hidden;
-    h1 {
-        margin: 20px auto;
-    }
+  
+
+}
+
+.instructions-bg {
+  background: url('./../img/hazy-cloud-bg.png') repeat center;
+  background-size: auto 100vh;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  animation: scroll-up 5s linear infinite;
+  //scroll-up from _scores.scss
+}
 
 
-    button {
-        display: inline-block;
-        padding: 15px 25px;
-        font-size: 24px;
-        cursor: pointer;
-        text-align: center;
-        text-decoration: none;
-        outline: none;
-        color: #fff;
-        background-color: #C02921;
-        border: 1px solid #8D2525;
-        border-radius: 15px;
-        box-shadow: 0 8px #999;
-        margin-top: 20px;
-      }
-      
-      button:hover {background-color: #B62828}
-      
-      button:active {
-        background-color: #8D2525;
-        box-shadow: 0 5px #666;
-        transform: translateY(4px);
-      }
 
+
+.instructions {
+  @include flex;
+  grid-column: 1;
+  height: 100%;
+
+  h1 {
+    margin: 20px auto;
+}
+
+
+button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #C02921;
+    border: 1px solid #8D2525;
+    border-radius: 15px;
+    box-shadow: 0 8px #999;
+    margin-top: 20px;
+  }
+  
+  button:hover {background-color: #B62828}
+  
+  button:active {
+    background-color: #8D2525;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+}
+
+.game-preview {
+  @include flex($direction:row);
+  height: 100%;
+  grid-column: 2;
+  position: relative;
 }
 
 .instructions-peng {
-  background-size: 100%;
-  position: fixed;
-  bottom: 50px;
+  position: absolute;
+  top: 30%;
+  animation:fall 1s steps(7) infinite, left-right 8s linear infinite;
 }
 
+@keyframes left-right {
+  0% {
+    left: 5%;
+  }
+  50% {
+    left: 65%;
+  }
+  100% {
+    left: 5%;
+  }
+}
 
+.arrows {
+  @include flex($direction:row);
+  margin: 10px auto;
+}
+
+.arrow {
+  background: white;
+  border-radius: 5px;
+  border: 2px solid gray;
+  height: 80px;
+  width: 80px;
+  margin: auto 5px;
+}
+
+.left-arrow {
+
+}
+
+.right-arrow {
+
+}
