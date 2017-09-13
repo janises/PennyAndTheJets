@@ -35,11 +35,7 @@ export default class Landing extends Component {
 
         return (
             <div className="landing-container">
-                {/* <div className="player" style={{"height": "40px", "width":"40px"}}></div> */}
-                {/* <div className="bird" style={{"height":"65px", "width":"50px"}}></div>
-                <div className="cloud" style={{"height":"55px", "width":"65px"}}></div>
-                
-                <div className="parachute" style={{"height":"55px", "width":"55px"}}></div> */}
+            
                 <img className="haze" ref='haze' src={haze} alt=""/>
                 <img className="cloud1" ref="cloud1" src={cloud1} alt=''/>
                 <img className="cloud2" ref="cloud2" src={cloud2} alt=''/>
