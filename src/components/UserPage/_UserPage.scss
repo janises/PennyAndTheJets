@@ -47,13 +47,13 @@
     height: 100%;
     // position: absolute;
     z-index: -1;
-    animation: move-x 300s infinite linear;
+    animation: move-x 120s infinite linear;
 }
 
 
 @keyframes move-x {
     100% {
-        background-position-x: -100vw; 
+        background-position-x: -300vw; 
     }
 }
 
@@ -65,7 +65,7 @@
     height: 100%;
     position: absolute;
     bottom: 0;
-    animation: move-x 150s infinite linear;
+    animation: move-x 90s infinite linear;
     grid-row: 1;
     grid-column: 1;
 }
@@ -78,7 +78,7 @@
     position: absolute;
     bottom: 0;
     z-index: 2;
-    animation: move-x 100s infinite linear;
+    animation: move-x 70s infinite linear;
     grid-row: 1;
     grid-column: 1;
 }
@@ -91,7 +91,7 @@
     // position: absolute;
     // bottom: 0;
     grid-row: 2;
-    animation: move-x 100s infinite linear;
+    animation: move-x 70s infinite linear;
 }
 
 

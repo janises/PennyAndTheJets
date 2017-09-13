@@ -44,6 +44,11 @@
     color: white;
     padding: 10px 10px;
     border-radius: 5px;
+    font-size: 1.25em;
+}
+
+.scores-page-replay:hover {
+    background-color: #C27409;
 }
 
 .score-clouds {
@@ -67,9 +72,9 @@
 }
 
 .parachute-penguin {
-    background: url('./../img/penguin_parachute.png') no-repeat -6px 0px;
+    background: url('./../img/penguin_parachute2.png') no-repeat -6px 0px;
     height: 70px;
-    width: 42px;
+    width: 41px;
     position: absolute;
     animation: parachuting .8s steps(3) infinite, skydiving 20s linear forwards;
 }

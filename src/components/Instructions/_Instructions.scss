@@ -42,17 +42,19 @@ button {
     text-decoration: none;
     outline: none;
     color: #fff;
-    background-color: #C02921;
-    border: 1px solid #8D2525;
+    background-color: rgb(3, 150, 34);
+    border: 1px solid rgb(0, 125, 26);
     border-radius: 15px;
     box-shadow: 0 8px #999;
     margin-top: 20px;
   }
   
-  button:hover {background-color: #B62828}
+  button:hover {
+    background-color: rgb(0, 125, 26);
+  }
   
   button:active {
-    background-color: #8D2525;
+    background-color: rgb(0, 106, 22);
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
@@ -83,24 +85,38 @@ button {
   }
 }
 
-.arrows {
-  @include flex($direction:row);
-  margin: 10px auto;
+.arrowkeys {
+  @include flex($direction: row, $align: flex-end, $justify: space-between);
+  margin-top: 20px;
+  background: url('./../img/arrow-keys.png') no-repeat -4px -30px;
+  background-size: 592px auto;
+  height: 124px;
+  width: 183px;
+
 }
 
+
+
 .arrow {
-  background: white;
+  background: rgba(83, 196, 107, 0.48);
   border-radius: 5px;
-  border: 2px solid gray;
-  height: 80px;
-  width: 80px;
-  margin: auto 5px;
+  border: none;
+  height: 57px;
+  width: 58px;
+  margin: 0;
+  z-index: 2;
 }
 
 .left-arrow {
-
+  animation: click 1.2s linear infinite;
 }
 
 .right-arrow {
+  animation: click 1.35s linear infinite;
+}
 
+@keyframes click {
+  100% {
+    background: none;
+  }
 }

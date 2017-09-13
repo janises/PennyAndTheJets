@@ -1,4 +1,19 @@
 .page-not-found-container {
     @include fixed-header;
     @include flex;
+    background: $sky-blue;
+    text-align: center;
+    width:100vw;
+    display: grid;
+    grid-template-rows: 1fr 77px;
+    grid-template-columns: 1fr;
+ 
+    .page-not-found-h1 {
+        @include flex;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        margin: auto;
+ 
+    }
 }

@@ -13,8 +13,12 @@ export default class Instructions extends Component {
                     <h2>Avoid the planes and birds</h2>
                     <h3>Clouds and parachutes are bonus points</h3>
                     <div className="arrows">
-                        <div className="left-arrow arrow"></div>
-                        <div className="right-arrow arrow"></div>
+                        <div className="arrowkeys">
+                            <div className="left-arrow arrow"></div>
+                            <div className="right-arrow arrow"></div>
+
+                        </div>
+                        
                     </div>
                     <Link to="/game">
                         <button>PLAY</button>
