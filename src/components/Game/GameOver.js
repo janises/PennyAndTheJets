@@ -18,8 +18,8 @@ class GameOver extends Component {
             <div className="game-over-container">
                 <div className="game-over-modal">
                     <h1 className="game-over">GAME OVER</h1>
-                    <button onClick={()=> this.replay()}>Play Again</button>
-                    <Link to ='/highscores'> <button>High Scores</button></Link>
+                    <button className="game-over-replay" onClick={()=> this.replay()}>PLAY AGAIN</button>
+                    <Link to ='/highscores'> <button className="game-over-high-scores">HIGH SCORES</button></Link>
                 </div>
             </div>
         )

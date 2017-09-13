@@ -276,6 +276,8 @@ function reducer(state = initialState, action) {
         case EDIT_USERNAME:
             return Object.assign({}, state, {editing: action.payload})
             break;
+        case GET_USERNAME+'_PENDING':
+            return Object.assign({}, state, {username: 'User'})
         case GET_USERNAME + "_FULFILLED":
         console.log('reducer username 222', action.payload.data)
             return Object.assign({}, state, {username: action.payload.data.username, userId: action.payload.data.id, userPicture: action.payload.data.image})

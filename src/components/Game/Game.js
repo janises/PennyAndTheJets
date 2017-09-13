@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {movePlayer, makeNewObstacle, moveObstacles, saveScore, incrementScore, resetGame, openModal, closeModal} from './../../ducks/reducer';
 import Obstacle from './Obstacle';
 import GameOver from './GameOver';
+// import $ from 'jquery';
 
 class Game extends Component {
     constructor() {
@@ -16,6 +17,10 @@ class Game extends Component {
         }
         this.startObstacles = this.startObstacles.bind(this);
     }
+
+    // componentWillMount(){
+        
+    // }
 
     componentDidMount() {
         this.refs.player.focus(); //focus on player when page loads

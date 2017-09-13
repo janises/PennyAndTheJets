@@ -40,7 +40,10 @@ class UserPage extends Component {
             <div className='user-page-container'>
                 <div className='parallax-container'>
                     <div className="userpage-clouds"></div>
+                    <div className="far-mountains"></div>
+                    <div className="mountains"></div>
                     <div className="trees"></div>
+                    <div className="bushes"></div>
                     <div className="userpage-penguin"></div>
                     <div className="grass"></div>
                     
@@ -65,7 +68,7 @@ class UserPage extends Component {
                         <div className="edit-username">
                             <form name="edit-username-form" onSubmit={()=>this.validateUsername()}>
                                 <input className="username-edit-input" placeholder={this.props.username} onChange={(e)=> this.props.handleInput(e.target.value)}/> 
-                                <input className="save-username" type='submit' value='Save'/>
+                                <input className="save-username" type='submit' value='SAVE'/>
                             </form>
                     
                         </div> /*end of .edit-username */
@@ -73,14 +76,14 @@ class UserPage extends Component {
                     ) : (
                         <div className="display-username">
                             {/* <span className="username">{this.props.username}</span> */}
-                             <button onClick={()=> this.props.editUsername()}>Edit Username</button>
+                             <button onClick={()=> this.props.editUsername()}>EDIT USERNAME</button>
                         </div> /*end of .display-username*/
                         
                     )
                 }
 
                         <br/>
-                        <button className="delete-account" onClick={()=> this.props.deleteUser(this.props.match.params.id)}>Delete Account</button>
+                        <button className="delete-account" onClick={()=> this.props.deleteUser(this.props.match.params.id)}>DELETE ACCOUNT</button>
                     </div> /* end of .user-page*/
                     
                 ) : ( //if there is no user logged in

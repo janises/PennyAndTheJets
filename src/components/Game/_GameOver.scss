@@ -13,7 +13,34 @@
     border-radius: 5px;
     @include flex;
     .game-over {
-        padding-bottom: 20px;
+        // padding-bottom: 10px;
         color: white;
     }
+
+    button {
+        
+        color: white;
+        padding: 10px 10px;
+        border-radius: 5px;
+        margin: 5px auto;
+    }
+}
+
+.game-over-replay {
+    background: #EF9822;
+    border: 1px solid #C27409;
+}
+
+.game-over-replay:hover {
+    background-color: #C27409;
+}
+
+.game-over-high-scores {
+    background: #320047;
+    border: 1px solid #170020;
+}
+
+.game-over-high-scores:hover {
+    background: #230030;
+   
 }

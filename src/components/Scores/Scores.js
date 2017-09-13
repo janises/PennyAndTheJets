@@ -51,7 +51,7 @@ class Scores extends Component {
                     </div>) : 
                 (<div> <h1 className="retrieve-scores">RETRIEVING HIGH SCORES...</h1></div> )
                 }
-                <Link to="/game"> <button className="scores-page-replay">Play Again</button> 
+                <Link to="/game"> <button className="scores-page-replay">PLAY AGAIN</button> 
                 </Link>
                
             </div> //end of .scores-container

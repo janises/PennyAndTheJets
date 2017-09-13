@@ -57,8 +57,47 @@
     }
 }
 
+.far-mountains {
+    background: url('./../img/far-mountains.png') repeat-x bottom;
+    background-size: 100vw;
+    // background-position: bottom;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    animation: move-x 90s infinite linear;
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.mountains {
+    background: url('./../img/mountains.png') repeat-x bottom;
+    background-size: 100vw;
+    // background-position: bottom;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    animation: move-x 90s infinite linear;
+    grid-row: 1;
+    grid-column: 1;
+}
+
 .trees {
     background: url('./../img/trees.png') repeat-x bottom;
+    background-size: 100vw;
+    // background-position: bottom;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    animation: move-x 90s infinite linear;
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.bushes {
+    background: url('./../img/bushes.png') repeat-x bottom;
     background-size: 100vw;
     // background-position: bottom;
     width: 100%;
@@ -118,14 +157,19 @@
     .edit-username {
         margin-top: 40px;
         .save-username {
-            background-color: #6F4BB5;
-            border: 1px solid #5F3E9F;
+            background-color: #E9E809;
+            border: 1px solid #CCCC07;
             padding: 8px 8px;
             border-radius: 3px;
-            color: white;
+            color: black;
             margin-left: 10px;
         }
+        .save-username:hover {
+            background-color: rgb(204, 202, 60);
+        }
     }
+
+
 
     .display-username {
         @include flex($direction: row);
@@ -135,11 +179,14 @@
             margin-right: 10px;
         }
         button {
-            background-color: #6F4BB5;
-            border: 1px solid #5F3E9F;
+            background-color: rgb(227, 226, 68);
+            border: 1px solid #CCCC07;
             padding: 8px 8px;
             border-radius: 3px;
-            color: white;
+            color: black;
+        }
+        button:hover {
+            background-color: rgb(204, 202, 60);
         }
     }
     
@@ -184,4 +231,8 @@
     margin-top: 30px;
     padding: 8px 8px;
     border-radius: 3px;
+}
+
+.delete-account:hover {
+    background-color: #8D2525;
 }
