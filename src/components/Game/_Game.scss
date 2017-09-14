@@ -1,23 +1,38 @@
 .game-page {
-    @include flex($justify: space-between, $align: space-around);
+    // @include flex($justify: center);
     @include fixed-header;
     // background: $sky-blue;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+    justify-items: center;
+    align-items: center;
+
     .score {
         // margin-bottom: 10px;
-        margin-top: 20px;
-        margin-left: 50px;
+        // width: 100%;
+        grid-column: 1;
+        grid-row: 1;
+        font-size: 1.5em;
+        // @include absolute($top: 20px, $left: 50px);
     }
 }
+
+
 .game-container{
     background-image: url('./../img/hazy-cloud-bg.png');
     background-repeat: repeat-y;
     background-size: auto 100vh;
     position: relative;
-    margin: auto;
-    margin-top: 25px;
     width: 600px;
+    // width: 100%;
     height: 400px;
+    // width: 100%;
     border-radius: 5px;
+    grid-column: 2;
+    grid-row: 2;
+    // justify-self: center;
     animation: 4s scroll-y infinite linear;
 }
 
@@ -95,4 +110,68 @@
 
 .parachute{
     background: url('./../img/parachute.png') no-repeat 12px 17px;
+}
+
+
+
+.example-containers {
+    grid-column: 1;
+    grid-row: 2;
+    background-color: red;
+    // height: 400px;
+    height: 100%;
+    width: 100%;
+    // @include absolute;
+    @include flex($justify: space-around);
+    // @include fixed-header;
+    // width: 150px;
+    h4 {
+        text-align: center;
+    }
+
+} 
+
+.examples {
+    @include flex;
+    // height: 100px;
+    margin: 10px 5px;
+    padding: 8px 8px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+
+.example-plane {
+    height: 60px;
+    width: 80px;
+    background-position: center;
+}
+
+.example-bird {
+    animation: none;
+    height: 60px;
+    background-position: -2px -14px;
+}
+
+
+.example-parachute {
+    background-position: center;
+    height: 50px;
+    width: 50px;
+}
+
+
+.example-cloud {
+    background-position: center;
+    height: 60px;
+    width: 80px;
+}
+
+
+.game-scores {
+    grid-column: 3;
+    grid-row: 2;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 255, 0.28);
 }

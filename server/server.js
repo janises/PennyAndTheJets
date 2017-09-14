@@ -119,7 +119,7 @@ app.get('/highscores', (req, res)=> {
 // post score
 app.post('/addscore', (req, res)=> {
     // console.log('line121 add score', req.body.score)
-    console.log('server line122 user', req.user.id)
+    // console.log('server line122 user', req.user.id)
     if(req.user.id) {
         app.get('db').add_score([req.user.id, req.body.score])
         .then( scores=> {
@@ -150,7 +150,7 @@ app.get('/username', (req, res)=> {
     if(req.user) {
         app.get('db').get_username([req.user.id])
         .then(username => {
-            console.log('username, line 141', req.user)
+            // console.log('username, line 141', req.user)
             res.status(200).send(username[0])
         })
     } else {

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {movePlayer, makeNewObstacle, moveObstacles, saveScore, incrementScore, resetGame, openModal, closeModal} from './../../ducks/reducer';
+import {movePlayer, makeNewObstacle, moveObstacles, saveScore, incrementScore, resetGame, openModal, closeModal, getHighScores} from './../../ducks/reducer';
 import Obstacle from './Obstacle';
 import GameOver from './GameOver';
 // import $ from 'jquery';
@@ -18,9 +18,9 @@ class Game extends Component {
         this.startObstacles = this.startObstacles.bind(this);
     }
 
-    // componentWillMount(){
-        
-    // }
+    componentWillMount(){
+        this.props.getHighScores();
+    }
 
     componentDidMount() {
         this.refs.player.focus(); //focus on player when page loads
@@ -116,28 +116,73 @@ class Game extends Component {
 
     render(){
         let {player, obstacles, movePlayer, playerSize} = this.props;
+        let displayPlayers = [],
+        displayScores = [];
+        // console.log(this.props.highScores)
+        this.props.highScores ? (
+            displayPlayers = this.props.highScores.map((scores, index)=> {
+            return <li key={index}> {scores.player}</li>       
+        }),
+
+        displayScores = this.props.highScores.map((scores, index)=> {
+            return <li key={index}>{scores.score}</li>
+        })
+    ) : null;
     
         
         return(
             <div className='game-page'>
                 <h1 className="score">Score: {this.props.score}</h1>
-                <div className="game-container" style={this.props.container}>
-                    <div className='player' ref='player' tabIndex='0' onKeyDown={(e)=> movePlayer(e)} style={player}></div>
-                    { !this.props.isModalOpen ? (
-                        obstacles.map((obstacle) =>{
-                            if(obstacle.top + 25 <= playerSize.height && (obstacle.left+ obstacle.style.width + 12 > player.left && obstacle.left + 17 < player.left + playerSize.width)) {
-                                {/* console.log(obstacle) */}
-                                obstacle.score = true;
-                               
-                            } else {
-                                return <Obstacle left={obstacle.left} top={obstacle.top} type={obstacle.type} obstacleStyle={obstacle.style}/>
-                            }
-                    })) : null
-                    }
+                <div className="example-containers">
+                    <div className="example-obstacles">
+                        <div className="example-cloud-div examples"> 
+                            <h4>+100</h4> 
+                            <div className="cloud example-cloud"></div> 
+                        </div> 
+                            <div className="example-parachute-div examples"> 
+                                <h4>+1000</h4> 
+                                <div className="parachute example-parachute"></div>  
+                            </div>
+                        <div className="example-bird-div examples">
+                            <h4>GAME OVER</h4>
+                            <div className="bird example-bird"></div>
+                        </div>
+                        <div className="example-plane-div examples"> 
+                            <h4>GAME OVER</h4>
+                            <div className="plane example-plane"></div>
+                        </div>
+  
+                    </div>
 
-                    {
-                        this.props.isModalOpen ?  <GameOver playAgain={this.startObstacles}/> : null
-                    }
+                </div>
+                
+
+                    <div className="game-container" style={this.props.container}>
+                        <div className='player' ref='player' tabIndex='0' onKeyDown={(e)=> movePlayer(e)} style={player}></div>
+                        { !this.props.isModalOpen ? (
+                            obstacles.map((obstacle) =>{
+                                if(obstacle.top + 25 <= playerSize.height && (obstacle.left+ obstacle.style.width + 12 > player.left && obstacle.left + 17 < player.left + playerSize.width)) {
+                                    {/* console.log(obstacle) */}
+                                    obstacle.score = true;
+                                
+                                } else {
+                                    return <Obstacle left={obstacle.left} top={obstacle.top} type={obstacle.type} obstacleStyle={obstacle.style}/>
+                                }
+                        })) : null
+                        }
+
+                        {
+                            this.props.isModalOpen ?  <GameOver playAgain={this.startObstacles}/> : null
+                        }
+                    </div>
+
+                <div className="game-scores">
+                    <ul>
+                        {displayPlayers}
+                    </ul>
+                    {/* <ul>
+                        {displayScores}
+                    </ul> */}
                 </div>
             </div>
         )
@@ -145,7 +190,7 @@ class Game extends Component {
 }
 
 function mapStateToProps(state) {
-    let {player, score, container, obstacles, obstacleIndex, isModalOpen, playerSize} = state
+    let {player, score, container, obstacles, obstacleIndex, isModalOpen, playerSize, highScores} = state
     return {
         player,
         score,
@@ -153,7 +198,8 @@ function mapStateToProps(state) {
         obstacles,
         obstacleIndex,
         isModalOpen,
-        playerSize
+        playerSize,
+        highScores
     }
 }
 
@@ -165,7 +211,8 @@ let outputActions = {
     incrementScore,
     resetGame,
     openModal, 
-    closeModal
+    closeModal,
+    getHighScores
 }
 
 export default connect(mapStateToProps, outputActions)(Game);
