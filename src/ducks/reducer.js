@@ -42,6 +42,7 @@ const initialState = {
     newUsername: '',
     userPicture: '',
     userScores: [],
+    bestScore:0,
     editing: false,
     isGameOver: false
 }
@@ -54,6 +55,8 @@ const MOVE_PLAYER = 'MOVE_PLAYER',
       RESET_GAME = 'RESET_GAME',
       GET_HIGH_SCORES = 'GET_HIGH_SCORES',
       GET_USER_SCORES = 'GET_USER_SCORES',
+      ADJUST_BEST_SCORE = 'ADJUST_BEST_SCORE',
+      GET_BEST_SCORE= 'GET_BEST_SCORE',
       CLOSE_MODAL = 'CLOSE_MODAL',
       OPEN_MODAL = 'OPEN_MODAL',
       DELETE_USER = 'DELETE_USER',
@@ -136,6 +139,18 @@ export function closeModal(){
     }
 }
 
+export function getBestScore(){
+    return {
+        type:GET_BEST_SCORE
+    }
+}
+
+export function adjustBestScore(){
+    return{
+        type:ADJUST_BEST_SCORE,
+    }
+}
+
 export function getUserScores(){
     return {
         type: GET_USER_SCORES,
@@ -201,7 +216,7 @@ export function movePlayer(e) {
 
 
 function reducer(state = initialState, action) {
-    let {player, container, score, obstacles, obstacleIndex, bird, plane, parachute, cloud, playerSize, dx} = state;
+    let {player, container, score, obstacles, obstacleIndex, bird, plane, parachute, cloud, playerSize, dx, userScores, bestScore} = state;
     switch(action.type) {
         case MOVE_PLAYER:
             if(action.payload === 39) {
@@ -303,6 +318,14 @@ function reducer(state = initialState, action) {
         case GET_HIGH_SCORES + "_REJECTED":
             console.log("error getting high scores")
             break;
+        case GET_BEST_SCORE:
+            return Object.assign({}, state, {bestScore: userScores[0]});
+            break;
+        case ADJUST_BEST_SCORE:
+            if(score > bestScore) {
+                return Object.assign({}, state, {bestScore: score})
+            };
+            break;          
         case CLOSE_MODAL:
             return Object.assign({}, state, {isModalOpen: action.payload})
             break;

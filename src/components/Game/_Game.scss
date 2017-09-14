@@ -174,4 +174,5 @@
     height: 100%;
     width: 100%;
     background: rgba(0, 0, 255, 0.28);
+    @include flex($justify:flex-start);
 }

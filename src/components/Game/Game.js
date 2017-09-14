@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {movePlayer, makeNewObstacle, moveObstacles, saveScore, incrementScore, resetGame, openModal, closeModal, getHighScores} from './../../ducks/reducer';
+import {movePlayer, makeNewObstacle, moveObstacles, saveScore, incrementScore, resetGame, openModal, closeModal, adjustBestScore} from './../../ducks/reducer';
 import Obstacle from './Obstacle';
 import GameOver from './GameOver';
 // import $ from 'jquery';
@@ -18,9 +18,9 @@ class Game extends Component {
         this.startObstacles = this.startObstacles.bind(this);
     }
 
-    componentWillMount(){
-        this.props.getHighScores();
-    }
+    // componentWillMount(){
+
+    // }
 
     componentDidMount() {
         this.refs.player.focus(); //focus on player when page loads
@@ -109,6 +109,7 @@ class Game extends Component {
         clearInterval(this.state.planes)
         clearInterval(this.state.parachutes)
         this.props.saveScore(this.props.score)
+        this.props.adjustBestScore();
     }
    
 
@@ -116,18 +117,7 @@ class Game extends Component {
 
     render(){
         let {player, obstacles, movePlayer, playerSize} = this.props;
-        let displayPlayers = [],
-        displayScores = [];
-        // console.log(this.props.highScores)
-        this.props.highScores ? (
-            displayPlayers = this.props.highScores.map((scores, index)=> {
-            return <li key={index}> {scores.player}</li>       
-        }),
-
-        displayScores = this.props.highScores.map((scores, index)=> {
-            return <li key={index}>{scores.score}</li>
-        })
-    ) : null;
+   
     
         
         return(
@@ -177,12 +167,9 @@ class Game extends Component {
                     </div>
 
                 <div className="game-scores">
-                    <ul>
-                        {displayPlayers}
-                    </ul>
-                    {/* <ul>
-                        {displayScores}
-                    </ul> */}
+                    <h3>YOUR HIGH SCORE</h3>
+                    <h4>{this.props.bestScore}</h4>
+                    
                 </div>
             </div>
         )
@@ -190,7 +177,7 @@ class Game extends Component {
 }
 
 function mapStateToProps(state) {
-    let {player, score, container, obstacles, obstacleIndex, isModalOpen, playerSize, highScores} = state
+    let {player, score, container, obstacles, obstacleIndex, isModalOpen, playerSize, highScores, bestScore} = state
     return {
         player,
         score,
@@ -199,7 +186,7 @@ function mapStateToProps(state) {
         obstacleIndex,
         isModalOpen,
         playerSize,
-        highScores
+        bestScore
     }
 }
 
@@ -212,7 +199,7 @@ let outputActions = {
     resetGame,
     openModal, 
     closeModal,
-    getHighScores
+    adjustBestScore
 }
 
 export default connect(mapStateToProps, outputActions)(Game);
