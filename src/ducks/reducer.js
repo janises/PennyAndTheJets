@@ -44,7 +44,8 @@ const initialState = {
     userScores: [],
     bestScore:0,
     editing: false,
-    isGameOver: false
+    isGameOver: false,
+    isAdModalOpen: true
 }
 
 const MOVE_PLAYER = 'MOVE_PLAYER',
@@ -57,7 +58,7 @@ const MOVE_PLAYER = 'MOVE_PLAYER',
       GET_USER_SCORES = 'GET_USER_SCORES',
       ADJUST_BEST_SCORE = 'ADJUST_BEST_SCORE',
       GET_BEST_SCORE= 'GET_BEST_SCORE',
-      CLOSE_MODAL = 'CLOSE_MODAL',
+      CLOSE_AD_MODAL = 'CLOSE_AD_MODAL',
       OPEN_MODAL = 'OPEN_MODAL',
       DELETE_USER = 'DELETE_USER',
       UPDATE_USERNAME = 'UPDATE_USERNAME',
@@ -132,9 +133,9 @@ export function openModal(){
     }
 }
 
-export function closeModal(){
+export function closeAdModal(){
     return {
-        type: CLOSE_MODAL,
+        type: CLOSE_AD_MODAL,
         payload: false
     }
 }
@@ -280,7 +281,7 @@ function reducer(state = initialState, action) {
             return Object.assign({}, state, {score: score + action.payload})
             break;  
         case RESET_GAME:
-            return Object.assign({}, state, {score: 0, isModalOpen: false, obstacleIndex: 1, obstacles: []})  
+            return Object.assign({}, state, {score: 0, isModalOpen: false, isAdModalOpen: true, obstacleIndex: 1, obstacles: []})  
         case UPDATE_USERNAME + "_FULFILLED":
             console.log('233 reducer', action.payload.data)
             return Object.assign({}, state, {editing: false, username: action.payload.data})
@@ -319,15 +320,21 @@ function reducer(state = initialState, action) {
             console.log("error getting high scores")
             break;
         case GET_BEST_SCORE:
-            return Object.assign({}, state, {bestScore: userScores[0]});
+            if(userScores.length > 0) {
+                console.log(userScores)
+                return Object.assign({}, state, {bestScore: userScores[0]});
+            } else {
+                console.log(userScores)
+                return Object.assign({}, state, {bestScore: 0})
+            } 
             break;
         case ADJUST_BEST_SCORE:
             if(score > bestScore) {
                 return Object.assign({}, state, {bestScore: score})
             };
             break;          
-        case CLOSE_MODAL:
-            return Object.assign({}, state, {isModalOpen: action.payload})
+        case CLOSE_AD_MODAL:
+            return Object.assign({}, state, {isAdModalOpen: action.payload})
             break;
         case OPEN_MODAL:
             return Object.assign({}, state, {isModalOpen: action.payload})

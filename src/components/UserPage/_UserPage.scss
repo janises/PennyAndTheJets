@@ -11,8 +11,6 @@
 
 .parallax-container {
     @include flex;
-    // height: calc(100vh - 180px);
-    // height: calc(100vh - 80px);
     @include fixed-header;
     height: 100%;
     width: 100%;
@@ -45,22 +43,20 @@
     background-size: 100vw;
     width: 100%;
     height: 100%;
-    // position: absolute;
     z-index: -1;
-    animation: move-x 120s infinite linear;
+    animation: move-x 130s infinite linear;
 }
 
 
 @keyframes move-x {
     100% {
-        background-position-x: -300vw; 
+        background-position-x: -200vw; 
     }
 }
 
 .far-mountains {
     background: url('./../img/far-mountains.png') repeat-x bottom;
     background-size: 100vw;
-    // background-position: bottom;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -73,7 +69,6 @@
 .mountains {
     background: url('./../img/mountains.png') repeat-x bottom;
     background-size: 100vw;
-    // background-position: bottom;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -86,12 +81,11 @@
 .trees {
     background: url('./../img/trees.png') repeat-x bottom;
     background-size: 100vw;
-    // background-position: bottom;
     width: 100%;
     height: 100%;
     position: absolute;
     bottom: 0;
-    animation: move-x 80s infinite linear;
+    animation: move-x 90s infinite linear;
     grid-row: 1;
     grid-column: 1;
 }
@@ -99,12 +93,11 @@
 .bushes {
     background: url('./../img/bushes.png') repeat-x bottom;
     background-size: 100vw;
-    // background-position: bottom;
     width: 100%;
     height: 100%;
     position: absolute;
     bottom: 0;
-    animation: move-x 70s infinite linear;
+    animation: move-x 80s infinite linear;
     grid-row: 1;
     grid-column: 1;
 }
@@ -117,7 +110,7 @@
     position: absolute;
     bottom: 0;
     z-index: 2;
-    animation: move-x 60s infinite linear;
+    animation: move-x 70s infinite linear;
     grid-row: 1;
     grid-column: 1;
 }
@@ -128,7 +121,7 @@
     width: 100%;
     height: 100%;
     grid-row: 2;
-    animation: move-x 60s infinite linear;
+    animation: move-x 70s infinite linear;
 }
 
 
@@ -206,6 +199,8 @@
     
     .userpage-login-h1 {
         margin: 50px auto;
+        color: whitesmoke;
+        text-shadow: 2px 2px black;
     }
 
     #login-button2 {

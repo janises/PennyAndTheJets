@@ -44,6 +44,7 @@
     position: fixed;
     top: 70vh;
     left: calc(50% - 26px);
+    z-index: 1;
     animation: parachuting .8s steps(3) infinite
 }
 
@@ -71,15 +72,6 @@
     padding: 5px auto;
 }
 
-.login-button {
-    // left: 50px;
-    // margin: auto;
-}
-
-.continue {
-    // left: calc(100vw - 100px);
-    // margin: auto;
-}
 
 .btn:hover {
     background: rgb(18, 57, 85);
@@ -149,5 +141,24 @@
     }
     100% {
         left: -50px;
+    }
+}
+
+.about {
+    @include flex($justify: space-between);
+    // height: 300px;
+    width: 400px;
+    position: absolute;
+    background: $light-purple;
+    left: 10%;
+    border-radius: 5px;
+    z-index: 0;
+    h1 {
+        margin: 20px auto;
+    }
+    p {
+        width: 100%;
+        padding: 20px 20px;
+        text-align: justify;
     }
 }

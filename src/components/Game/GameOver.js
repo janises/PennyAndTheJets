@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {closeModal, getHighScores, resetGame} from './../../ducks/reducer';
+import {getHighScores, resetGame} from './../../ducks/reducer';
 import {Link} from 'react-router-dom';
  
 class GameOver extends Component {
@@ -35,7 +35,6 @@ function mapStateToProps(state){
 }
 
 let outputActions = {
-    closeModal,
     getHighScores,
     resetGame
 }

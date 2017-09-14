@@ -1,7 +1,7 @@
 .game-page {
     // @include flex($justify: center);
     @include fixed-header;
-    // background: $sky-blue;
+    background: rgba(67, 70, 130, 0.03);
     width: 100vw;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
@@ -117,7 +117,7 @@
 .example-containers {
     grid-column: 1;
     grid-row: 2;
-    background-color: red;
+    // background-color: red;
     // height: 400px;
     height: 100%;
     width: 100%;
@@ -138,6 +138,7 @@
     padding: 8px 8px;
     border: 1px solid black;
     border-radius: 5px;
+    background: white;
 }
 
 
@@ -173,6 +174,60 @@
     grid-row: 2;
     height: 100%;
     width: 100%;
-    background: rgba(0, 0, 255, 0.28);
-    @include flex($justify:flex-start);
+    // background: rgba(0, 0, 255, 0.28);
+    @include flex;
+    .best-score-h3 {
+        margin: 10px auto;
+    }
+    .best-score {
+        margin: 10px auto;
+        margin-bottom: 20px;
+    }
+    .cheer-penguins {
+        @include flex($direction: row, $justify: space-around);
+        .go-penguin{
+            background: url('./../img/go-penguin.png') no-repeat -9px -8px;
+            width: 39px;
+            height: 65px;
+            margin: 20px 5px;
+            animation: cheer 1s steps(3) infinite;
+        }
+    }
+   
+}
+
+@keyframes cheer{
+    100% {
+        background-position-x: -130px;
+        background-position-y: -9px;
+    }
+}
+
+.pop-up {
+    background-color: lightgray;
+    height: 50%;
+    width: 95%;
+    border: 1px solid black;
+    
+    .pop-up-header {
+        @include flex($justify: space-between, $direction: row);
+        background-color: blue;
+        margin: 1px 1px;
+        height: 20px;
+        width: calc(100% - 2px);
+        p{
+            color: white;
+            padding-left: 2px;
+        }
+        button{
+            @include flex;
+            height: 17px;
+            width: 17px;
+            margin: 1px 1px;
+        }
+    }
+
+    .ad-content {
+        // width: 100%;
+    }
 }

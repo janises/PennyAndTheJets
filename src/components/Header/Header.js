@@ -1,16 +1,13 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {getUsernameAndId, logout, getBestScore} from './../../ducks/reducer';
+import {getUsernameAndId, logout} from './../../ducks/reducer';
 
 class Header extends Component {
     componentWillMount() {
         this.props.getUsernameAndId();
-        
-        if(this.props.userId){
-            this.props.getBestScore();
-        }
     }
+
 
     render(){
    
@@ -57,8 +54,7 @@ function mapStateToProps(state) {
 
 let outputActions = {
     getUsernameAndId,
-    logout,
-    getBestScore
+    logout
 }
 
 export default connect(mapStateToProps, outputActions)(Header);

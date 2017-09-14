@@ -1,7 +1,13 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {getUserScores} from './../../ducks/reducer';
 
-export default class Instructions extends Component {
+class Instructions extends Component {
+    componentDidMount(){
+        this.props.getUserScores();
+    }
+
     render(){
         return(
             <div className='instructions-container'>
@@ -35,3 +41,9 @@ export default class Instructions extends Component {
         )
     }
 }
+
+function mapStateToProps(state){
+    return state;
+}
+
+export default connect(mapStateToProps, {getUserScores})(Instructions);

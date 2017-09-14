@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {movePlayer, makeNewObstacle, moveObstacles, saveScore, incrementScore, resetGame, openModal, closeModal, adjustBestScore} from './../../ducks/reducer';
+import {movePlayer, makeNewObstacle, moveObstacles, saveScore, incrementScore, resetGame, openModal, closeAdModal, adjustBestScore, getBestScore, getUserScores} from './../../ducks/reducer';
 import Obstacle from './Obstacle';
 import GameOver from './GameOver';
 // import $ from 'jquery';
@@ -19,16 +19,19 @@ class Game extends Component {
     }
 
     // componentWillMount(){
-
+    //     this.props.getUserScores();
+        
     // }
 
     componentDidMount() {
+        this.props.getBestScore();
         this.refs.player.focus(); //focus on player when page loads
         this.obstacles = this.startObstacles(); //obstacles start coming from the bottom of the screen when page 
         window.onkeydown = (e)=> this.props.movePlayer(e); //move player on keydown
         requestAnimationFrame(()=> this.updateObstaclePositions()); //start game loop
     }
 
+    
     componentWillUnmount(){
         this.props.resetGame();
         clearInterval(this.state.birds)
@@ -167,8 +170,32 @@ class Game extends Component {
                     </div>
 
                 <div className="game-scores">
-                    <h3>YOUR HIGH SCORE</h3>
-                    <h4>{this.props.bestScore}</h4>
+                    <h3 className="best-score-h3">YOUR HIGH SCORE</h3>
+                    <h4 className="best-score">{this.props.bestScore}</h4>
+                    <div className="cheer-penguins">
+                        <div className="go-penguin"></div>
+                        <div className="go-penguin"></div>
+                        <div className="go-penguin"></div>
+                    </div>
+
+                    {
+                        this.props.isAdModalOpen ? 
+                        (
+                            <div className="pop-up">
+                            <div className="pop-up-header">
+                                <p>DevMountain</p>
+                                <button onClick={()=> this.props.closeAdModal()}>x</button>
+                            </div>
+                            <div className="ad-content">
+                                <p>LEARN TO CODE IN 12 WEEKS!</p>
+                                <div className="ad"></div>
+                            </div>
+                        
+                            </div>
+
+                        ) : null
+                    }
+                    
                     
                 </div>
             </div>
@@ -177,7 +204,7 @@ class Game extends Component {
 }
 
 function mapStateToProps(state) {
-    let {player, score, container, obstacles, obstacleIndex, isModalOpen, playerSize, highScores, bestScore} = state
+    let {player, score, container, obstacles, obstacleIndex, isModalOpen, playerSize, highScores, bestScore, isAdModalOpen} = state
     return {
         player,
         score,
@@ -186,7 +213,8 @@ function mapStateToProps(state) {
         obstacleIndex,
         isModalOpen,
         playerSize,
-        bestScore
+        bestScore,
+        isAdModalOpen
     }
 }
 
@@ -198,8 +226,10 @@ let outputActions = {
     incrementScore,
     resetGame,
     openModal, 
-    closeModal,
-    adjustBestScore
+    closeAdModal,
+    adjustBestScore,
+    getBestScore,
+    getUserScores
 }
 
 export default connect(mapStateToProps, outputActions)(Game);
