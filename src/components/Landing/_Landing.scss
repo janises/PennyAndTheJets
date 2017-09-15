@@ -1,5 +1,6 @@
 .landing-container {
     @include fixed-header;
+    @include flex;
     height: 300vh;
     width: 100%;
     background: $sky-blue;
@@ -15,7 +16,7 @@
     .cloud1 {
         position: absolute;
         top: 50vh;
-        left: 40%;
+        left: 40vw;
         z-index: 2;
         height: 300px;
     }
@@ -23,14 +24,14 @@
     .cloud2 {
         position: absolute;
         top: 50vh;
-        left: 30%;
+        left: 30vw;
         width: 400px;
         z-index: 2;
     }
     .cloud3 {
         position: absolute;
-        top: 800px;
-        left: 600px;
+        top: 180vh;
+        left: 30vw;
         z-index: 2;
     }
     
@@ -50,12 +51,14 @@
 
 
 .login-container {
-    @include flex($align: flex-end, $direction: row);
+    @include flex($justify: space-between, $direction: column);
     height: 100%;
     width: 100%;
 }
 
-
+.button-container {
+    @include flex($direction: row, $align:space-between);
+}
 
 .btn {
     // background: #034077;
@@ -64,7 +67,7 @@
     border: 1px solid rgb(17, 57, 86);
     width: 300px;
     height: 50px;
-    margin: 20px 3em;
+    margin: 20px 6em;
     font-size: large;
     font-weight: bold;
     color: white;
@@ -92,37 +95,32 @@
     0% {
         left: -10px;
     }
-    30% {
+    40% {
         left: 100vw;
+        top: 130vh;
     }
     100% {
         left: 100vw;
     }
 }
 
-// @media only screen and(min-width: 320px) {
-//change keyframes position
-// }
-
 .landing-bird {
     background: url('./../img/robins3.png') no-repeat 0px -2px;
-    // background-size: 150%;
     position: absolute;
     width: 62px;
-    height: 70px;
-    
+    height: 70px;    
 }
 
 .bird1 {
-    top: 212vh;
+    top: 180vh;
     animation: fly .9s steps(19) infinite, flyforward 13.02s infinite linear;
 }
 .bird2 {
-    top: 208vh;
+    top: 186vh;
     animation: fly .8s steps(19) infinite, flyforward 13.01s infinite linear;
 }
 .bird3 {
-    top: 215vh;
+    top: 192vh;
     animation: fly 1s steps(19) infinite, flyforward 13.03s infinite linear;
 }
 
@@ -138,19 +136,25 @@
     }
     40% {
         left: -50px;
+        top: 250vh;
     }
     100% {
         left: -50px;
     }
 }
 
-.about {
+.landing-title {
+    height: 300px;
+    width: 50%;
+    // background-color: white;
+    border: 1px solid black;
+    @include flex;
+}
+
+.about, .about-game{
     @include flex($justify: space-between);
-    // height: 300px;
     width: 400px;
-    position: absolute;
     background: $light-purple;
-    left: 10%;
     border-radius: 5px;
     z-index: 0;
     h1 {

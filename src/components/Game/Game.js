@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import {movePlayer, makeNewObstacle, moveObstacles, saveScore, incrementScore, resetGame, openModal, closeAdModal, adjustBestScore, getBestScore, getUserScores} from './../../ducks/reducer';
 import Obstacle from './Obstacle';
 import GameOver from './GameOver';
-// import $ from 'jquery';
+import $ from 'jquery';
+import {TimelineLite} from 'gsap';
 
 class Game extends Component {
     constructor() {
@@ -13,7 +14,7 @@ class Game extends Component {
             clouds: '',
             planes: '',
             parachutes: ''
-          
+
         }
         this.startObstacles = this.startObstacles.bind(this);
     }
@@ -24,6 +25,7 @@ class Game extends Component {
     // }
 
     componentDidMount() {
+        
         this.props.getBestScore();
         this.refs.player.focus(); //focus on player when page loads
         this.obstacles = this.startObstacles(); //obstacles start coming from the bottom of the screen when page 
@@ -55,15 +57,23 @@ class Game extends Component {
             this.props.obstacles.map(obstacle => {
                 if(obstacle.score){
                     if(obstacle.type === 'cloud') {
+                        //change color
+                        this.colorIndicator('cloud')
                         this.props.incrementScore(100)
                         obstacle.remove = true;
                     } else if(obstacle.type === 'bird') {
+                        //change color
+                        this.colorIndicator('bird');
                         this.openModalAndClearInterval()
                         obstacle.remove = true;
                     } else if(obstacle.type === 'plane') {
+                        // change color
+                        this.colorIndicator('plane');
                         this.openModalAndClearInterval()
                         obstacle.remove = true;
                     } else if(obstacle.type === 'parachute'){
+                        //change color
+                        this.colorIndicator('parachute');
                         this.props.incrementScore(1000)
                         obstacle.remove = true;
                     }
@@ -72,7 +82,7 @@ class Game extends Component {
            
         ) : null;
 
-       
+
         requestAnimationFrame(()=> this.updateObstaclePositions()); //game loop
     }
     
@@ -115,12 +125,28 @@ class Game extends Component {
         this.props.adjustBestScore();
     }
    
-
+    colorIndicator(obstacle) {
+        var tl = new TimelineLite();
+        if(obstacle === 'cloud') {
+            tl.to('.example-cloud-div', .5, {backgroundColor:'rgba(0, 142, 45, 0.5)'})
+            .to('.example-cloud-div', .5, {backgroundColor:'white'});
+        } else if(obstacle === 'parachute') {
+            tl.to('.example-parachute-div', .5, {backgroundColor:'rgba(0, 142, 45, 0.5)'})
+            .to('.example-parachute-div', .5, {backgroundColor:'white'});
+        } else if(obstacle === 'bird') {
+            tl.to('.example-bird-div', .5, {backgroundColor:'rgba(255, 0, 0, 0.49)'})
+            .to('.example-bird-div', .5, {backgroundColor:'white'});
+        } else if(obstacle === 'plane') {
+            tl.to('.example-plane-div', .5, {backgroundColor:'rgba(255, 0, 0, 0.49)'})
+            .to('.example-plane-div', .5, {backgroundColor:'white'});
+        }
+    }
 
 
     render(){
         let {player, obstacles, movePlayer, playerSize} = this.props;
-   
+
+    
     
         
         return(
@@ -186,9 +212,10 @@ class Game extends Component {
                                 <p>DevMountain</p>
                                 <button onClick={()=> this.props.closeAdModal()}>x</button>
                             </div>
-                            <div className="ad-content">
+                            <div className="fake-ad">
                                 <p>LEARN TO CODE IN 12 WEEKS!</p>
-                                <div className="ad"></div>
+                                
+                                <div className="dm-ad"></div>
                             </div>
                         
                             </div>

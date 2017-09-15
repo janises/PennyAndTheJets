@@ -1,10 +1,20 @@
-.nav {
-    @include flex($justify: space-around, $direction: row);
+.header-container {
+    @include flex($direction: row);
+    display: grid;
+    grid-template-columns: 1fr 6fr;
     background: $darker-blue;
     position: fixed;
     width: 100%;
-
     height: 80px;
+}
+
+.logo{
+    grid-column: 1;
+}
+
+.nav {
+    @include flex($direction: row, $justify: space-around);
+    grid-column: 2;
     li {
         padding: 5px 10px;
         list-style: none;

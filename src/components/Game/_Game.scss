@@ -1,14 +1,17 @@
 .game-page {
     // @include flex($justify: center);
     @include fixed-header;
-    background: rgba(67, 70, 130, 0.03);
+    // background: rgba(67, 70, 130, 0.03);
+    background-image: url('./../img/hazy-cloud-bg.png');
+    background-repeat: repeat;
+    background-size: auto 100vh;
     width: 100vw;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: 1fr 2fr 1fr;
     justify-items: center;
     align-items: center;
-
+    animation: 4s scroll-y infinite linear;
     .score {
         // margin-bottom: 10px;
         // width: 100%;
@@ -21,9 +24,9 @@
 
 
 .game-container{
-    background-image: url('./../img/hazy-cloud-bg.png');
-    background-repeat: repeat-y;
-    background-size: auto 100vh;
+    // background-image: url('./../img/hazy-cloud-bg.png');
+    // background-repeat: repeat-y;
+    // background-size: auto 100vh;
     position: relative;
     width: 600px;
     // width: 100%;
@@ -32,8 +35,9 @@
     border-radius: 5px;
     grid-column: 2;
     grid-row: 2;
+    border: 1px solid black;
     // justify-self: center;
-    animation: 4s scroll-y infinite linear;
+    // animation: 4s scroll-y infinite linear;
 }
 
 @keyframes scroll-y {
@@ -183,14 +187,24 @@
         margin: 10px auto;
         margin-bottom: 20px;
     }
+    // .cheer-penguins {
+    //     @include flex($direction: row, $justify: space-around);
+    //     .go-penguin{
+    //         background: url('./../img/go-penguin.png') no-repeat -9px -8px;
+    //         width: 39px;
+    //         height: 65px;
+    //         margin: 20px 5px;
+    //         // animation: cheer 1s steps(3) infinite;
+    //     }
+    // }
     .cheer-penguins {
         @include flex($direction: row, $justify: space-around);
         .go-penguin{
-            background: url('./../img/go-penguin.png') no-repeat -9px -8px;
-            width: 39px;
-            height: 65px;
+            background: url('./../img/go_penguin_parachute.png') no-repeat -5px 0px;
+            width: 41px;
+            height: 82px;
             margin: 20px 5px;
-            animation: cheer 1s steps(3) infinite;
+            animation: cheer 2s steps(3) infinite;
         }
     }
    
@@ -198,8 +212,7 @@
 
 @keyframes cheer{
     100% {
-        background-position-x: -130px;
-        background-position-y: -9px;
+        background-position-x: -128px;
     }
 }
 
@@ -208,7 +221,7 @@
     height: 50%;
     width: 95%;
     border: 1px solid black;
-    
+
     .pop-up-header {
         @include flex($justify: space-between, $direction: row);
         background-color: blue;
@@ -218,6 +231,7 @@
         p{
             color: white;
             padding-left: 2px;
+            text-align: center;
         }
         button{
             @include flex;
@@ -227,7 +241,28 @@
         }
     }
 
-    .ad-content {
-        // width: 100%;
+    .fake-ad {
+        width: 100%;
+        p {
+            margin: 3px auto;
+        }
+        height: calc(100% - 24px);
+        @include flex;
+        // background-color: red;
+        .dm-ad {
+            background: url('./../img/dm-ad.png') no-repeat center;
+            height: 80%;
+            width: 80%;
+        }
+    }
+    animation: popup 5s linear 5s;
+}
+
+@keyframes popup{
+    0% {
+        visibility: hidden;
+    }
+    100% {
+        visibility: visible;
     }
 }

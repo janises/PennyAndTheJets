@@ -98,7 +98,7 @@ button {
 
 
 .arrow {
-  background: rgba(83, 196, 107, 0.48);
+  background: none;
   border-radius: 5px;
   border: none;
   height: 57px;
@@ -108,15 +108,15 @@ button {
 }
 
 .left-arrow {
-  animation: click 1.33s linear infinite;
+  animation: click 2.33s steps(2) alternate infinite;
 }
 
 .right-arrow {
-  animation: click 1.52s linear infinite;
+  animation: click 3.52s steps(2) alternate infinite;
 }
 
 @keyframes click {
   100% {
-    background: none;
+    background: rgba(83, 196, 107, 0.48);
   }
 }

@@ -13,6 +13,7 @@ class Header extends Component {
    
         return(
             <div className='header-container'>
+                <div className="logo">LOGO GOES HERE</div>
                 <ul className='nav'>
                     <Link to="/">
                         <li>HOME</li>
