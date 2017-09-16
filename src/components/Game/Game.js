@@ -159,6 +159,7 @@ class Game extends Component {
         
         return(
             <div className='game-page'>
+                {/* <div className="game-background"></div> */}
                 <h1 className="score">Score: {this.props.score}</h1>
                 <div className="example-containers">
                     <div className="example-obstacles">

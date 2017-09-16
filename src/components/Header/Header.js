@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getUsernameAndId, logout} from './../../ducks/reducer';
+import gameLogo from './../../img/game-logo.png';
 
 class Header extends Component {
     componentWillMount() {
@@ -13,7 +14,11 @@ class Header extends Component {
    
         return(
             <div className='header-container'>
-                <div className="logo">LOGO GOES HERE</div>
+                <Link to="/">
+                    <img src={gameLogo} alt="game-logo" className="logo"/>
+                </Link>
+                
+                {/* <div className="logo">LOGO GOES HERE</div> */}
                 <ul className='nav'>
                     <Link to="/">
                         <li>HOME</li>

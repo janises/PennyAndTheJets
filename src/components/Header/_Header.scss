@@ -6,14 +6,17 @@
     position: fixed;
     width: 100%;
     height: 80px;
+    .logo{
+        grid-column: 1;
+        height: 70px;
+        margin-left: 10px;
+    }
 }
 
-.logo{
-    grid-column: 1;
-}
+
 
 .nav {
-    @include flex($direction: row, $justify: space-around);
+    display: none;
     grid-column: 2;
     li {
         padding: 5px 10px;
@@ -23,5 +26,11 @@
         a {
             color: $almost-white-purple;
         }
+    }
+}
+
+@media screen and (min-width:600px) {
+    .nav {
+        @include flex($direction: row, $justify: space-around);
     }
 }

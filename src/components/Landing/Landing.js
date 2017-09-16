@@ -6,9 +6,10 @@ import cloud2 from './../../img/cloud2.png';
 import cloud3 from './../../img/cloud3.png';
 import haze from './../../img/haze2.png';
 import {TimelineLite, TweenLite} from 'gsap';
-import ScrollMagic from 'scrollmagic';
+import * as ScrollMagic from 'scrollmagic';
+import gameLogo2 from './../../img/game-logo2.png';
 // require('scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap');
-// require('./../../../../node_modules/scrollMagic/scrollmagic/uncompressed/plugins/animation.gsap');
+
 
 
 
@@ -16,7 +17,7 @@ import ScrollMagic from 'scrollmagic';
 export default class Landing extends Component {
 
     componentDidMount(){
-        // window.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('scroll', this.handleScroll);
       
         // $(window).resize(function() {
         //     elemOffset = elem.offset().top;
@@ -40,25 +41,25 @@ export default class Landing extends Component {
               $aboutGame = $('.about-game');
         const controller = new ScrollMagic.Controller();
 
-        const moveCloud1 = tl.to($cloud1, 2, {xPercent: 50});
-        const moveCloud2 = TweenLite.to($cloud2, 2, {xPercent: -50});
-        const moveAbout = TweenLite.to($about, 2, {xPercent: -75});
+        // const moveCloud1 = tl.to($cloud1, 2, {xPercent: 50});
+        // const moveCloud2 = TweenLite.to($cloud2, 2, {xPercent: -50});
+        // const moveAbout = TweenLite.to($about, 2, {xPercent: -75});
 
-        new ScrollMagic.Scene({
-            triggerElement: "#trigger1",
-            triggerHook: "onEnter",
-            // offset: wh
-        }).addTo(controller).setTween(moveCloud1);
+        // new ScrollMagic.Scene({
+        //     triggerElement: "#trigger1",
+        //     triggerHook: "onEnter",
+        //     // offset: wh
+        // }).addTo(controller).setTween(moveCloud1);
 
-        new ScrollMagic.Scene({
+        // new ScrollMagic.Scene({
 
-        }).setTween(moveCloud2).addTo(controller);
+        // }).setTween(moveCloud2).addTo(controller);
 
-        new ScrollMagic.Scene({
-            triggerElement: $about,
-            triggerHook: "onEnter",
-            // offset: wh
-        }).addTo(controller).setTween(moveAbout);
+        // new ScrollMagic.Scene({
+        //     triggerElement: $about,
+        //     triggerHook: "onEnter",
+        //     // offset: wh
+        // }).addTo(controller).setTween(moveAbout);
 
     //     $(window).scroll(function(){
     //         const scroll = $(this).scrollTop();
@@ -96,11 +97,41 @@ export default class Landing extends Component {
     //     })
     }
 
-    // handleScroll(event){
-    //     let viewHeight = event.srcElement.body.scrollTop;
-    //     console.log(viewHeight)
-    // }
+    handleScroll(event){
+        const wh = $(window).height(),
+        // tl = new TimelineLite({paused:true}),
+        $cloud1 = $('.cloud1'),
+        $cloud2 = $('.cloud2'),
+        $cloud3 = $('.cloud3'),
+        $haze = $('.haze'),
+        $about = $('.about'),
+        $aboutGame = $('.about-game');
+        // let viewHeight = event.srcElement.body.scrollTop; //same as scrollTop
+        let scrollTop = event.target.body.scrollTop, 
+            docHeight=$(document).height(),
+            winHeight=$(window).height(),
+            scrollPercent=Math.round((scrollTop)/(docHeight-winHeight)*100);
+        
+        console.log("percent", scrollPercent);
 
+        if(scrollPercent <= 5){
+            TweenLite.to($cloud1, 2, {xPercent:50});
+            TweenLite.to($cloud2, 2, {xPercent:-50});
+        } else if(scrollPercent > 5 && scrollPercent <= 15){
+            TweenLite.to($about, 2, {xPercent:-75});
+        } else if(scrollPercent > 40 && scrollPercent <= 50) {
+            TweenLite.to($cloud3, 2, {xPercent: -50});
+        } else if(scrollPercent > 70 && scrollPercent < 80) {
+            TweenLite.to($aboutGame, 2, {xPercent: 75, yPercent: 60});
+        }
+  
+                
+        // console.log(viewHeight)
+    }
+
+    componentWillUnmount(){
+        window.removeEventListener('scroll', this.handleScroll)
+    }
 
     render(){
 
@@ -115,7 +146,8 @@ export default class Landing extends Component {
                 <div id="trigger1"></div>
                 <div className='login-container'>
                     <div className="landing-title">
-
+                        <h1></h1>
+                        {/* <img className="title-logo" src={gameLogo2} alt="game-logo"/> */}
                     </div>
                    
                     <div className="about">

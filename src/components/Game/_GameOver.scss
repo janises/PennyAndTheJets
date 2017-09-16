@@ -8,8 +8,8 @@
 
 .game-over-modal {
     background-color: rgba(45, 45, 45, 0.75);
-    width: 50%;
-    height: 50%;
+    width: 100%;
+    height: 100%;
     border-radius: 5px;
     @include flex;
     .game-over {
