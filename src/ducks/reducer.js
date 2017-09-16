@@ -2,8 +2,8 @@ import axios from 'axios';
 
 const initialState = {
     container: {
-        height: 400,
-        width: 600
+        height: '',
+        width: ''
     },
     player: {
         top: 10,
@@ -45,10 +45,11 @@ const initialState = {
     bestScore:0,
     editing: false,
     isGameOver: false,
-    isAdModalOpen: true
+    isAdModalOpen: false
 }
 
-const MOVE_PLAYER = 'MOVE_PLAYER',
+const SAVE_CONTAINER_DIM = "SAVE_CONTAINER_DIM",
+      MOVE_PLAYER = 'MOVE_PLAYER',
       MOVE_OBSTACLES = 'MOVE_OBSTACLES',
       MAKE_NEW_OBSTACLE = 'MAKE_NEW_OBSTACLE',
       SAVE_SCORE = 'SAVE_SCORE',
@@ -67,6 +68,15 @@ const MOVE_PLAYER = 'MOVE_PLAYER',
       GET_USERNAME = 'GET_USERNAME',
       EDIT_USERNAME = 'EDIT_USERNAME',
       LOGOUT = 'LOGOUT';
+
+
+export function saveContainerDim(height, width) {
+    return {
+        type: SAVE_CONTAINER_DIM,
+        height,
+        width
+    }
+}   
 
 export function logout(){
     return{
@@ -219,6 +229,9 @@ export function movePlayer(e) {
 function reducer(state = initialState, action) {
     let {player, container, score, obstacles, obstacleIndex, bird, plane, parachute, cloud, playerSize, dx, userScores, bestScore} = state;
     switch(action.type) {
+        case SAVE_CONTAINER_DIM:
+            return Object.assign({}, state, {container:{height:action.height, width: action.width}});
+        break;
         case MOVE_PLAYER:
             if(action.payload === 39) {
                 if(player.left <= container.width - (playerSize.width + dx*2)) {

@@ -5,37 +5,102 @@ import cloud1 from './../../img/cloud1.png';
 import cloud2 from './../../img/cloud2.png';
 import cloud3 from './../../img/cloud3.png';
 import haze from './../../img/haze2.png';
+import {TimelineLite, TweenLite} from 'gsap';
+import ScrollMagic from 'scrollmagic';
+// require('scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap');
+// require('./../../../../node_modules/scrollMagic/scrollmagic/uncompressed/plugins/animation.gsap');
+
+
 
 
 export default class Landing extends Component {
 
     componentDidMount(){
-        $(window).scroll(function(){
-            const cloudScroll = $(this).scrollTop();
-            
-                    $('.cloud1').css({
-                        'transform': `translate(${cloudScroll/10}%, 0px` 
-                    });
-                    $('.cloud2').css({
-                        'transform': `translate(-${cloudScroll/10}%, 0px` 
-                    });
-                    $('.cloud3').css({
-                        'transform': `translate(-${cloudScroll/15}%, 0px`
-                    });
-                    $('.haze').css({
-                        'transform': `translate(0px, -${cloudScroll/50}%`
-                    });
-                    $('.about').css({
-                        'transform': `translate(-${cloudScroll/5}% ,0px)`
-                    });
-                    $('.about-game').css({
-                        'transform': `translate(${cloudScroll/18}%, ${cloudScroll/20}%)`
-                    });
-                
-        })
+        // window.addEventListener('scroll', this.handleScroll);
       
+        // $(window).resize(function() {
+        //     elemOffset = elem.offset().top;
+        //     elemOpacity = ($(window).scrollTop()) / elemOffset;
+        //   });
+    
+        //   $(window).on('scroll', function() {
+        //     // if ($(window).scrollTop() >= elem.offset().top - 400) {
+        //       elemOpacity = (Math.pow($(window).scrollTop(), 12) / Math.pow(elemOffset, 12));
+        //       elem.css({'opacity': elemOpacity});
+        //     // } else elem.css({'opacity': 0});
+        //   });
 
+        const wh = $(window).height(),
+              tl = new TimelineLite({paused:true}),
+              $cloud1 = $('.cloud1'),
+              $cloud2 = $('.cloud2'),
+              $cloud3 = $('.cloud3'),
+              $haze = $('.haze'),
+              $about = $('.about'),
+              $aboutGame = $('.about-game');
+        const controller = new ScrollMagic.Controller();
+
+        const moveCloud1 = tl.to($cloud1, 2, {xPercent: 50});
+        const moveCloud2 = TweenLite.to($cloud2, 2, {xPercent: -50});
+        const moveAbout = TweenLite.to($about, 2, {xPercent: -75});
+
+        new ScrollMagic.Scene({
+            triggerElement: "#trigger1",
+            triggerHook: "onEnter",
+            // offset: wh
+        }).addTo(controller).setTween(moveCloud1);
+
+        new ScrollMagic.Scene({
+
+        }).setTween(moveCloud2).addTo(controller);
+
+        new ScrollMagic.Scene({
+            triggerElement: $about,
+            triggerHook: "onEnter",
+            // offset: wh
+        }).addTo(controller).setTween(moveAbout);
+
+    //     $(window).scroll(function(){
+    //         const scroll = $(this).scrollTop();
+    //         console.log(scroll);
+
+    //         if(scroll <= 200) {
+    //             TweenLite.to($cloud1, 2, {xPercent:50});
+    //             TweenLite.to($cloud2, 2, {xPercent:-50});
+    //         } else if(scroll <= 150 && scroll > 200) {
+    //             TweenLite.to($about, 2, {xPercent:-75});
+    //         } else if(scroll <= 700 && scroll > 650) {
+    //             TweenLite.to($cloud3, 2, {xPercent: -50});
+    //         } else if(scroll <= 800 && scroll > 700) {
+    //             TweenLite.to($aboutGame, 2, {xPercent: 75, yPercent: 60});
+    //         }
+    //                 // $('.cloud1').css({
+    //                 //     'transform': `translate(${scroll/10}%, 0px` 
+    //                 // });
+    //                 // $('.cloud2').css({
+    //                 //     'transform': `translate(-${scroll/10}%, 0px` 
+    //                 // });
+    //                 // $('.cloud3').css({
+    //                 //     'transform': `translate(-${scroll/15}%, 0px`
+    //                 // });
+    //                 $('.haze').css({
+    //                     'transform': `translate(0px, -${scroll/50}%`
+    //                 });
+    //                 // $('.about').css({
+    //                 //     'transform': `translate(-${scroll/5}% ,0px)`
+    //                 // });
+    //                 // $('.about-game').css({
+    //                 //     'transform': `translate(${scroll/18}%, ${scroll/20}%)`
+    //                 // });
+                
+    //     })
     }
+
+    // handleScroll(event){
+    //     let viewHeight = event.srcElement.body.scrollTop;
+    //     console.log(viewHeight)
+    // }
+
 
     render(){
 
@@ -47,7 +112,7 @@ export default class Landing extends Component {
                 <img className="cloud2" ref="cloud2" src={cloud2} alt=''/>
                 <img className="cloud3" ref="cloud3" src={cloud3} alt=''/>
                 <div className="landing-page-peng"></div>
-
+                <div id="trigger1"></div>
                 <div className='login-container'>
                     <div className="landing-title">
 

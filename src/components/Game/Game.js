@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {movePlayer, makeNewObstacle, moveObstacles, saveScore, incrementScore, resetGame, openModal, closeAdModal, adjustBestScore, getBestScore, getUserScores} from './../../ducks/reducer';
+import {movePlayer, makeNewObstacle, moveObstacles, saveScore, incrementScore, resetGame, openModal, closeAdModal, adjustBestScore, getBestScore, getUserScores, saveContainerDim} from './../../ducks/reducer';
 import Obstacle from './Obstacle';
 import GameOver from './GameOver';
 import $ from 'jquery';
@@ -20,18 +20,26 @@ class Game extends Component {
     }
 
     // componentWillMount(){
-    //     this.props.getUserScores();
-        
+    //     // this.props.getUserScores();
+    //     // var height = $('.game-container').height();
+    //     console.log('height', $(document).height());
     // }
 
     componentDidMount() {
-        
+        var containerHeight = $('.game-container').height();
+        var containerWidth = $('.game-container').width();
+        this.props.saveContainerDim(containerHeight, containerWidth);
+        console.log('container-height', containerHeight);
         this.props.getBestScore();
         this.refs.player.focus(); //focus on player when page loads
         this.obstacles = this.startObstacles(); //obstacles start coming from the bottom of the screen when page 
         window.onkeydown = (e)=> this.props.movePlayer(e); //move player on keydown
         requestAnimationFrame(()=> this.updateObstaclePositions()); //start game loop
     }
+
+    // componentWillUpdate(){
+
+    // }
 
     
     componentWillUnmount(){
@@ -256,7 +264,8 @@ let outputActions = {
     closeAdModal,
     adjustBestScore,
     getBestScore,
-    getUserScores
+    getUserScores,
+    saveContainerDim
 }
 
 export default connect(mapStateToProps, outputActions)(Game);
