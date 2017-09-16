@@ -35,6 +35,13 @@ class Game extends Component {
         this.obstacles = this.startObstacles(); //obstacles start coming from the bottom of the screen when page 
         window.onkeydown = (e)=> this.props.movePlayer(e); //move player on keydown
         requestAnimationFrame(()=> this.updateObstaclePositions()); //start game loop
+
+        $(window).resize(()=>{
+            let newHeight = $('.game-container').height();
+            let newWidth = $('.game-container').width();
+            this.props.saveContainerDim(newHeight, newWidth);
+            // console.log('height:',newHeight, 'width:',newWidth);
+        })
     }
 
     // componentWillUpdate(){

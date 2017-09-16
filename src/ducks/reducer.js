@@ -256,7 +256,7 @@ function reducer(state = initialState, action) {
             } else if(action.payload === 'parachute') {
                 newObstacle = {type: action.payload, key: obstacleIndex, remove: false, top: container.height-parachute.height, left: Math.floor(Math.random()* (container.width - parachute.width*2 + 1)+ parachute.width), style:{height: parachute.height, width: parachute.width, position:'absolute'}};
             }
-            // console.log(newObstacle)
+            console.log(newObstacle)
             return Object.assign({}, state, {obstacleIndex: obstacleIndex + 1, obstacles: obstacles.concat([newObstacle])});
             break;
         case MOVE_OBSTACLES:
