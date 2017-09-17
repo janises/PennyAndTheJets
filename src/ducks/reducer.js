@@ -220,7 +220,7 @@ export function moveObstacles(obstacle){
 export function movePlayer(e) {
     return {
         type: MOVE_PLAYER,
-        payload: e.keyCode 
+        payload: e 
     }
 }
 

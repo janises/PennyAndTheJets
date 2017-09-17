@@ -1,6 +1,8 @@
 .landing-container {
     @include fixed-header;
     @include flex;
+    // display:grid;
+    // grid-template-columns: 1fr 1fr 1fr;
     height: 300vh;
     width: 100%;
     background: $sky-blue;
@@ -45,6 +47,7 @@
 
 .title-logo {
     height: 150px;
+    // grid-column: 2;
 }
 
 .landing-page-peng {
@@ -67,6 +70,7 @@
 
 .button-container {
     @include flex($direction: row, $align:space-between);
+    // grid-column: 2;
 }
 
 .btn {
@@ -164,6 +168,8 @@
 .about, .about-game{
     @include flex($justify: space-between);
     width: 400px;
+    // width: 90%;
+    grid-column: 2;
     background: $light-purple;
     border-radius: 5px;
     z-index: 0;

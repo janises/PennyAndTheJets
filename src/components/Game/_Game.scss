@@ -8,7 +8,7 @@
     width: 100vw;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 4fr 1fr;
     justify-items: center;
     align-items: center;
     animation: 4s scroll-y infinite linear;
@@ -17,7 +17,7 @@
         // width: 100%;
         grid-column: 1;
         grid-row: 1;
-        font-size: 1.5em;
+        font-size: 2em;
         // @include absolute($top: 20px, $left: 50px);
     }
 }
@@ -47,6 +47,26 @@
     border: 1px solid black;
     // justify-self: center;
     // animation: 4s scroll-y infinite linear;
+}
+
+.arrow-buttons {
+    @include flex($direction: row, $justify: space-around);
+    display: none;
+    width: 100%;
+
+    .arrow-btn {
+        height: 75px;
+        width: 75px;
+        border-radius: 5px;
+    }
+
+    .left-button {
+        background: url('./../img/left-arrow.png') no-repeat center;
+    }
+
+    .right-button {
+        background: url('./../img/right-arrow.png') no-repeat center;
+    }
 }
 
 @keyframes scroll-y {
@@ -130,24 +150,26 @@
 .example-containers {
     grid-column: 1;
     grid-row: 2;
-    // background-color: red;
-    // height: 400px;
-    height: 100%;
-    width: 100%;
-    // @include absolute;
-    @include flex($justify: space-around);
-    // @include fixed-header;
-    // width: 150px;
+    height: 90%;
+    width: 90%;
+    @include flex($justify: space-between);
+   
     h4 {
         text-align: center;
     }
-
 } 
+
+.example-obstacles {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
 .examples {
     @include flex;
     // height: 100px;
-    margin: 10px 5px;
+    // margin: 10px 5px;
     padding: 8px 8px;
     border: 1px solid black;
     border-radius: 5px;
@@ -185,37 +207,34 @@
 .game-scores {
     grid-column: 3;
     grid-row: 2;
-    height: 100%;
-    width: 100%;
+    height: 90%;
+    width: 90%;
     // background: rgba(0, 0, 255, 0.28);
-    @include flex;
-    .best-score-h3 {
-        margin: 10px auto;
-    }
-    .best-score {
-        margin: 10px auto;
-        margin-bottom: 20px;
-    }
-    // .cheer-penguins {
-    //     @include flex($direction: row, $justify: space-around);
-    //     .go-penguin{
-    //         background: url('./../img/go-penguin.png') no-repeat -9px -8px;
-    //         width: 39px;
-    //         height: 65px;
-    //         margin: 20px 5px;
-    //         // animation: cheer 1s steps(3) infinite;
-    //     }
-    // }
-    .cheer-penguins {
-        @include flex($direction: row, $justify: space-around);
-        .go-penguin{
-            background: url('./../img/go_penguin_parachute.png') no-repeat -5px 0px;
-            width: 41px;
-            height: 82px;
-            margin: 20px 5px;
-            animation: cheer 2s steps(3) infinite;
+    @include flex($justify: space-between);
+    .score-cheer-penguins {
+        @include flex;
+        .best-score-h3 {
+            margin: 10px auto;
+            font-size: 1.5em;
+        }
+        .best-score {
+            margin: 10px auto;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+      
+        .cheer-penguins {
+            @include flex($direction: row, $justify: space-around);
+            .go-penguin{
+                background: url('./../img/go_penguin_parachute.png') no-repeat -5px 0px;
+                width: 41px;
+                height: 82px;
+                margin: 20px 5px;
+                animation: cheer 2s steps(3) infinite;
+            }
         }
     }
+    
    
 }
 
@@ -273,5 +292,26 @@
     }
     100% {
         visibility: visible;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .game-page {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 3fr 1fr;
+    }
+    .game-container {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    .example-containers {
+        display: none;
+    }
+    .game-scores {
+        display: none;
+    }
+    .arrow-buttons {
+        display: flex;
+        grid-row: 3;
     }
 }

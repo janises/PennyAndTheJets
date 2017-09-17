@@ -15,9 +15,9 @@ class Instructions extends Component {
                 <div className="instructions-bg"></div>
 
                 <div className="instructions">
-                    <h1>Use arrow keys to move</h1>
+                    <h1>Use the arrow keys to move</h1>
                     <h2>Avoid the planes and birds</h2>
-                    <h3>Clouds and parachutes are bonus points</h3>
+                    <h2>Clouds and parachutes are bonus points</h2>
                     <div className="arrows">
                         <div className="arrowkeys">
                             <div className="left-arrow arrow"></div>

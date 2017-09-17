@@ -31,16 +31,13 @@
   h1 {
     margin: 20px auto;
     text-align: center;
+    font-size: 2em;
   }
 
   h2 {
+    font-size: 1.5em;
     text-align: center;
   }
-
-  h3 {
-    text-align: center;
-  }
-
 
 button {
     display: inline-block;
@@ -127,5 +124,41 @@ button {
 @keyframes click {
   100% {
     background: rgba(83, 196, 107, 0.48);
+  }
+}
+
+
+@media screen and (max-width: 1200px) {
+  .instructions-container{
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .game-preview {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .instructions {
+    grid-column: 1;
+    grid-row: 1;
+    h1 {
+      font-size: 1.5em;
+    }
+
+    h2 {
+      font-size: 1em;
+    }
+  }
+}
+
+@media screen and (min-width: 1800px){
+  .instructions {
+    h1 {
+      font-size: 3em;
+    }
+    h2 {
+      font-size: 2em;
+    }
   }
 }

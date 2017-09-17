@@ -33,7 +33,7 @@ class Game extends Component {
         this.props.getBestScore();
         this.refs.player.focus(); //focus on player when page loads
         this.obstacles = this.startObstacles(); //obstacles start coming from the bottom of the screen when page 
-        window.onkeydown = (e)=> this.props.movePlayer(e); //move player on keydown
+        window.onkeydown = (e)=> this.props.movePlayer(e.keyCode); //move player on keydown
         requestAnimationFrame(()=> this.updateObstaclePositions()); //start game loop
 
         $(window).resize(()=>{
@@ -103,23 +103,23 @@ class Game extends Component {
     
     
     startObstacles(){
-        let {makeNewObstacle} = this.props;    
+        let {makeNewObstacle, container} = this.props;    
        
             var createBirds = setInterval(()=> {
                 makeNewObstacle('bird')
-            }, 1100)
+            }, 2100)
 
             var createClouds = setInterval(()=> {
                 makeNewObstacle('cloud')
-            }, 1500)
+            }, 2500)
 
             var createPlanes = setInterval(()=> {
                 makeNewObstacle('plane')
-            }, 3200)
+            }, 4200)
 
             var createParachutes = setInterval(()=> {
                 makeNewObstacle('parachute')
-            }, 5450)
+            }, 6450)
 
             this.setState({
                 birds: createBirds,
@@ -193,7 +193,7 @@ class Game extends Component {
                 
 
                     <div className="game-container" style={this.props.container}>
-                        <div className='player' ref='player' tabIndex='0' onKeyDown={(e)=> movePlayer(e)} style={player}></div>
+                        <div className='player' ref='player' tabIndex='0' onKeyDown={(e)=> movePlayer(e.keyCode)} style={player}></div>
                         { !this.props.isModalOpen ? (
                             obstacles.map((obstacle) =>{
                                 if(obstacle.top + 25 <= playerSize.height && (obstacle.left+ obstacle.style.width + 12 > player.left && obstacle.left + 17 < player.left + playerSize.width)) {
@@ -211,7 +211,13 @@ class Game extends Component {
                         }
                     </div>
 
+                    <div className="arrow-buttons">
+                        <div className="left-button arrow-btn" onClick={()=> this.props.movePlayer(37)}></div>
+                        <div className="right-button arrow-btn" onClick={()=> this.props.movePlayer(39)}></div>
+                    </div>
+
                 <div className="game-scores">
+                    <div className="score-cheer-penguins">
                     <h3 className="best-score-h3">YOUR HIGH SCORE</h3>
                     <h4 className="best-score">{this.props.bestScore}</h4>
                     <div className="cheer-penguins">
@@ -219,6 +225,9 @@ class Game extends Component {
                         <div className="go-penguin"></div>
                         <div className="go-penguin"></div>
                     </div>
+
+                    </div>
+                   
 
                     {
                         this.props.isAdModalOpen ? 
