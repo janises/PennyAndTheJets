@@ -115,14 +115,14 @@ export default class Landing extends Component {
         console.log("percent", scrollPercent);
 
         if(scrollPercent <= 5){
-            TweenLite.to($cloud1, 2, {xPercent:50});
-            TweenLite.to($cloud2, 2, {xPercent:-50});
+            TweenLite.to($cloud1, 1, {xPercent:50});
+            TweenLite.to($cloud2, 1, {xPercent:-50});
         } else if(scrollPercent > 5 && scrollPercent <= 15){
-            TweenLite.to($about, 2, {xPercent:-75});
+            TweenLite.to($about, 1.5, {xPercent:-75});
         } else if(scrollPercent > 40 && scrollPercent <= 50) {
-            TweenLite.to($cloud3, 2, {xPercent: -50});
-        } else if(scrollPercent > 70 && scrollPercent < 80) {
-            TweenLite.to($aboutGame, 2, {xPercent: 75, yPercent: 60});
+            TweenLite.to($cloud3, 1, {xPercent: -50});
+        } else if(scrollPercent > 60 && scrollPercent < 80) {
+            TweenLite.to($aboutGame, 1.5, {xPercent: 75, yPercent: 60});
         }
   
                 
@@ -137,8 +137,8 @@ export default class Landing extends Component {
 
         return (
             <div className="landing-container">
-            
-                <img className="haze" ref='haze' src={haze} alt=""/>
+                <div className="haze"></div>
+                {/* <img className="haze" ref='haze' src={haze} alt=""/> */}
                 <img className="cloud1" ref="cloud1" src={cloud1} alt=''/>
                 <img className="cloud2" ref="cloud2" src={cloud2} alt=''/>
                 <img className="cloud3" ref="cloud3" src={cloud3} alt=''/>

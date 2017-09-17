@@ -30,7 +30,16 @@
 
   h1 {
     margin: 20px auto;
-}
+    text-align: center;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  h3 {
+    text-align: center;
+  }
 
 
 button {
@@ -108,11 +117,11 @@ button {
 }
 
 .left-arrow {
-  animation: click 2.33s steps(2) alternate infinite;
+  animation: click 1.5s steps(2) alternate infinite;
 }
 
 .right-arrow {
-  animation: click 3.52s steps(2) alternate infinite;
+  animation: click 1.25s steps(2) alternate infinite;
 }
 
 @keyframes click {

@@ -11,10 +11,12 @@
         width: 100px;
     }
     .haze {
+        background: url('./../img/haze2.png') repeat;
         position: fixed;
         z-index: -1;
         top: 0;
         left: 0;
+        height: 100%;
         width: 100%;
     }
     .cloud1 {
@@ -172,5 +174,11 @@
         width: 100%;
         padding: 20px 20px;
         text-align: justify;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .cloud1, .cloud2, .cloud3, .landing-plane, .landing-bird {
+        display: none;
     }
 }
