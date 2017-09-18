@@ -1,5 +1,5 @@
 .header-container {
-    @include flex($direction: row);
+    @include flex($direction: row, $justify: space-between);
     display: grid;
     grid-template-columns: 1fr 6fr;
     background: $darker-blue;
@@ -37,7 +37,7 @@
         width: 40px;
         height: 5px;
         background-color: black;
-        margin: 12px 20px;
+        margin: 12px 5px;
     }
     
 }
@@ -66,6 +66,9 @@
 }
 
 @media screen and (min-width:600px) {
+    .header-container {
+        justify-content: center;
+    }
     .nav {
         @include flex($direction: row, $justify: space-around);
     }

@@ -302,10 +302,12 @@
     .game-page {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 3fr 1fr;
+        overflow: hidden;
     }
     .game-container {
-        height: 80%;
-        width: 80%;
+        margin: auto;
+        height: 75%;
+        width: 75%;
         grid-column: 1;
         grid-row: 2;
     }
