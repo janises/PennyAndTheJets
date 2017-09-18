@@ -8,7 +8,7 @@ const express = require('express')
     , passport = require('passport')
     , Auth0Strategy = require('passport-auth0')
     , app = express()
-    , port = 8000;
+    , port = process.env.PORT;
 
 app.use(bodyParser.json());
 app.use(cors());
