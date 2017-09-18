@@ -230,6 +230,7 @@ function reducer(state = initialState, action) {
     let {player, container, score, obstacles, obstacleIndex, bird, plane, parachute, cloud, playerSize, dx, userScores, bestScore} = state;
     switch(action.type) {
         case SAVE_CONTAINER_DIM:
+            console.log('height:', action.height, "width:", action.width);
             return Object.assign({}, state, {container:{height:action.height, width: action.width}});
         break;
         case MOVE_PLAYER:

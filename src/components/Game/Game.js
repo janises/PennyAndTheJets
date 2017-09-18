@@ -40,7 +40,7 @@ class Game extends Component {
             let newHeight = $('.game-container').height();
             let newWidth = $('.game-container').width();
             this.props.saveContainerDim(newHeight, newWidth);
-            // console.log('height:',newHeight, 'width:',newWidth);
+            console.log('game js height:',newHeight, 'width:',newWidth);
         })
     }
 
@@ -111,11 +111,11 @@ class Game extends Component {
 
             var createClouds = setInterval(()=> {
                 makeNewObstacle('cloud')
-            }, 2500)
+            }, 1500)
 
             var createPlanes = setInterval(()=> {
                 makeNewObstacle('plane')
-            }, 4200)
+            }, 3200)
 
             var createParachutes = setInterval(()=> {
                 makeNewObstacle('parachute')
