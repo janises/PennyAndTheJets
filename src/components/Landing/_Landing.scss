@@ -3,7 +3,8 @@
     @include flex;
     // display:grid;
     // grid-template-columns: 1fr 1fr 1fr;
-    height: 300vh;
+    // height: 300vh;
+    height: 100vh;
     width: 100%;
     background: $sky-blue;
     overflow-x: hidden;
@@ -27,6 +28,7 @@
         left: 40vw;
         z-index: 2;
         height: 300px;
+        display: none;
     }
     
     .cloud2 {
@@ -35,18 +37,21 @@
         left: 30vw;
         width: 400px;
         z-index: 2;
+        display: none;
     }
     .cloud3 {
         position: absolute;
-        top: 180vh;
-        left: 30vw;
+        top: 250vh;
+        left: 40vw;
         z-index: 2;
+        display: none;
     }
     
 }
 
 .title-logo {
     height: 150px;
+    width: 100%;
     // grid-column: 2;
 }
 
@@ -58,19 +63,21 @@
     top: 70vh;
     left: calc(50% - 26px);
     z-index: 1;
-    animation: parachuting .8s steps(3) infinite
+    display: none;
+    animation: parachuting .8s steps(3) infinite;
 }
 
 
 .login-container {
     @include flex($justify: space-between, $direction: column);
     height: 100%;
-    width: 100%;
 }
 
 .button-container {
-    @include flex($direction: row, $align:space-between);
+    @include flex($direction: column, $align: space-around);
     // grid-column: 2;
+    width: 100%;
+    margin-top: 20px;
 }
 
 .btn {
@@ -78,9 +85,13 @@
     background-color: $darker-blue;
     border-radius: 5px;
     border: 1px solid rgb(17, 57, 86);
-    width: 300px;
-    height: 50px;
-    margin: 20px 6em;
+    // width: 300px;
+    width: 100%;
+    height: 70px;
+    padding: 5px 5px;
+    margin: 5px auto;
+    // height: 50px;
+    // margin: 20px 6em;
     font-size: large;
     font-weight: bold;
     color: white;
@@ -102,6 +113,7 @@
     top: 150vh;
     // left: 0px;
     animation: plane-fly 10s linear infinite;
+    display: none;
 }
 
 @keyframes plane-fly {
@@ -121,7 +133,8 @@
     background: url('./../img/robins3.png') no-repeat 0px -2px;
     position: absolute;
     width: 62px;
-    height: 70px;    
+    height: 70px;  
+    display: none;  
 }
 
 .bird1 {
@@ -158,33 +171,97 @@
 }
 
 .landing-title {
-    height: 300px;
-    width: 50%;
+    height: 200px;
+    width: 100%;
     // background-color: white;
     border: 1px solid black;
     @include flex;
+    h1 {
+        font-size: 2em;
+    }
 }
 
 .about, .about-game{
-    @include flex($justify: space-between);
-    width: 400px;
-    // width: 90%;
-    grid-column: 2;
+    @include flex($justify: space-around);
+    // width: 400px;
+    width: 100%;
+    // grid-column: 2;
+    padding: 20px 10px;
     background: $light-purple;
     border-radius: 5px;
+    margin: 10px auto;
     z-index: 0;
     h1 {
-        margin: 20px auto;
+        font-size: 1.5em;
+        margin: 10px auto;
     }
     p {
         width: 100%;
-        padding: 20px 20px;
+        padding: 10px 10px;
         text-align: justify;
     }
 }
 
-@media screen and (max-width: 400px) {
-    .cloud1, .cloud2, .cloud3, .landing-plane, .landing-bird {
-        display: none;
+@media screen and (min-width: 500px) {
+//change grid and button sizes and about sizes
+    .about, .about-game {
+        width: 70%;
+    }
+
+    .button-container {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .login-container {
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+  
+    .landing-container {
+        height: 300vh;
+        .cloud1, .cloud2, .cloud3, .landing-plane, .landing-bird, .landing-page-peng {
+            display: flex;
+        }
+        
+    }
+    .landing-title {
+        grid-column: 2;
+        grid-row: 1;
+        width: 100%;
+    }
+    .about {
+        grid-column: 1;
+        grid-row: 2;
+        width: 80%;
+        h1 {
+            font-size: 2em;
+        }
+        p {
+            font-size: 1.5em;
+        }
+    }
+    .about-game {
+        grid-column: 3;
+        grid-row: 3;
+        width: 80%;
+        h1 {
+            font-size: 2em;
+        }
+        p {
+            font-size: 1.5em;
+        }
+    }
+    .button-container {
+        grid-column: 2;
+        grid-row: 4;
+        align-self: flex-end;
+        width: 100%;
+
+        .btn {
+            height: 50px;
+        }
     }
 }

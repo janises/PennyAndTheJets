@@ -43,8 +43,8 @@
     height: 90%;
     border-radius: 5px;
     grid-column: 2;
-    grid-row: 2;
-    border: 1px solid black;
+    grid-row: 1/-1;
+    // border: 1px solid black;
     // justify-self: center;
     // animation: 4s scroll-y infinite linear;
 }
@@ -169,7 +169,7 @@
 .examples {
     @include flex;
     // height: 100px;
-    // margin: 10px 5px;
+    margin: 5px;
     padding: 8px 8px;
     border: 1px solid black;
     border-radius: 5px;

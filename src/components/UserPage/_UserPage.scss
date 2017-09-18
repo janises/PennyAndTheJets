@@ -147,6 +147,13 @@
    
     .edit-username {
         margin-top: 40px;
+        .username-edit-input {
+            border: none;
+            border-bottom: 2px solid black;
+            background: none;
+            // border-radius: 3px;
+            
+        }
         .save-username {
             background-color: #E9E809;
             border: 1px solid #CCCC07;
