@@ -65,8 +65,8 @@ app.get('/auth', passport.authenticate('auth0'));
 
 // redirect user to homepage
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: `http://localhost:${process.env.PORT}/#/instructions`,
-    failureRedirect: `http://localhost:${process.env.PORT}/#/pagenotfound` 
+    successRedirect: `/#/instructions`,
+    failureRedirect: `/#/pagenotfound` 
 }));
 
 passport.serializeUser((user, done)=> {
@@ -105,7 +105,7 @@ app.get('/auth/me', (req, res, next) => {
 //log out
 app.get('/auth/logout', (req, res)=> {
     req.logOut();
-    res.redirect(302, 'http://localhost:3000/#/')
+    res.redirect(302, '/#/')
 });
 
 // get overall top ten user scores
@@ -127,7 +127,7 @@ app.post('/addscore', (req, res)=> {
              res.status(200).send(scores);
         })
     } else {
-        res.status(200).redirect('http://localhost:3000/#/highscores/')
+        res.status(200).redirect('/#/highscores/')
     }
     
 })
@@ -174,7 +174,7 @@ app.put('/updateusername', (req, res)=> {
 app.delete('/deleteuser/:id', (req, res)=> {
     app.get('db').delete_user([req.params.id])
         .then(users => {
-            res.status(200).redirect('http://localhost:3000/#/')
+            res.status(200).redirect('/#/')
         })
 })
 
