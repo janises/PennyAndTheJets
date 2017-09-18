@@ -129,8 +129,8 @@ button {
 }
 
 
-@media screen and (min-height: 700px) {
-  .arrow-keys {
+@media screen and (min-height: 700px), (min-width: 600px) {
+  .arrowkeys {
     display: flex;
   }
 }

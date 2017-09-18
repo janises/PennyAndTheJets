@@ -292,12 +292,12 @@
     width: 100%;
     background: $sky-blue;
     overflow-x: hidden;
-    #trigger1 {
-        // display: none;
-        @include absolute($top:110vh);
-        height: 10px;
-        width: 100px;
-    }
+    // #trigger1 {
+    //     // display: none;
+    //     @include absolute($top:110vh);
+    //     height: 10px;
+    //     width: 100px;
+    // }
     .haze {
         background: url('./../img/haze2.png') repeat;
         position: fixed;
@@ -335,11 +335,11 @@
     
 }
 
-.title-logo {
-    height: 150px;
-    width: 100%;
-    // grid-column: 2;
-}
+// .title-logo {
+//     height: 150px;
+//     width: 100%;
+//     // grid-column: 2;
+// }
 
 .landing-page-peng {
     display: none;
@@ -357,7 +357,7 @@
 
 .login-container {
     @include flex($justify: space-between, $direction: column);
-    // height: 100%;
+    height: 100%;
     // display: none;
 }
 
@@ -514,10 +514,11 @@
         display: grid;
         grid-template-rows: 1fr 1fr 1fr 1fr;
         grid-template-columns: 1fr 1fr 1fr;
+
     }
   
     .landing-container {
-        // height: 300vh;
+        height: 300vh;
         .cloud1, .cloud2, .cloud3, .landing-plane, .landing-bird, .landing-page-peng {
             display: flex;
         }
