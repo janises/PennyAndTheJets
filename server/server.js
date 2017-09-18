@@ -65,8 +65,8 @@ app.get('/auth', passport.authenticate('auth0'));
 
 // redirect user to homepage
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000/#/instructions',
-    failureRedirect: 'http://localhost:3000/#/pagenotfound' 
+    successRedirect: `http://localhost:${process.env.PORT}/#/instructions`,
+    failureRedirect: `http://localhost:${process.env.PORT}/#/pagenotfound` 
 }));
 
 passport.serializeUser((user, done)=> {
@@ -87,6 +87,7 @@ passport.deserializeUser((obj, done)=> {
 
 //FOR TESTING THE LOGIN ===========================================REMOVE AFTER COMPLETING PROJECT//
 app.get('/auth/me', (req, res, next) => {
+    console.log(req.user)
     let response, status=200
     if (!req.user) {
     //    res.status(404).send('User not found');

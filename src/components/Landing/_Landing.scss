@@ -70,7 +70,8 @@
 
 .login-container {
     @include flex($justify: space-between, $direction: column);
-    height: 100%;
+    height: calc(100% - 80px);
+    
 }
 
 .button-container {
