@@ -1,6 +1,9 @@
+
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import $ from 'jquery';
+
+
 import cloud1 from './../../img/cloud1.png';
 import cloud2 from './../../img/cloud2.png';
 import cloud3 from './../../img/cloud3.png';
@@ -8,6 +11,7 @@ import haze from './../../img/haze2.png';
 import {TimelineLite, TweenLite} from 'gsap';
 import * as ScrollMagic from 'scrollmagic';
 import gameLogo2 from './../../img/game-logo2.png';
+require('dotenv').config();
 // require('scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap');
 
 
@@ -84,9 +88,9 @@ export default class Landing extends Component {
                     $('.cloud3').css({
                         'transform': `translate(-${scroll/10}%, 0px`
                     });
-                    $('.haze').css({
-                        'transform': `translate(0px, -${scroll/50}%`
-                    });
+                    // $('.haze').css({
+                    //     'transform': `translate(0px, -${scroll/50}%`
+                    // });
     //                 // $('.about').css({
     //                 //     'transform': `translate(-${scroll/5}% ,0px)`
     //                 // });
@@ -159,7 +163,7 @@ export default class Landing extends Component {
                         <p>The planes and other birds flaunt their aerial privileges and try to stop her descent. Use the arrow keys to move Penny left and right so she can continue her flight. Collect the clouds and mini-parachutes for bonus points!</p>
                     </div>
                     <div className="button-container">
-                        <a className='login' href = 'http://localhost:8000/auth'><button className='login-button btn'>LOGIN</button></a>
+                        <a className='login' href = {process.env.REACT_APP_LOGIN}><button className='login-button btn'>LOGIN</button></a>
                         <Link to='/instructions'> 
                             <button className='continue btn'>CONTINUE WITHOUT LOGGING IN</button>
                         </Link>

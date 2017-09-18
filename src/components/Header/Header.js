@@ -1,9 +1,12 @@
+
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
+
 import {getUsernameAndId, logout} from './../../ducks/reducer';
 import gameLogo from './../../img/game-logo.png';
 import {TweenLite} from 'gsap';
+import {connect} from 'react-redux';
+require('dotenv').config();
 
 class Header extends Component {
     constructor(){
@@ -55,10 +58,10 @@ class Header extends Component {
                     ): null}
                     
                     {this.props.userId && this.props.username? 
-                    <li><a href = 'http://localhost:8000/auth/logout'>LOGOUT</a></li>
+                    <li><a href = {process.env.REACT_APP_LOGOUT}>LOGOUT</a></li>
                     : 
                     
-                    <li><a href='http://localhost:8000/auth'>LOGIN</a></li>}
+                    <li><a href={process.env.REACT_APP_LOGIN}>LOGIN</a></li>}
                     
 
                     {/* <button onClick={()=> this.props.logout()}>Logout</button> */}
@@ -89,10 +92,10 @@ class Header extends Component {
                                 ): null}
                                 
                                 {this.props.userId && this.props.username? 
-                                <li><a href = 'http://localhost:8000/auth/logout'>LOGOUT</a></li>
+                                <li><a href = {process.env.REACT_APP_LOGOUT}>LOGOUT</a></li>
                                 : 
                                 
-                                <li><a href='http://localhost:8000/auth'>LOGIN</a></li>}
+                                <li><a href={process.env.REACT_APP_LOGIN}>LOGIN</a></li>}
                             </ul>
                         </div>
                     ) : null
