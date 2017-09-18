@@ -147,7 +147,7 @@ export default class Landing extends Component {
                 <img className="cloud2" ref="cloud2" src={cloud2} alt=''/>
                 <img className="cloud3" ref="cloud3" src={cloud3} alt=''/>
                 <div className="landing-page-peng"></div>
-                <div id="trigger1"></div>
+                {/* <div id="trigger1"></div> */}
                 <div className='login-container'>
                     <div className="landing-title">
                         <h1>PENNY AND THE JETS</h1>
@@ -163,7 +163,7 @@ export default class Landing extends Component {
                         <p>The planes and other birds flaunt their aerial privileges and try to stop her descent. Use the arrow keys to move Penny left and right so she can continue her flight. Collect the clouds and mini-parachutes for bonus points!</p>
                     </div>
                     <div className="button-container">
-                        <a className='login' href = {process.env.REACT_APP_LOGIN}><button className='login-button btn'>LOGIN</button></a>
+                        <a className='login' href ={process.env.REACT_APP_LOGIN}><button className='login-button btn'>LOGIN</button></a>
                         <Link to='/instructions'> 
                             <button className='continue btn'>CONTINUE WITHOUT LOGGING IN</button>
                         </Link>

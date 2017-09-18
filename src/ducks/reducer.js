@@ -300,7 +300,7 @@ function reducer(state = initialState, action) {
             break;  
         case RESET_GAME:
         //CHANGE IS ISADMODALOPEN TO TRUE
-            return Object.assign({}, state, {score: 0, isModalOpen: false, isAdModalOpen: false, obstacleIndex: 1, obstacles: []})  
+            return Object.assign({}, state, {score: 0, isModalOpen: false, isAdModalOpen: true, obstacleIndex: 1, obstacles: []})  
         case UPDATE_USERNAME + "_FULFILLED":
             console.log('233 reducer', action.payload.data)
             return Object.assign({}, state, {editing: false, username: action.payload.data})
