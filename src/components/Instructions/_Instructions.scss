@@ -3,8 +3,8 @@
    @include fixed-header;
    background: $sky-blue;
    display: grid;
-   grid-template-columns: 1fr 1fr;
-   overflow: hidden;
+   grid-template-columns: 1.5fr 1fr;
+   overflow-x: hidden;
   
 
 }
@@ -98,6 +98,7 @@ button {
   background-size: 592px auto;
   height: 124px;
   width: 183px;
+  display: none;
 
 }
 
@@ -127,6 +128,12 @@ button {
   }
 }
 
+
+@media screen and (min-height: 600px) {
+  .arrow-keys {
+    display: flex;
+  }
+}
 
 @media screen and (max-width: 1200px) {
   .instructions-container{

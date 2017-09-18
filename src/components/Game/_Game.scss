@@ -54,6 +54,8 @@
     @include flex($direction: row, $justify: space-around);
     display: none;
     width: 100%;
+    position: absolute;
+    bottom: 15px;
 
     .arrow-btn {
         height: 75px;
