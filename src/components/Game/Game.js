@@ -40,6 +40,9 @@ class Game extends Component {
             let newHeight = $('.game-container').height();
             let newWidth = $('.game-container').width();
             this.props.saveContainerDim(newHeight, newWidth);
+
+            $('.game-container').height(90 +"%");
+            $('.game-container').width(90 + "%");
             console.log('game js height:',newHeight, 'width:',newWidth);
         })
     }

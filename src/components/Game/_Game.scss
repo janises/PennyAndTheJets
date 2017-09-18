@@ -36,6 +36,7 @@
     // background-image: url('./../img/hazy-cloud-bg.png');
     // background-repeat: repeat-y;
     // background-size: auto 100vh;
+    // background-color: pink;
     position: relative;
     // width: 600px;
     width: 90%;
@@ -44,7 +45,7 @@
     border-radius: 5px;
     grid-column: 2;
     grid-row: 1/-1;
-    // border: 1px solid black;
+    border: 1px solid black;
     // justify-self: center;
     // animation: 4s scroll-y infinite linear;
 }
@@ -226,8 +227,8 @@
         .cheer-penguins {
             @include flex($direction: row, $justify: space-around);
             .go-penguin{
-                background: url('./../img/go_penguin_parachute.png') no-repeat -5px 0px;
-                width: 41px;
+                background: url('./../img/go_penguin_parachute.png') no-repeat -6px 0px;
+                width: 42px;
                 height: 82px;
                 margin: 20px 5px;
                 animation: cheer 2s steps(3) infinite;

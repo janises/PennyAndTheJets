@@ -9,11 +9,12 @@ class Scores extends Component {
     componentWillMount(){
         this.props.getHighScores();
     }
+
     render(){
         let displayPlayers = [],
             displayScores = [];
-            // console.log(this.props.highScores)
-        this.props.highScores ? (
+            console.log(this.props.highScores)
+        this.props.highScores[0] ? (
             displayPlayers = this.props.highScores.map((scores, index)=> {
                 return <li key={index}> {scores.player}</li>       
             }),

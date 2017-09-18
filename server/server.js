@@ -20,7 +20,7 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
-// app.use(express.static(__dirname + './../build')) //npm build to deploy app
+app.use(express.static(__dirname + './../build')) //npm build to deploy app
 
 massive({
     host: process.env.DB_HOST,

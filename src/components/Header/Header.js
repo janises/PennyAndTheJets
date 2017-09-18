@@ -42,7 +42,7 @@ class Header extends Component {
                     <Link to="/">
                         <li>HOME</li>
                     </Link>
-                    <Link to='/game'>
+                    <Link to='/instructions'>
                         <li>GAME</li>
                     </Link>
                     <Link to="/highscores">
@@ -76,7 +76,7 @@ class Header extends Component {
                                 <Link to="/">
                                     <li>HOME</li>
                                 </Link>
-                                <Link to='/game'>
+                                <Link to='/instructions'>
                                     <li>GAME</li>
                                 </Link>
                                 <Link to="/highscores">

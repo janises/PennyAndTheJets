@@ -84,9 +84,9 @@ export default class Landing extends Component {
                     $('.cloud3').css({
                         'transform': `translate(-${scroll/10}%, 0px`
                     });
-    //                 $('.haze').css({
-    //                     'transform': `translate(0px, -${scroll/50}%`
-    //                 });
+                    $('.haze').css({
+                        'transform': `translate(0px, -${scroll/50}%`
+                    });
     //                 // $('.about').css({
     //                 //     'transform': `translate(-${scroll/5}% ,0px)`
     //                 // });
@@ -146,7 +146,7 @@ export default class Landing extends Component {
                 <div id="trigger1"></div>
                 <div className='login-container'>
                     <div className="landing-title">
-                        <h1>TITLE HERE</h1>
+                        <h1>PENNY AND THE JETS</h1>
                         {/* <img className="title-logo" src={gameLogo2} alt="game-logo"/> */}
                     </div>
                    
