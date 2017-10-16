@@ -1,7 +1,6 @@
 
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-
 import {getUsernameAndId, logout} from './../../ducks/reducer';
 import gameLogo from './../../img/game-logo.png';
 import {TweenLite} from 'gsap';
@@ -15,6 +14,7 @@ class Header extends Component {
             isMenuOpen: false
         }
     }
+
     componentWillMount() {
         this.props.getUsernameAndId();
     }
@@ -39,8 +39,7 @@ class Header extends Component {
                 <Link to="/">
                     <img src={gameLogo} alt="game-logo" className="logo"/>
                 </Link>
-                
-                {/* <div className="logo">LOGO GOES HERE</div> */}
+
                 <ul className='nav'>
                     <Link to="/">
                         <li>HOME</li>
@@ -51,20 +50,22 @@ class Header extends Component {
                     <Link to="/highscores">
                         <li>HIGH SCORES</li>
                     </Link>
-                    {this.props.userId && this.props.username? (
+                    {this.props.userId && this.props.username
+                    ? 
+                    (
                         <Link to={`/user/${this.props.userId}`}>
-                        <li>{this.props.username.toUpperCase()}</li>
-                    </Link>
-                    ): null}
+                            <li>{this.props.username.toUpperCase()}</li>
+                        </Link>
+                    ): 
+                    null
+                    }
                     
-                    {this.props.userId && this.props.username? 
+                    {this.props.userId && this.props.username
+                    ? 
                     <li><a href = {process.env.REACT_APP_LOGOUT}>LOGOUT</a></li>
                     : 
-                    
-                    <li><a href={process.env.REACT_APP_LOGIN}>LOGIN</a></li>}
-                    
-
-                    {/* <button onClick={()=> this.props.logout()}>Logout</button> */}
+                    <li><a href={process.env.REACT_APP_LOGIN}>LOGIN</a></li>
+                    }
                 </ul>
 
                 <div className="menu" onClick={()=>this.openMenu()}>
@@ -85,17 +86,20 @@ class Header extends Component {
                                 <Link to="/highscores">
                                     <li>HIGH SCORES</li>
                                 </Link>
-                                {this.props.userId && this.props.username? (
+                                {this.props.userId && this.props.username 
+                                ? (
                                     <Link to={`/user/${this.props.userId}`}>
                                     <li>{this.props.username.toUpperCase()}</li>
                                 </Link>
-                                ): null}
+                                ): 
+                                null
+                                }
                                 
-                                {this.props.userId && this.props.username? 
+                                {this.props.userId && this.props.username ? 
                                 <li><a href = {process.env.REACT_APP_LOGOUT}>LOGOUT</a></li>
                                 : 
-                                
-                                <li><a href={process.env.REACT_APP_LOGIN}>LOGIN</a></li>}
+                                <li><a href={process.env.REACT_APP_LOGIN}>LOGIN</a></li>
+                                }
                             </ul>
                         </div>
                     ) : null

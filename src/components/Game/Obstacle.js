@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-
-
 class Obstacle extends Component {
 
     render(){
@@ -23,7 +21,6 @@ function mapStateToProps(state) {
         obstacles
     }
 }
-
 
 
 export default connect(mapStateToProps)(Obstacle);

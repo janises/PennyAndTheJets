@@ -59,9 +59,7 @@ class UserPage extends Component {
                                 {scores}
                             </ul>
                         </div>  {/* end of .user-scores*/}
-                
-                    
-                        {/* <img className="user-picture" src={userPicture} alt={`${username}`}/> */}
+
                     
                 {
                     this.props.editing ? (
@@ -75,7 +73,6 @@ class UserPage extends Component {
                         
                     ) : (
                         <div className="display-username">
-                            {/* <span className="username">{this.props.username}</span> */}
                              <button onClick={()=> this.props.editUsername()}>EDIT USERNAME</button>
                         </div> /*end of .display-username*/
                         

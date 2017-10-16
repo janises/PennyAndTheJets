@@ -23,11 +23,9 @@ class Scores extends Component {
                 return <li key={index}>{scores.score}</li>
             })
         ) : null;
-      
-        // console.log(displayPlayers, displayScores)
+
         return(
             <div className="scores-container">
-                {/* <img className="score-clouds" src={cloudsbg} alt=""/> */}
                 <div className="score-clouds"></div>
                 <div className="parachute-penguin"></div>
 

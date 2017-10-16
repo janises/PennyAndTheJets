@@ -19,12 +19,6 @@ class Game extends Component {
         this.startObstacles = this.startObstacles.bind(this);
     }
 
-    // componentWillMount(){
-    //     // this.props.getUserScores();
-    //     // var height = $('.game-container').height();
-    //     console.log('height', $(document).height());
-    // }
-
     componentDidMount() {
         var containerHeight = $('.game-container').height();
         var containerWidth = $('.game-container').width();
@@ -46,12 +40,7 @@ class Game extends Component {
             console.log('game js height:',newHeight, 'width:',newWidth);
         })
     }
-
-    // componentWillUpdate(){
-
-    // }
-
-    
+ 
     componentWillUnmount(){
         this.props.resetGame();
         clearInterval(this.state.birds)
@@ -63,10 +52,8 @@ class Game extends Component {
    
 
     updateObstaclePositions() {
-        
         this.props.obstacles.map(obstacle=> {
             this.props.moveObstacles(obstacle); 
-    
         })
         
         //if the modal is not open, increment the score and alter points when hitting obstacles
@@ -130,7 +117,6 @@ class Game extends Component {
                 planes: createPlanes,
                 parachutes: createParachutes
             })
-
     }
 
     openModalAndClearInterval(){
@@ -160,13 +146,9 @@ class Game extends Component {
         }
     }
 
-
     render(){
         let {player, obstacles, movePlayer, playerSize} = this.props;
 
-    
-    
-        
         return(
             <div className='game-page'>
                 {/* <div className="game-background"></div> */}
@@ -200,9 +182,7 @@ class Game extends Component {
                         { !this.props.isModalOpen ? (
                             obstacles.map((obstacle) =>{
                                 if(obstacle.top + 25 <= playerSize.height && (obstacle.left+ obstacle.style.width + 12 > player.left && obstacle.left + 17 < player.left + playerSize.width)) {
-                                    {/* console.log(obstacle) */}
                                     obstacle.score = true;
-                                
                                 } else {
                                     return <Obstacle left={obstacle.left} top={obstacle.top} type={obstacle.type} obstacleStyle={obstacle.style}/>
                                 }

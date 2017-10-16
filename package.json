@@ -25,10 +25,11 @@
     "react-scripts": "1.0.11",
     "redux": "^3.7.2",
     "redux-promise-middleware": "^4.4.1",
-    "scrollmagic": "^2.0.5"
+    "scrollmagic": "^2.0.5",
+    "socket.io": "^2.0.3"
   },
   "scripts": {
-    "now-start":"node server/server.js",
+    "now-start": "node server/server.js",
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
@@ -36,9 +37,9 @@
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
-    "deploy":"now --public --dotenv=.env.prod -d"
+    "deploy": "now --public --dotenv=.env.prod -d"
   },
   "now": {
-    "alias":"penguin-game"
+    "alias": "penguin-game"
   }
 }

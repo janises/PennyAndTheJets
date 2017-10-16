@@ -230,7 +230,6 @@ function reducer(state = initialState, action) {
     let {player, container, score, obstacles, obstacleIndex, bird, plane, parachute, cloud, playerSize, dx, userScores, bestScore} = state;
     switch(action.type) {
         case SAVE_CONTAINER_DIM:
-            // console.log('reducer height:', action.height, "width:", action.width);
             return Object.assign({}, state, {container:{height:action.height, width: action.width}});
         break;
         case MOVE_PLAYER:
@@ -259,11 +258,9 @@ function reducer(state = initialState, action) {
                     newObstacle = {type: action.payload, key: obstacleIndex, remove: false, top: container.height-parachute.height, left: Math.floor(Math.random()* (container.width - parachute.width*2 + 1)+ parachute.width), style:{height: parachute.height, width: parachute.width, position:'absolute'}};
                 }
                 return Object.assign({}, state, {obstacleIndex: obstacleIndex + 1, obstacles: obstacles.concat([newObstacle])});
-            }
-           
-            // console.log(newObstacle)
-            
+            }          
             break;
+
         case MOVE_OBSTACLES:
         let {obstacleSpeed} = state;
             let movedObstacles = obstacles.filter(obstacle => !obstacle.remove).map(obstacle => {
@@ -271,6 +268,7 @@ function reducer(state = initialState, action) {
                     if(obstacle.top >= obstacleSpeed) {
                         if(obstacle.type === 'bird') {
                             obstacle.left -= 1;
+                            
                         } else if(obstacle.type === 'plane') {
                             obstacle.left += 1;
                         }
@@ -284,87 +282,104 @@ function reducer(state = initialState, action) {
                 }
                 return obstacle;
             })
-         
             return Object.assign({},state, {obstacles: movedObstacles} )  
-
             break;
+
         case SAVE_SCORE + '_FULFILLED':
-                console.log('save score 259', action.payload)
                 return Object.assign({}, state, {highScores:action.payload})
                 break;
+
         case SAVE_SCORE + '_REJECTED':
             console.log('error saving score')
             break;
+
         case INCREMENT_SCORE:
             return Object.assign({}, state, {score: score + action.payload})
             break;  
+
         case RESET_GAME:
         //CHANGE IS ISADMODALOPEN TO TRUE
-            return Object.assign({}, state, {score: 0, isModalOpen: false, isAdModalOpen: true, obstacleIndex: 1, obstacles: []})  
+            return Object.assign({}, state, {score: 0, isModalOpen: false, isAdModalOpen: false, obstacleIndex: 1, obstacles: []})  
+            break;
+
         case UPDATE_USERNAME + "_FULFILLED":
-            console.log('233 reducer', action.payload.data)
             return Object.assign({}, state, {editing: false, username: action.payload.data})
             break;
+
         case UPDATE_USERNAME + "_REJECTED":
             console.log('error updating username')
             break;
+
         case EDIT_USERNAME:
             return Object.assign({}, state, {editing: action.payload})
             break;
+
         case GET_USERNAME+'_PENDING':
             return Object.assign({}, state, {username: 'User'})
+            break;
+            
         case GET_USERNAME + "_FULFILLED":
-        console.log('reducer username 222', action.payload.data)
             return Object.assign({}, state, {username: action.payload.data.username, userId: action.payload.data.id, userPicture: action.payload.data.image})
             break;
+
         case GET_USERNAME + "_REJECTED":
             console.log('error getting username')
             break;
+
         case DELETE_USER + "_FULFILLED":
             return Object.assign({}, state, {username:'', userScores: []})
+
         case DELETE_USER + "_REJECTED":
             console.log('error deleting user')
-        case GET_USER_SCORES + "_FULFILLED":
-        console.log('reducer scores 227', action.payload)
+        
+            case GET_USER_SCORES + "_FULFILLED":
             return Object.assign({}, state,{userScores: action.payload.data})
             break;
+
         case GET_USER_SCORES + "_REJECTED":
             console.log('error getting user scores')
             break;
+
         case GET_HIGH_SCORES + "_FULFILLED":
-        console.log('reducerscores', action.payload)
             return Object.assign({}, state, {highScores: action.payload.data})
             break;
+
         case GET_HIGH_SCORES + "_REJECTED":
             console.log("error getting high scores")
             break;
+
         case GET_BEST_SCORE:
             if(userScores.length > 0) {
-                console.log(userScores)
                 return Object.assign({}, state, {bestScore: userScores[0]});
             } else {
-                console.log(userScores)
                 return Object.assign({}, state, {bestScore: 0})
             } 
             break;
+
         case ADJUST_BEST_SCORE:
             if(score > bestScore) {
                 return Object.assign({}, state, {bestScore: score})
             };
             break;          
+
         case CLOSE_AD_MODAL:
             return Object.assign({}, state, {isAdModalOpen: action.payload})
             break;
+
         case OPEN_MODAL:
             return Object.assign({}, state, {isModalOpen: action.payload})
             break;
+
         case HANDLE_INPUT:
             return Object.assign({}, state, {editing: true, newUsername: action.payload})
             break;
+
         case LOGOUT + "_FULFILLED":
             return Object.assign({}, state, {username: '', userId: '', userScores: []})
+
         case LOGOUT + "_REJECTED":
             console.log('error logging out')
+        
         default:
             break;
     }

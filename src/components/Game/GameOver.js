@@ -7,13 +7,10 @@ class GameOver extends Component {
     
     replay(){
         this.props.resetGame()
-        this.props.playAgain()
-        
+        this.props.playAgain()    
     }
     
     render(){
-
-
         return(
             <div className="game-over-container">
                 <div className="game-over-modal">
