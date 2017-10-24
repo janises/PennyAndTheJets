@@ -23,13 +23,24 @@ class Header extends Component {
         this.state.isMenuOpen ? (
             this.setState({isMenuOpen: false}),
             TweenLite.to('.span1', .5, {'rotation': 0, transformOrigin: 'left'}),
-            TweenLite.to('.span2', .5, {'rotation': 0, transformOrigin: 'left'})
+            TweenLite.to('.span3', .5, {'rotation': 0, transformOrigin: 'left'}),
+            TweenLite.to('.span2', .5, {'visibility': 'visible'})
 
         ) : (
             this.setState({isMenuOpen: true}),
             TweenLite.to('.span1', .5, {'rotation': 45, transformOrigin: 'left'}),
-            TweenLite.to('.span2', .5, {'rotation': -45, transformOrigin: 'left'})
+            TweenLite.to('.span3', .5, {'rotation': -45, transformOrigin: 'left'}),
+            TweenLite.to('.span2', .5, {'visibility': 'hidden'})
         )
+    }
+
+    closeMenu(){
+        this.setState({
+            isMenuOpen: false
+        });
+        TweenLite.to('.span1', .5, {'rotation': 0, transformOrigin: 'left'});
+        TweenLite.to('.span3', .5, {'rotation': 0, transformOrigin: 'left'});
+        TweenLite.to('.span2', .5, {'visibility': 'visible'});
     }
 
     render(){
@@ -73,6 +84,7 @@ class Header extends Component {
                 <div className="menu" onClick={()=>this.openMenu()}>
                     <span className="span1 span"></span>
                     <span className="span2 span"></span>
+                    <span className="span3 span"></span>
                 </div>
 
                 {
@@ -80,22 +92,22 @@ class Header extends Component {
                         <div className="side-menu">
                             <ul className='side-nav'>
                                 <Link to="/">
-                                    <li>HOME</li>
+                                    <li onClick={()=>this.closeMenu()}>HOME</li>
                                 </Link>
                                 <Link to='/instructions'>
-                                    <li>GAME</li>
+                                    <li onClick={()=>this.closeMenu()}>GAME</li>
                                 </Link>
                                 <Link to="/highscores">
-                                    <li>HIGH SCORES</li>
+                                    <li onClick={()=>this.closeMenu()}>HIGH SCORES</li>
                                 </Link>
                                 {this.props.userId && this.props.username 
                                 ? (
                                     <Link to={`/user/${this.props.userId}`}>
-                                        <li>{this.props.username.toUpperCase()}</li>
+                                        <li onClick={()=>this.closeMenu()}>{this.props.username.toUpperCase()}</li>
                                     </Link>
                                 ): 
                                     <Link to={`/user/0`}>
-                                        <li>USER</li>
+                                        <li onClick={()=>this.closeMenu()}>USER</li>
                                     </Link>
                                 }
                                 

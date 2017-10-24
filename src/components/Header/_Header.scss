@@ -34,18 +34,16 @@
     height: 100%;
     justify-self: flex-end;
     .span{
-        width: 40px;
+        width: 31px;
         height: 5px;
         background-color: black;
-        margin: 12px 15px;
+        margin: 3px 15px;
     }
     
 }
 
 .side-menu {
     background-color: rgba(0, 0, 0, .75);
-    // @include fixed-header;
-    // @include flex;
     height: 50vh;
     width: 50%;
     @include absolute($top: 80px, $left:calc(100vw - 50%));
