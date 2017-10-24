@@ -22,12 +22,12 @@ class Header extends Component {
     openMenu(){
         this.state.isMenuOpen ? (
             this.setState({isMenuOpen: false}),
-            TweenLite.to(".span1", .5, {'rotation': 0, transformOrigin: 'left'}),
-            TweenLite.to('.span2', .5, {'rotation': 0, transformOrigin: "left"})
+            TweenLite.to('.span1', .5, {'rotation': 0, transformOrigin: 'left'}),
+            TweenLite.to('.span2', .5, {'rotation': 0, transformOrigin: 'left'})
 
         ) : (
             this.setState({isMenuOpen: true}),
-            TweenLite.to(".span1", .5, {'rotation': 45, transformOrigin: 'left'}),
+            TweenLite.to('.span1', .5, {'rotation': 45, transformOrigin: 'left'}),
             TweenLite.to('.span2', .5, {'rotation': -45, transformOrigin: 'left'})
         )
     }
@@ -57,7 +57,9 @@ class Header extends Component {
                             <li>{this.props.username.toUpperCase()}</li>
                         </Link>
                     ): 
-                    null
+                        <Link to={`/user/0`}>
+                            <li>USER</li>
+                        </Link>
                     }
                     
                     {this.props.userId && this.props.username
@@ -89,10 +91,12 @@ class Header extends Component {
                                 {this.props.userId && this.props.username 
                                 ? (
                                     <Link to={`/user/${this.props.userId}`}>
-                                    <li>{this.props.username.toUpperCase()}</li>
-                                </Link>
+                                        <li>{this.props.username.toUpperCase()}</li>
+                                    </Link>
                                 ): 
-                                null
+                                    <Link to={`/user/0`}>
+                                        <li>USER</li>
+                                    </Link>
                                 }
                                 
                                 {this.props.userId && this.props.username ? 

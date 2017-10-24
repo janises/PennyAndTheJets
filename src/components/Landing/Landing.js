@@ -2,14 +2,14 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import $ from 'jquery';
-
-
 import cloud1 from './../../img/cloud1.png';
 import cloud2 from './../../img/cloud2.png';
 import cloud3 from './../../img/cloud3.png';
 import haze from './../../img/haze2.png';
 import {TimelineLite, TweenLite} from 'gsap';
 import gameLogo2 from './../../img/game-logo2.png';
+import github from './../../img/github.png';
+import linkedin from './../../img/linkedin.png';
 require('dotenv').config();
 
 
@@ -27,7 +27,7 @@ export default class Landing extends Component {
                     'transform': `translate(-${scroll/10}%, 0px` 
                 });
                 $('.cloud3').css({
-                    'transform': `translate(-${scroll/10}%, 0px`
+                    'transform': `translate(${scroll/10}%, 0px`
                 });           
         })
     }
@@ -47,13 +47,22 @@ export default class Landing extends Component {
                         <h1>PENNY AND THE JETS</h1>
                     </div>
                    
-                    <div className="about">
+                    <div className="about-penny about">
                         <h1>PENNY</h1>
                         <p>Penny is tired of society telling her that she can't fly. As a strong, independent penguin, she won't let the patriarchy tell her what to do. She loves to skydive, and she often waits until the last second before she deploys her parachute to get maximum flight time.</p>
                     </div>
-                    <div className="about-game">
+                    <div className="about-game about">
                         <h1>GAME</h1>
                         <p>The planes and other birds flaunt their aerial privileges and try to stop her descent. Use the arrow keys to move Penny left and right so she can continue her flight. Collect the clouds and mini-parachutes for bonus points!</p>
+                    </div>
+                    <div className="about-janise about">
+                        <h1>JANISE</h1>
+                        <p>As a student developer, <a style={{color: 'black'}}href="https://janisesuski.wixsite.com/portfolio" target="_blank">Janise Suski </a>created Penny and the Jets for her fullstack personal project at DevMountain. She used ReactJS, Redux, Node.js, Express.js, PostgreSQL, Sass, Auth0, and coded the game logic in JavaScript/ES6 without the use of a game animation library.
+                        </p>
+                        <p>
+                        <a href="http://www.linkedin.com/in/janise-suski" target="_blank"> <img src={linkedin} alt="linkedin-logo"/></a>
+                        <a href="http://www.github.com/janises" target="_blank"> <img src={github} alt="github-logo"/></a>
+                        </p>
                     </div>
                     <div className="button-container">
                         <a className='login' href ={process.env.REACT_APP_LOGIN}><button className='login-button btn'>LOGIN</button></a>

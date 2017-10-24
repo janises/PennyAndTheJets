@@ -62,22 +62,22 @@ class Game extends Component {
             this.props.obstacles.map(obstacle => {
                 if(obstacle.score){
                     if(obstacle.type === 'cloud') {
-                        //change color
+                        //change color to green
                         this.colorIndicator('cloud')
                         this.props.incrementScore(100)
                         obstacle.remove = true;
                     } else if(obstacle.type === 'bird') {
-                        //change color
+                        //change color to red
                         this.colorIndicator('bird');
                         this.openModalAndClearInterval()
                         obstacle.remove = true;
                     } else if(obstacle.type === 'plane') {
-                        // change color
+                        // change color to red
                         this.colorIndicator('plane');
                         this.openModalAndClearInterval()
                         obstacle.remove = true;
                     } else if(obstacle.type === 'parachute'){
-                        //change color
+                        //change color to green
                         this.colorIndicator('parachute');
                         this.props.incrementScore(1000)
                         obstacle.remove = true;
@@ -105,7 +105,7 @@ class Game extends Component {
 
             var createPlanes = setInterval(()=> {
                 makeNewObstacle('plane')
-            }, 3200)
+            }, 3500)
 
             var createParachutes = setInterval(()=> {
                 makeNewObstacle('parachute')
@@ -192,7 +192,8 @@ class Game extends Component {
                         {
                             this.props.isModalOpen ?  <GameOver playAgain={this.startObstacles}/> : null
                         }
-                    </div>
+                    </div> {/*end of .game-container*/}
+
 
                     <div className="arrow-buttons">
                         <div className="left-button arrow-btn" onClick={()=> this.props.movePlayer(37)}></div>
@@ -211,8 +212,8 @@ class Game extends Component {
 
                     </div>
                    
-
-                    {
+                        {/* joke ad modal for DevMountain presentation */}
+                    {/* {
                         this.props.isAdModalOpen ? 
                         (
                             <div className="pop-up">
@@ -229,10 +230,14 @@ class Game extends Component {
                             </div>
 
                         ) : null
-                    }
-                    
+                    } */}
                     
                 </div>
+
+                <div className="no-game-message">
+                    <h1>This game would look way better if your screen was bigger. Try turning your device the other way!</h1>
+                </div>
+
             </div>
         )
     }

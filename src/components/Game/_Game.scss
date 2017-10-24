@@ -1,5 +1,4 @@
 .game-page {
-    // @include flex($justify: center);
     @include fixed-header;
     background: rgba(67, 70, 130, 0.03);
     background-image: url('./../img/hazy-cloud-bg.png');
@@ -13,41 +12,19 @@
     align-items: center;
     animation: 4s scroll-y infinite linear;
     .score {
-        // margin-bottom: 10px;
-        // width: 100%;
         grid-column: 1;
         grid-row: 1;
         font-size: 2em;
-        // @include absolute($top: 20px, $left: 50px);
     }
 }
 
-// .game-background {
-//     background-image: url('./../img/hazy-cloud-bg.png');
-//     background-repeat: repeat;
-//     background-size: auto 100vh;
-//     height: 100%;
-//     width: 100vw;
-//     grid-column: 1/-1;
-//     grid-row:1/-1;
-// }
-
 .game-container{
-    // background-image: url('./../img/hazy-cloud-bg.png');
-    // background-repeat: repeat-y;
-    // background-size: auto 100vh;
-    // background-color: pink;
     position: relative;
-    // width: 600px;
     width: 90%;
-    // height: 500px;
     height: 90%;
     border-radius: 5px;
     grid-column: 2;
     grid-row: 1/-1;
-    // border: 1px solid black;
-    // justify-self: center;
-    // animation: 4s scroll-y infinite linear;
 }
 
 .arrow-buttons {
@@ -102,7 +79,6 @@
 
 .bird {
     background: url('./../img/robins3.png') no-repeat 0px -2px;
-    // background-size: 100%;
     width: 52px;
     height: 70px;
     animation: fly .8s steps(19) infinite;
@@ -171,7 +147,6 @@
 
 .examples {
     @include flex;
-    // height: 100px;
     margin: 5px;
     padding: 8px 8px;
     border: 1px solid black;
@@ -247,56 +222,64 @@
     }
 }
 
-.pop-up {
-    background-color: lightgray;
-    height: 50%;
-    width: 95%;
-    border: 1px solid black;
+//  joke ad modal for DevMountain presentation
+// .pop-up {
+//     background-color: lightgray;
+//     height: 50%;
+//     width: 95%;
+//     border: 1px solid black;
 
-    .pop-up-header {
-        @include flex($justify: space-between, $direction: row);
-        background-color: blue;
-        margin: 1px 1px;
-        height: 20px;
-        width: calc(100% - 2px);
-        p{
-            color: white;
-            padding-left: 2px;
-            text-align: center;
-        }
-        button{
-            @include flex;
-            height: 17px;
-            width: 17px;
-            margin: 1px 1px;
-        }
-    }
+//     .pop-up-header {
+//         @include flex($justify: space-between, $direction: row);
+//         background-color: blue;
+//         margin: 1px 1px;
+//         height: 20px;
+//         width: calc(100% - 2px);
+//         p{
+//             color: white;
+//             padding-left: 2px;
+//             text-align: center;
+//         }
+//         button{
+//             @include flex;
+//             height: 17px;
+//             width: 17px;
+//             margin: 1px 1px;
+//         }
+//     }
 
-    .fake-ad {
-        width: 100%;
-        p {
-            margin: 3px auto;
-        }
-        height: calc(100% - 24px);
-        @include flex;
-        // background-color: red;
-        .dm-ad {
-            background: url('./../img/dm-ad.png') no-repeat center;
-            height: 80%;
-            width: 80%;
-        }
-    }
-    animation: popup 5s linear 5s;
+//     .fake-ad {
+//         width: 100%;
+//         p {
+//             margin: 3px auto;
+//         }
+//         height: calc(100% - 24px);
+//         @include flex;
+//         // background-color: red;
+//         .dm-ad {
+//             background: url('./../img/dm-ad.png') no-repeat center;
+//             height: 80%;
+//             width: 80%;
+//         }
+//     }
+//     animation: popup 5s linear 5s;
+// }
+
+
+// @keyframes popup{
+//     0% {
+//         visibility: hidden;
+//     }
+//     100% {
+//         visibility: visible;
+//     }
+// }
+
+.no-game-message {
+    text-align: center;
+    display: none;
 }
 
-@keyframes popup{
-    0% {
-        visibility: hidden;
-    }
-    100% {
-        visibility: visible;
-    }
-}
 
 @media screen and (max-width: 1000px) {
     .game-page {
@@ -320,5 +303,34 @@
     .arrow-buttons {
         display: flex;
         grid-row: 3;
+    }
+}
+
+
+@media screen and (max-height: 400px){
+    .no-game-message {
+        display: grid;
+    }
+
+    .game-container {
+        display: none;
+    }
+
+    .arrow-buttons {
+        display: none;
+    }
+
+    .game-page {
+        .score{
+            display: none;
+        }
+    }
+
+    .game-scores {
+        display: none;
+    }
+
+    .example-containers {
+        display: none;
     }
 }
