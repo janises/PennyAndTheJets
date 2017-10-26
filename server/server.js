@@ -24,6 +24,7 @@ app.use(express.static(__dirname + './../build')) //npm build to deploy app
 
 massive(process.env.DATABASE_URL)
 .then( db => {
+    console.log('database connected')
     app.set('db', db); 
   })
 
