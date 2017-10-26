@@ -86,7 +86,7 @@ class UserPage extends Component {
                 ) : ( //if there is no user logged in
                     <div className="not-logged-in-user-page">
                         <h1 className="userpage-login-h1">You must be logged in to see your user page</h1>
-                        <a className='login' href = 'http://localhost:8000/auth'><button id="login-button2" className='btn'>LOGIN</button></a>
+                        <a className='login' href={process.env.REACT_APP_LOGIN}><button id="login-button2" className='btn'>LOGIN</button></a>
                     </div> /* end of .not-logged-in-user-page*/
                     )
                 }
