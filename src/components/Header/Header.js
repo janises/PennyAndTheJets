@@ -75,7 +75,7 @@ class Header extends Component {
                     
                     {this.props.userId && this.props.username
                     ? 
-                    <li><a href = {process.env.REACT_APP_LOGOUT}>LOGOUT</a></li>
+                    <li><a href={process.env.REACT_APP_LOGOUT}>LOGOUT</a></li>
                     : 
                     <li><a href={process.env.REACT_APP_LOGIN}>LOGIN</a></li>
                     }
