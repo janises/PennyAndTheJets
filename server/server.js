@@ -56,7 +56,7 @@ passport.use(new Auth0Strategy({
 //================== ENDPOINTS ===============//
 
 // authorize user
-app.get('/auth', passport.authenticate('auth0'));
+app.get('/auth/', passport.authenticate('auth0'));
 
 // redirect user to homepage
 app.get('/auth/callback', passport.authenticate('auth0', {
@@ -98,7 +98,7 @@ app.get('/auth/me', (req, res, next) => {
   
 
 //log out
-app.get('/auth/logout', (req, res)=> {
+app.get('/auth/logout/', (req, res)=> {
     req.logOut();
     res.redirect(302, '/#/')
 });
