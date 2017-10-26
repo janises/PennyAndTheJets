@@ -24,7 +24,6 @@
     "react-scripts": "1.0.11",
     "redux": "^3.7.2",
     "redux-promise-middleware": "^4.4.1",
-    "scrollmagic": "^2.0.5",
     "socket.io": "^2.0.3"
   },
   "scripts": {
@@ -37,8 +36,5 @@
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
     "deploy": "now --public --dotenv=.env.prod -d"
-  },
-  "now": {
-    "alias": "penguin-game"
   }
 }
